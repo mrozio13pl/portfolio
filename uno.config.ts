@@ -9,6 +9,12 @@ import toEscapedUri from 'mini-svg-data-uri';
 export default defineConfig({
     presets: [presetUno(), presetWind()],
     transformers: [transformerVariantGroup()],
+    theme: {
+        breakpoints: {
+            mobile: '660px',
+            md: '1330px',
+        },
+    },
     rules: [
         ['animate-first', { animation: 'moveFirst 10s ease infinite' }],
         ['animate-second', { animation: 'moveSecond 10s ease infinite' }],

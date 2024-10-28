@@ -14,7 +14,7 @@ export function Projects() {
                 <div className="bg-gray-8 rounded-full h-1 w-full" />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 lt-mobile:block">
                 <a
                     href="https://github.com/mrozio13pl/sudoku-in-terminal"
                     target="_blank">
@@ -55,8 +55,8 @@ export function Projects() {
                 </a>
             </div>
 
-            <p className="text-gray-7 mt-6 ml-4 flex items-center gap-1">
-                {t('projectsSection.note')} <Pickaxe />
+            <p className="text-gray-7 mt-6 ml-4">
+                {t('projectsSection.note')} <Pickaxe className="inline-flex" />
             </p>
         </div>
     );

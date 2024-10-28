@@ -1,5 +1,5 @@
 import { EMAIL, LINKED_IN } from '@/constants';
-import { Link } from './link';
+import { Link } from './ui/link';
 import {
     Tooltip,
     TooltipContent,
@@ -17,14 +17,14 @@ export function Contact() {
     return (
         <div className="relative py-20 mb-20 mt-12">
             <div className="z-10">
-                <h2 className="primary-font font-extrabold text-6xl mt-12 text-center">
+                <h2 className="primary-font font-extrabold text-6xl lt-mobile:text-4xl mt-12 text-center">
                     {t('contactSection.title')}
                     <span className="text-cyan-2">.</span>
                 </h2>
                 <div className="flex justify-center">
                     <div className="max-w-4/5 mt-12 space-y-4">
                         <p>{t('contactSection.1')}</p>
-                        <p className="flex">
+                        <p>
                             {t('contactSection.2')}{' '}
                             <Link
                                 href={'mailto:' + EMAIL}
@@ -58,7 +58,7 @@ export function Contact() {
                             </TooltipProvider>
                             .
                         </p>
-                        <p className="flex">
+                        <p>
                             {t('contactSection.4')}{' '}
                             <Link
                                 href={LINKED_IN}
@@ -77,7 +77,7 @@ export function Contact() {
                         'radial-gradient(circle at center, rgba(207, 250, 254, 0.1) 0, rgba(34, 211, 238, 0) 50%) no-repeat',
                     mixBlendMode: 'hard-light',
                 }}
-                className="h-100 w-[calc(100%-100px)] absolute top-0 -left-20 transform-origin-cc animate-second pointer-events-none"
+                className="h-100 mobile:w-[calc(100%-100px)] w-full absolute top-0 -left-20 transform-origin-cc animate-second pointer-events-none"
             />
             <div
                 style={{
@@ -85,7 +85,7 @@ export function Contact() {
                         'radial-gradient(circle at center, rgba(207, 250, 254, 0.1) 0, rgba(34, 211, 238, 0) 50%) no-repeat',
                     mixBlendMode: 'hard-light',
                 }}
-                className="h-100 duration-100 w-[calc(100%-100px)] absolute top-0 left-30 transform-origin-cc animate-first pointer-events-none"
+                className="h-100 duration-100 mobile:w-[calc(100%-100px)] w-full absolute top-0 left-30 transform-origin-cc animate-first pointer-events-none"
             />
         </div>
     );
