@@ -113,15 +113,31 @@ const tools: { node: ReactElement; tool: string }[] = [
 
 export function Carousel() {
     return (
-        <div className="flex justify-center items-center gap-4 track h-24">
-            {tools.concat(tools).map(({ node, tool }, index) => (
-                <div
-                    className="flex-shrink-0 [&_svg]:size-12 flex flex-col items-center duration-100 hover:scale-105 slider"
-                    key={index}>
-                    {node}
-                    <p className="text-white/50 text-xs">{tool}</p>
-                </div>
-            ))}
+        <div className="w-full">
+            <div
+                className="absolute right-0 w-12 h-full z-10"
+                style={{
+                    background:
+                        'linear-gradient(to right, transparent 0, #121212 70%)',
+                }}
+            />
+            <div
+                className="absolute left-0 w-12 h-full z-10"
+                style={{
+                    background:
+                        'linear-gradient(to left, transparent 0, #121212 70%)',
+                }}
+            />
+            <div className="flex justify-center items-center gap-4 track h-24 relative">
+                {tools.concat(tools).map(({ node, tool }, index) => (
+                    <div
+                        className="flex-shrink-0 [&_svg]:size-12 flex flex-col items-center duration-100 hover:scale-105 slider"
+                        key={index}>
+                        {node}
+                        <p className="text-white/50 text-xs">{tool}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
