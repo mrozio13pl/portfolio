@@ -12,8 +12,8 @@ import { Footer } from '@/components/footer';
 import { Projects } from '@/components/projects';
 import { useScreenSize } from '@/hooks/screen';
 import { useTranslation } from '@/i18n/use-translator';
-import { BIRTH_DATE, GITHUB, SECTIONS } from '@/constants';
-import { Cake, Dot } from 'lucide-react';
+import { BIRTH_DATE, GITHUB, SECTIONS, TIMEZONE } from '@/constants';
+import { Cake, Clock2, Dot } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
@@ -32,6 +32,29 @@ function getAge(birthDate: Date) {
     return age;
 }
 
+function getTimezoneDifference(tz: string) {
+    const now = new Date();
+    const clientOffset = now.getTimezoneOffset() / 60;
+
+    const targetDate = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz,
+    }).format(now);
+
+    const targetOffset = new Date(targetDate).getTimezoneOffset() / 60;
+
+    return targetOffset - clientOffset;
+}
+
+function adjustTimeByHours(increment: number) {
+    const now = new Date();
+    now.setHours(now.getHours() + increment);
+
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+
+    return `${hours}:${minutes}`;
+}
+
 export function App() {
     const t = useTranslation();
 
@@ -43,6 +66,8 @@ export function App() {
     const sectionRefs = useRef<{
         [key: string]: HTMLElement | null;
     }>({});
+
+    const timeDifference = getTimezoneDifference(TIMEZONE);
 
     const handleScroll = () => {
         if (document.readyState !== 'complete') return;
@@ -132,6 +157,20 @@ export function App() {
                                             height={20}
                                             width={20}
                                         />
+                                    </p>
+                                    <p className="text-white/50 flex gap-1 items-center">
+                                        <Clock2 />
+                                        {adjustTimeByHours(timeDifference)}
+                                        <span className="text-white/40">
+                                            -{' '}
+                                            {timeDifference !== 0
+                                                ? (timeDifference > 0
+                                                      ? '+'
+                                                      : '-') +
+                                                  timeDifference +
+                                                  'hour difference'
+                                                : 'Same time'}
+                                        </span>
                                     </p>
                                     <p className="text-white/50 flex gap-1 items-center">
                                         <Cake />
