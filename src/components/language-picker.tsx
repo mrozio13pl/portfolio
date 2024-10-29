@@ -4,10 +4,10 @@ import { translations } from '@/i18n/translations';
 import { useLocale, type Language } from '@/i18n/use-translator';
 
 export function LanguagePicker() {
-    const { setLocale } = useLocale();
+    const { locale, setLocale } = useLocale();
 
     return (
-        <Select onValueChange={(value) => setLocale(value as Language)}>
+        <Select defaultValue={locale} onValueChange={(value) => setLocale(value as Language)}>
             <SelectTrigger className="w-min">
                 <Languages />
             </SelectTrigger>
