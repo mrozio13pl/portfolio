@@ -115,14 +115,14 @@ export function Carousel() {
     return (
         <div className="w-full">
             <div
-                className="absolute right-0 w-12 h-full z-10"
+                className="absolute right-0 w-12 h-full z-10 pointer-events-none"
                 style={{
                     background:
                         'linear-gradient(to right, transparent 0, #121212 70%)',
                 }}
             />
             <div
-                className="absolute left-0 w-12 h-full z-10"
+                className="absolute left-0 w-12 h-full z-10 pointer-events-none"
                 style={{
                     background:
                         'linear-gradient(to left, transparent 0, #121212 70%)',
