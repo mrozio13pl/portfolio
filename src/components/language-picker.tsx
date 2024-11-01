@@ -7,7 +7,9 @@ export function LanguagePicker() {
     const { locale, setLocale } = useLocale();
 
     return (
-        <Select defaultValue={locale} onValueChange={(value) => setLocale(value as Language)}>
+        <Select
+            value={locale}
+            onValueChange={(value) => setLocale(value as Language)}>
             <SelectTrigger className="w-min">
                 <Languages />
             </SelectTrigger>

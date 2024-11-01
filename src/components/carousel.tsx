@@ -14,6 +14,8 @@ import {
     SiMysql,
     SiMysqlHex,
     SiNextdotjs,
+    SiNodedotjs,
+    SiNodedotjsHex,
     SiNpm,
     SiNpmHex,
     SiPhp,
@@ -37,6 +39,10 @@ import {
 import type { ReactElement } from 'react';
 
 const tools: { node: ReactElement; tool: string }[] = [
+    {
+        node: <SiNodedotjs color={SiNodedotjsHex} />,
+        tool: 'Node.js',
+    },
     {
         node: <SiTypescript color={SiTypescriptHex} />,
         tool: 'Typescript',
