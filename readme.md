@@ -1,4 +1,4 @@
-[mraza.pages.dev](mraza.pages.dev)
+[mraza.pages.dev](https://mraza.pages.dev/)
 
 # my portfolio website
 
