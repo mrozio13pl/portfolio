@@ -11,7 +11,7 @@ import { Experience } from '@/components/experience';
 import { Footer } from '@/components/footer';
 import { Projects } from '@/components/projects';
 import { useScreenSize } from '@/hooks/screen';
-import { useTranslation } from '@/i18n/use-translator';
+import { useLocale, useTranslation } from '@/i18n/use-translator';
 import { BIRTH_DATE, GITHUB, SECTIONS, TIMEZONE } from '@/constants';
 import { Cake, Clock2, Dot } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
@@ -57,6 +57,7 @@ function adjustTimeByHours(increment: number) {
 
 export function App() {
     const t = useTranslation();
+    const { locale } = useLocale();
 
     const [scrollY, setScrollY] = useState(0);
     const [collapsed, setCollapsed] = useState(false);
@@ -162,14 +163,21 @@ export function App() {
                                         <Clock2 />
                                         {adjustTimeByHours(timeDifference)}
                                         <span className="text-white/40">
-                                            -{' '}
+                                            {' '}
+                                            (
                                             {timeDifference !== 0
                                                 ? (timeDifference > 0
                                                       ? '+'
-                                                      : '-') +
+                                                      : '') +
                                                   timeDifference +
-                                                  'hour difference'
-                                                : 'Same time'}
+                                                  ' ' +
+                                                  (locale === 'en'
+                                                      ? 'hour difference'
+                                                      : 'różnica godzin')
+                                                : locale === 'en'
+                                                ? 'Same time'
+                                                : 'Ta sama godzina'}
+                                            )
                                         </span>
                                     </p>
                                     <p className="text-white/50 flex gap-1 items-center">
