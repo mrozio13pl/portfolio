@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 
 const buttonVariants = cva(
-    'inline-flex justify-center items-center rounded-full text-sm font-medium focus:outline-none py-2 px-4',
+    'inline-flex justify-center items-center rounded-full text-sm font-medium focus:outline-none py-2 px-4 disabled:opacity-50 disabled:pointer-events-none',
     {
         variants: {
             variant: {
@@ -19,12 +19,15 @@ export function Button({
     children,
     className,
     variant = 'default',
+    ...props
 }: {
     children: ReactNode;
     variant?: ButtonVariantProps['variant'];
 } & React.HTMLProps<HTMLButtonElement>) {
     return (
-        <button className={clsx(buttonVariants({ variant }), className)}>
+        <button
+            className={clsx(buttonVariants({ variant }), className)}
+            {...(props as any)}>
             {children}
         </button>
     );
