@@ -12,3 +12,5 @@ export const SECTIONS = [
     'projects',
     'contact',
 ] as const;
+
+export const CHATFOLIO_ID = 'uCiUG6T1id6n-nd7Ig3nj';
