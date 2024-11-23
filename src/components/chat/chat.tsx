@@ -160,7 +160,12 @@ export function Chat() {
             }
         } catch (error) {
             console.error(error);
-            setMessages((prev) => prev.slice(0, -1));
+            setMessages((prev) => {
+                const updatedMessages = [...prev];
+                updatedMessages[messages.length + 1].timestamp = Date.now();
+                updatedMessages[messages.length + 1].isError = true;
+                return updatedMessages;
+            });
         } finally {
             setIsLoading(false);
             setIsBotTyping(false);
