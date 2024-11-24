@@ -97,13 +97,33 @@ export function Chat() {
     };
 
     useEffect(() => {
+        const storedMessages = localStorage.getItem('messages');
+
+        try {
+            if (storedMessages) {
+                setMessages(JSON.parse(storedMessages));
+            }
+        } catch (error) {
+            localStorage.removeItem('messages');
+            console.error('Error parsing messages:', error);
+        }
+    }, []);
+
+    useEffect(() => {
         if (isNearBottom()) {
             scrollToBottom();
         }
     }, [messages, isLoading]);
 
+    useEffect(() => {
+        if (messages.length) {
+            localStorage.setItem('messages', JSON.stringify(messages));
+        }
+    }, [messages]);
+
     function reset() {
         setMessages([]);
+        localStorage.removeItem('messages');
     }
 
     async function submit() {
@@ -214,7 +234,6 @@ export function Chat() {
                     transition={{ type: 'tween', duration: 0.3 }}>
                     <div
                         className="flex flex-col w-full overflow-y-auto flex-grow"
-                        id="cha"
                         ref={containerRef}>
                         {messages.length ? (
                             <>
