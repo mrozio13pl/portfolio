@@ -219,7 +219,10 @@ export function Chat() {
                         {messages.length ? (
                             <>
                                 {messages
-                                    .filter((message) => message.content)
+                                    .filter(
+                                        (message) =>
+                                            message.content || message.isError
+                                    )
                                     .map((message, index) => (
                                         <Message
                                             key={index}
