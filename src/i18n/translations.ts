@@ -2,7 +2,7 @@ export const translations = {
     en: {
         languageName: 'English',
         greeting: 'Hey!',
-        profession: 'Full-stack Developer',
+        profession: 'Full Stack Developer',
         age: 'y/o',
         country: 'Poland',
         about1: 'I am',
@@ -40,7 +40,22 @@ export const translations = {
                 description:
                     'Simple UNO game implementation in Javascript, NodeJS.',
             },
+            3: {
+                name: 'Chatfolio',
+                description:
+                    'Personalized chatbot designed for portfolio websites.',
+            },
+            4: {
+                name: 'Portfolio',
+                description:
+                    'My portfolio website. Made with TypeScript, React, UnoCSS and Vite.',
+            },
             note: 'Currently working on some big projects',
+            forMore: {
+                1: 'For more projects check out',
+                2: 'repos',
+                3: 'on my GitHub.',
+            },
         },
         footer: 'my portfolio is',
         chat: {
@@ -102,7 +117,22 @@ export const translations = {
                 description:
                     'Prosta implementacja gry UNO z użyciem Javascript, NodeJS.',
             },
+            3: {
+                name: 'Chatfolio',
+                description:
+                    'Spersonalizowany chatbot stworzony dla stron portfolio.',
+            },
+            4: {
+                name: 'Portfolio',
+                description:
+                    'Moja strona portfolio. Stworzna z użyciem TypeScript, React, UnoCSS and Vite.',
+            },
             note: 'Pracuje nad dużymi projektami w tym momencie',
+            forMore: {
+                1: 'Więcej projektów znajdziesz w moich',
+                2: 'repozytoriach',
+                3: 'na GitHubie.',
+            },
         },
         footer: 'moje portfolio jest',
         chat: {
