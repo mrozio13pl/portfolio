@@ -143,7 +143,7 @@ export function Chat() {
             ]);
 
             const { body } = await ky.post(
-                'https://chatfolio-zeta.vercel.app/api/v1/messages',
+                'https://my-chatfolio.vercel.app/api/v1/messages',
                 {
                     json: {
                         messages,
@@ -321,7 +321,7 @@ export function Chat() {
                         <p className="text-sm op-70 mb-2">
                             {t('chat.footer')}{' '}
                             <a
-                                href="https://chatfolio-zeta.vercel.app/"
+                                href="https://my-chatfolio.vercel.app/"
                                 target="_blank"
                                 className="underline">
                                 Chatfolio
