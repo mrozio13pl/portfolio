@@ -193,12 +193,12 @@ export function App() {
 
                         <div
                             className={clsx(
-                                'fixed w-220 lt-mobile:w-auto justify-end mt-16 flex pointer-events-none',
+                                'fixed w-220 lt-mobile:w-auto justify-end mt-16 flex',
                                 collapsed
                                     ? 'duration-200 op-100'
-                                    : 'op-0 pointer-events-none'
+                                    : 'op-0 pointer-events-none cursor-none'
                             )}>
-                            <div className="md:flex flex-col gap-2 hidden pointer-events-auto">
+                            <div className="md:flex flex-col gap-2 hidden">
                                 {SECTIONS.map((section, index) => (
                                     <a href={'#' + section} key={index}>
                                         <div className="flex items-center gap-2 capitalize">
