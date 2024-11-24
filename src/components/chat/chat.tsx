@@ -197,7 +197,7 @@ export function Chat() {
 
     return (
         <motion.div
-            className="fixed bottom-4 right-4 z-10 w-80 border border-gray-900/50 bg-gray-900/10 backdrop-blur-lg rounded-lg text-white flex flex-col"
+            className="fixed bottom-4 right-4 z-20 w-80 border border-gray-900/50 bg-gray-900/10 backdrop-blur-lg rounded-lg text-white flex flex-col"
             animate={{ height: isCollapsed ? 'auto' : '55%' }}
             initial={false}
             transition={{ type: 'tween', duration: 0.3 }}>

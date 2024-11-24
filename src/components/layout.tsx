@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Chat } from '@/components/chat/chat';
+import { Cursor } from '@/components/cursor';
 import '../globals.css';
 import 'uno.css';
 import '@fontsource/poppins';
@@ -12,6 +13,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 {children}
             </div>
             <Chat />
+            <Cursor />
         </>
     );
 }
