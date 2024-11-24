@@ -49,7 +49,7 @@ export function Experience() {
 
     return (
         <div className="">
-            <h2 className="primary-font font-extrabold text-4xl py-12">
+            <h2 className="font-primary font-extrabold text-4xl py-12">
                 {t('experience' as any) || 'Experience'}
             </h2>
 
@@ -63,7 +63,7 @@ export function Experience() {
                         <div className="w-full space-y-2 pb-6">
                             <div className="w-full flex justify-between items-center">
                                 <h3 className="text-2xl">
-                                    <span className="font-extrabold text-lime-2 primary-font">
+                                    <span className="font-extrabold text-lime-2 font-primary">
                                         {experience.title}
                                     </span>
                                     <span className="text-gray7 font-extrabold">

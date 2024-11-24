@@ -211,7 +211,7 @@ export function Chat() {
                     <div className="bg-lime-5 animate-pulse rounded-full size-2.5 -ml-2" />
                     <div>
                         <p className="text-sm">{t('chat.header')}</p>
-                        <h1 className="primary-font font-extrabold text-2xl -mt-1">
+                        <h1 className="font-primary font-extrabold text-2xl -mt-1">
                             Mrozio
                         </h1>
                     </div>

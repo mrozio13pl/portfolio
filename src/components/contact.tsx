@@ -17,7 +17,7 @@ export function Contact() {
     return (
         <div className="relative py-20 mb-20 mt-12">
             <div className="z-10">
-                <h2 className="primary-font font-extrabold text-6xl lt-mobile:text-4xl mt-12 text-center">
+                <h2 className="font-primary font-extrabold text-6xl lt-mobile:text-4xl mt-12 text-center">
                     {t('contactSection.title')}
                     <span className="text-cyan-2">.</span>
                 </h2>

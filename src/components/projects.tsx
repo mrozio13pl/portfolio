@@ -10,7 +10,7 @@ export function Projects() {
         <div>
             <div className="flex w-full justify-center items-center py-12 gap-2 px-4">
                 <div className="bg-gray-8 h-1 w-full" />
-                <h2 className="primary-font font-extrabold text-4xl">
+                <h2 className="font-primary font-extrabold text-4xl">
                     {t('projectsSection.title')}
                 </h2>
                 <div className="bg-gray-8 rounded-full h-1 w-full" />
@@ -25,7 +25,7 @@ export function Projects() {
                             className="w-full h-full object-cover"
                         />
                         <div className="top-0 absolute size-full flex flex-col justify-end p-4 bg-black/30">
-                            <div className="text-white primary-font font-extrabold text-xl">
+                            <div className="text-white font-primary font-extrabold text-xl">
                                 {t('projectsSection.3.name')}
                             </div>
                             <div className="text-white/90 text-sm">
@@ -45,7 +45,7 @@ export function Projects() {
                             className="w-full h-full object-cover"
                         />
                         <div className="top-0 absolute size-full flex flex-col justify-end p-8 rounded-2xl">
-                            <div className="text-white primary-font font-extrabold text-xl">
+                            <div className="text-white font-primary font-extrabold text-xl">
                                 {t('projectsSection.1.name')}
                             </div>
                             <div className="text-white/80 text-sm">
@@ -65,7 +65,7 @@ export function Projects() {
                             className="w-full h-full object-cover"
                         />
                         <div className="top-0 absolute size-full flex flex-col justify-end p-4 bg-black/40">
-                            <div className="text-white primary-font font-extrabold text-xl">
+                            <div className="text-white font-primary font-extrabold text-xl">
                                 {t('projectsSection.4.name')}
                             </div>
                             <div className="text-white/80 text-sm">
@@ -83,7 +83,7 @@ export function Projects() {
                             className="w-full h-full object-cover"
                         />
                         <div className="top-0 absolute size-full flex flex-col justify-end p-4 bg-black/50">
-                            <div className="text-white primary-font font-extrabold text-xl">
+                            <div className="text-white font-primary font-extrabold text-xl">
                                 {t('projectsSection.2.name')}
                             </div>
                             <div className="text-white/90 text-sm">

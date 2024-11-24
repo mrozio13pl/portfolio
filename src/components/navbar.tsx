@@ -25,7 +25,7 @@ export function Navbar() {
     return (
         <nav className="bg-gray-800/40 my-4 p-2 rounded-full flex justify-between items-center text-xl [&_p]:select-none md:static fixed top-0 backdrop-blur-xl z-20 mobile:w-full mobile:max-w-200">
             <div className="block lt-mobile:hidden">
-                <p className="primary-font font-extrabold px-4">
+                <p className="font-primary font-extrabold px-4">
                     <a href="/">mrozio</a>
                 </p>
             </div>

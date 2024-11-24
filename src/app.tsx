@@ -144,7 +144,7 @@ export function App() {
                                     />
                                 </div>
                                 <div className="w-full flex flex-col justify-center py-4">
-                                    <h1 className="primary-font font-extrabold text-4xl">
+                                    <h1 className="font-primary font-extrabold text-4xl">
                                         mrozio
                                     </h1>
                                     <p className="text-white/50">
@@ -232,7 +232,7 @@ export function App() {
                         <section
                             id="about"
                             ref={(el) => (sectionRefs.current.about = el)}>
-                            <h2 className="primary-font font-extrabold text-3xl pt-12 text-cyan-3">
+                            <h2 className="font-primary font-extrabold text-3xl pt-12 text-cyan-3">
                                 👋 {t('greeting')} ==
                             </h2>
                             <p className="mt-8 line-height-9">

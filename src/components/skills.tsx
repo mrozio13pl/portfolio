@@ -149,7 +149,7 @@ export function Skills() {
 
     return (
         <>
-            <h2 className="primary-font font-extrabold text-3xl pt-12">
+            <h2 className="font-primary font-extrabold text-3xl pt-12">
                 {t('skills' as any) || 'Skills'}
             </h2>
             <p className="op-50">
@@ -178,7 +178,7 @@ export function Skills() {
                 </div>
             </div>
 
-            <h3 className="primary-font font-extrabold text-2xl flex items-center gap-1">
+            <h3 className="font-primary font-extrabold text-2xl flex items-center gap-1">
                 <Terminal className="text-lime-3" />
                 Main stuff
             </h3>
@@ -189,7 +189,7 @@ export function Skills() {
             <div className="relative overflow-hidden w-full max-w-full">
                 <Carousel tools={mainTools} />
             </div>
-            <h3 className="primary-font font-extrabold text-xl flex items-center gap-1 op-80">
+            <h3 className="font-primary font-extrabold text-xl flex items-center gap-1 op-80">
                 <Shapes className="text-lime-3" />
                 Other tools and technologies
             </h3>

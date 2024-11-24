@@ -17,7 +17,7 @@ export function Footer() {
                 <CodeXml />
             </p>
             <p className="text-gray-7">
-                &copy; mrozio13pl {new Date().getFullYear()}
+                &copy; mrozio13pl ~ {new Date().getFullYear()}
             </p>
         </div>
     );

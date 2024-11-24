@@ -8,9 +8,3 @@ everything with a single click. No disrupting animations, minimal, clean and smo
 Chatbot created with my own [Chatfolio](https://my-chatfolio.vercel.app/). 
 
 Made with TypeScript, React, UnoCSS and Vite.
-
-
-## TODO
-
-- improve skills section
-- add more projects
