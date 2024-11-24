@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import ky from 'ky';
 import { Markdown } from './markdown';
+import { Wink } from './^^';
 import {
     ArrowUpRight,
     Bot,
@@ -325,7 +326,7 @@ export function Chat() {
                                 className="underline">
                                 Chatfolio
                             </a>{' '}
-                            <span className="text-2.5 font-semibold">^ ^</span>
+                            <Wink />
                         </p>
                     </div>
                 </motion.div>
