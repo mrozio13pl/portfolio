@@ -43,6 +43,19 @@ export const translations = {
             note: 'Currently working on some big projects',
         },
         footer: 'my portfolio is',
+        chat: {
+            header: 'Chat with',
+            title: 'Welcome to my portfolio chat!',
+            subtitle:
+                "Ask me anything relevant to me, I'll try my best to answer it.",
+            placeholder: 'Ask me something...',
+            send: 'Send',
+            reset: 'Reset',
+            loading: 'Thinking...',
+            oops: 'Woops!',
+            error: 'Something went wrong, please try again!',
+            footer: 'Psst... You should check out',
+        },
     },
     pl: {
         languageName: 'Polski',
@@ -92,6 +105,19 @@ export const translations = {
             note: 'Pracuje nad dużymi projektami w tym momencie',
         },
         footer: 'moje portfolio jest',
+        chat: {
+            header: 'Porozmawiaj z',
+            title: 'Witam na moim chatcie!',
+            subtitle:
+                'Pytaj mnie czegoś dotyczące mnie, postaram się na to odpowiedzieć.',
+            placeholder: 'Zapytaj mnie czegoś...',
+            send: 'Wyślij',
+            reset: 'Resetuj',
+            loading: 'Myślę...',
+            oops: 'Ups!',
+            error: 'Coś poszło nie tak, spróbuj ponownie!',
+            footer: 'Psst... Powinienieś zobaczyć',
+        },
     },
 } as const;
 

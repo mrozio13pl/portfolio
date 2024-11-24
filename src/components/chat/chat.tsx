@@ -19,6 +19,7 @@ import {
     TooltipTrigger,
 } from '../ui/tooltip';
 import { CHATFOLIO_ID } from '@/constants';
+import { useTranslation } from '@/i18n/use-translator';
 
 interface TMessage {
     role: 'user' | 'assistant';
@@ -69,6 +70,7 @@ function Message({ message }: { message: TMessage }) {
 }
 
 export function Chat() {
+    const t = useTranslation();
     const [isCollapsed, setIsCollapsed] = useState(true);
     const [messages, setMessages] = useState<TMessage[]>([]);
     const [input, setInput] = useState('');
@@ -207,7 +209,7 @@ export function Chat() {
                 <div className="flex items-center gap-4">
                     <div className="bg-lime-5 animate-pulse rounded-full size-2.5 -ml-2" />
                     <div>
-                        <p className="text-sm">Chat with</p>
+                        <p className="text-sm">{t('chat.header')}</p>
                         <h1 className="primary-font font-extrabold text-2xl -mt-1">
                             Mrozio
                         </h1>
@@ -250,7 +252,7 @@ export function Chat() {
                                     ))}
                                 {isLoading && (
                                     <div className="border border-gray-500/20 ml-4 mb-2 px-4 py-2 rounded-lg text-white w-min">
-                                        Thinking...
+                                        {t('chat.loading')}
                                     </div>
                                 )}
                             </>
@@ -258,11 +260,10 @@ export function Chat() {
                             <div className="h-full flex flex-col justify-center items-center text-center overflow-y-auto overflow-x-hidden break-words">
                                 <Bot className="size-16" />
                                 <h2 className="font-semibold text-xl">
-                                    Welcome to my portfolio chat!
+                                    {t('chat.title')}
                                 </h2>
                                 <p className="text-sm text-balance text-gray-4 mt-2">
-                                    Ask me anything relevant to me, I'll try my
-                                    best to answer it.
+                                    {t('chat.subtitle')}
                                 </p>
                             </div>
                         )}
@@ -280,14 +281,14 @@ export function Chat() {
                                     </Button>
                                 </TooltipTrigger>
                                 <TooltipContent className="bg-gray-900/50">
-                                    Refresh
+                                    {t('chat.reset')}
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
                         <input
                             type="text"
                             className="[all:unset] w-full py-2 px-4 bg-black/20 rounded-md"
-                            placeholder="Ask me something..."
+                            placeholder={t('chat.placeholder')}
                             ref={inputRef}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e) => {
@@ -310,14 +311,14 @@ export function Chat() {
                                     </Button>
                                 </TooltipTrigger>
                                 <TooltipContent className="bg-gray-900/50">
-                                    Send
+                                    {t('chat.send')}
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
                     </div>
                     <div className="flex justify-center text-sm">
                         <p className="text-sm op-70 mb-2">
-                            Psst... You should check out{' '}
+                            {t('chat.footer')}{' '}
                             <a
                                 href="https://chatfolio-zeta.vercel.app/"
                                 target="_blank"
