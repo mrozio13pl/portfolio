@@ -2,7 +2,7 @@ export const translations = {
     en: {
         languageName: 'English',
         greeting: 'Hey!',
-        profession: 'Software Engineer',
+        profession: 'Full-stack Developer',
         age: 'y/o',
         country: 'Poland',
         about1: 'I am',
@@ -11,7 +11,7 @@ export const translations = {
         about4: 'NodeJS',
         about5: ' and ',
         about6: 'TypeScript',
-        about7: '.', // ;-;
+        about7: '. I constantly try to learn modern technologies and the reason behind them.',
         about8: 'Wanna talk?',
         about9: 'Contact me',
         skillsSection: {
@@ -60,7 +60,7 @@ export const translations = {
     pl: {
         languageName: 'Polski',
         greeting: 'Witam!',
-        profession: 'Programista',
+        profession: 'Full-stack Deweloper',
         age: 'lat',
         country: 'Polska',
         about: 'O mnie',
@@ -74,7 +74,7 @@ export const translations = {
         about4: 'NodeJS',
         about5: ' i ',
         about6: 'TypeScript',
-        about7: '.',
+        about7: '. Cały czas uczę się nowych technologi i powodu ich istnienia.',
         about8: 'Chcecie się skontaktować?',
         about9: 'Kontakt',
         skillsSection: {

@@ -13,7 +13,7 @@ body {
 }
 
 .track {
-    animation: slide 20s linear infinite;
+    animation: slide 10s linear infinite;
 }
 
 .track:hover {
@@ -22,10 +22,10 @@ body {
 
 @keyframes slide {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(-90%);
+    transform: translateX(-50%);
   }
 }
 
