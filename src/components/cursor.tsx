@@ -4,6 +4,7 @@ import { motion, useAnimation } from 'framer-motion';
 export function Cursor() {
     const [cursor, setCursor] = useState({ x: 0, y: 0 });
     const [velocity, setVelocity] = useState({ vx: 0, vy: 0 });
+    const [isClicked, setIsClicked] = useState(false);
     const cursorControls = useAnimation();
 
     useEffect(() => {
@@ -56,22 +57,35 @@ export function Cursor() {
             });
         };
 
+        const handleMouseDown = () => {
+            setIsClicked(true);
+        };
+
+        const handleMouseUp = () => {
+            setIsClicked(false);
+        };
+
         document.body.addEventListener('mousemove', moveCursor);
         document.body.addEventListener('mouseenter', handleMouseEnter);
         document.body.addEventListener('mouseleave', handleMouseLeave);
+        document.body.addEventListener('mousedown', handleMouseDown);
+        document.body.addEventListener('mouseup', handleMouseUp);
 
         return () => {
             document.body.removeEventListener('mousemove', moveCursor);
             document.body.removeEventListener('mouseenter', handleMouseEnter);
             document.body.removeEventListener('mouseleave', handleMouseLeave);
+            document.body.removeEventListener('mousedown', handleMouseDown);
+            document.body.removeEventListener('mouseup', handleMouseUp);
         };
     }, [cursorControls]);
 
     const velocityMagnitude = Math.sqrt(velocity.vx ** 2 + velocity.vy ** 2);
-    const transformScale =
-        velocityMagnitude < 10
-            ? 0.75
-            : Math.min(2, 0.5 + velocityMagnitude / 750);
+    const transformScale = isClicked
+        ? 2
+        : velocityMagnitude < 10
+        ? 0.75
+        : Math.min(2, 0.5 + velocityMagnitude / 750);
 
     return (
         <motion.div
@@ -86,6 +100,11 @@ export function Cursor() {
                 }}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-lime-200/90 h-3 w-3 rounded-sm"
                 initial={{ scale: 1, opacity: 1 }}
+                transition={{
+                    type: 'spring',
+                    stiffness: 200,
+                    damping: 20,
+                }}
             />
         </motion.div>
     );
