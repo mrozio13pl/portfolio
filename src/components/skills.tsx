@@ -1,4 +1,6 @@
 import {
+    SiDaisyui,
+    SiDaisyuiHex,
     SiEslint,
     SiEslintHex,
     SiGit,
@@ -26,8 +28,12 @@ import {
     SiPreactHex,
     SiPrettier,
     SiPrettierHex,
+    SiPuppeteer,
+    SiPuppeteerHex,
     SiReact,
     SiReactHex,
+    SiShadcnui,
+    SiShadcnuiHex,
     SiSocketdotio,
     SiStripe,
     SiStripeHex,
@@ -119,6 +125,10 @@ const toolsAndTechnologies: Tool[] = [
         tool: 'Stripe',
     },
     {
+        node: <SiPuppeteer color={SiPuppeteerHex} />,
+        tool: 'Puppeteer',
+    },
+    {
         node: <SiVitest color={SiVitestHex} />,
         tool: 'Vitest',
     },
@@ -141,6 +151,14 @@ const toolsAndTechnologies: Tool[] = [
     {
         node: <SiPnpm color={SiPnpmHex} />,
         tool: 'PNPM',
+    },
+    {
+        node: <SiShadcnui color={SiShadcnuiHex} />,
+        tool: 'Shadcn UI',
+    },
+    {
+        node: <SiDaisyui color={SiDaisyuiHex} />,
+        tool: 'Daisy UI',
     },
 ];
 
