@@ -17,7 +17,10 @@ export function Projects() {
             </div>
 
             <div className="grid grid-cols-2 gap-4 lt-mobile:block">
-                <a href="https://my-chatfolio.vercel.app/" target="_blank">
+                <a
+                    href="https://my-chatfolio.vercel.app/"
+                    rel="noreferrer"
+                    target="_blank">
                     <div className="relative duration-100 hover:scale-101 rounded-2xl overflow-hidden">
                         <img
                             src="https://raw.githubusercontent.com/mrozio13pl/chatfolio/refs/heads/main/chatfolio-preview.png"
@@ -37,6 +40,7 @@ export function Projects() {
                 </a>
                 <a
                     href="https://github.com/mrozio13pl/sudoku-in-terminal"
+                    rel="noreferrer"
                     target="_blank">
                     <div className="relative duration-100 hover:scale-101 -mt-2">
                         <img
@@ -57,6 +61,7 @@ export function Projects() {
                 </a>
                 <a
                     href="https://github.com/mrozio13pl/portfolio"
+                    rel="noreferrer"
                     target="_blank">
                     <div className="relative duration-100 hover:scale-101 rounded-2xl overflow-hidden">
                         <img
@@ -75,7 +80,10 @@ export function Projects() {
                         </div>
                     </div>
                 </a>
-                <a href="https://github.com/mrozio13pl/uno" target="_blank">
+                <a
+                    href="https://github.com/mrozio13pl/uno"
+                    rel="noreferrer"
+                    target="_blank">
                     <div className="relative duration-100 hover:scale-101 rounded-2xl overflow-hidden">
                         <img
                             src="https://github.com/mrozio13pl/uno/raw/main/assets/screenshot_1.png"

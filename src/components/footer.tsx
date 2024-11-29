@@ -10,6 +10,7 @@ export function Footer() {
                 {t('footer')}{' '}
                 <a
                     href="https://github.com/mrozio13pl/portfolio"
+                    rel="noreferrer"
                     target="_blank"
                     className="underline inline-flex">
                     open source

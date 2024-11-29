@@ -6,7 +6,9 @@
     "private": true,
     "scripts": {
         "build": "vite build",
-        "dev": "vite dev"
+        "dev": "vite dev",
+        "preview": "vite preview",
+        "lint": "oxlint ."
     },
     "author": "mrozio13pl",
     "license": "Apache-2.0",
@@ -43,6 +45,7 @@
         "@vitejs/plugin-react-swc": "^3.7.2",
         "lightningcss": "^1.28.2",
         "mini-svg-data-uri": "^1.4.4",
+        "oxlint": "^0.13.2",
         "typescript": "^5.7.2",
         "unocss": "^0.64.1",
         "vite": "^6.0.1",

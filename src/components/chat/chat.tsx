@@ -323,6 +323,7 @@ export default function Chat() {
                             <a
                                 href="https://my-chatfolio.vercel.app/"
                                 target="_blank"
+                                rel="noreferrer"
                                 className="underline">
                                 Chatfolio
                             </a>{' '}

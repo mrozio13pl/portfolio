@@ -10,10 +10,18 @@ export function Socials() {
 
     return (
         <div className="mt-4 flex gap-2">
-            <a href={GITHUB} target="_blank" className={className}>
+            <a
+                href={GITHUB}
+                rel="noreferrer"
+                target="_blank"
+                className={className}>
                 <SiGithub />
             </a>
-            <a href={LINKED_IN} target="_blank" className={className}>
+            <a
+                href={LINKED_IN}
+                rel="noreferrer"
+                target="_blank"
+                className={className}>
                 <SiLinkedin />
             </a>
             <a
