@@ -70,7 +70,7 @@ function Message({ message }: { message: TMessage }) {
     );
 }
 
-export function Chat() {
+export default function Chat() {
     const t = useTranslation();
     const [isCollapsed, setIsCollapsed] = useState(true);
     const [messages, setMessages] = useState<TMessage[]>([]);
