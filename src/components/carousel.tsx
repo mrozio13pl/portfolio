@@ -25,10 +25,12 @@ export function Carousel({ tools }: { tools: Tool[] }) {
             <div className="flex items-center gap-4 h-24 w-max track">
                 {tools.concat(tools).map(({ node, tool }, index) => (
                     <div
-                        className="flex-shrink-0 [&_svg]:size-12 flex flex-col items-center duration-100 hover:scale-105 "
+                        className="flex-shrink-0 [&_svg]:size-12 flex flex-col items-center duration-100 cursor-default group hover:scale-115"
                         key={index}>
                         {node}
-                        <p className="text-white/50 text-xs">{tool}</p>
+                        <p className="text-white/50 text-xs duration-100 group-hover:text-white/80">
+                            {tool}
+                        </p>
                     </div>
                 ))}
             </div>
