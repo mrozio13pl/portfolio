@@ -5,21 +5,31 @@ export const translations = {
         profession: 'Full Stack Developer',
         age: 'y/o',
         country: 'Poland',
-        about1: 'I am',
+        about1: "I'm a self-taught",
         about2: 'Full Stack Developer',
         about3: '. I use technologies for both frontend and backend, mostly focused around',
         about4: 'NodeJS',
         about5: ' and ',
         about6: 'TypeScript',
-        about7: '. I constantly try to learn modern technologies and the reason behind them.',
+        about7: ". When I'm not coding, I'm probably trying out new tech.",
         about8: 'Wanna talk?',
         about9: 'Contact me',
         skillsSection: {
-            title: 'Main tools I use',
-            1: 'Typescript is basically my main language, I have a lot of experience with it and build tools.',
-            2: 'React/Preact or NextJS for my frontend apps.',
-            3: 'I use NodeJS for backend and CLI tools. For backend I rarely ever use tools like express and write a simple route handler myself.',
-            others: 'Others:',
+            description:
+                "I'm very familiar with the Typescript & Javascript ecosystems and very good at problem solving. I've been in this space for a long time and I feel very comfortable with it.",
+            1: "Typescript is basically my main language, I've been using it for +2 years and built several projects and tools with it.",
+            2: 'React/Preact for my frontend apps or NextJS for my SSR apps.',
+            3: 'NodeJS for backend and CLI tools. For backend I rarely use tools like Express (unless necessary), rather I build my own server to improve performance.',
+            main: {
+                title: 'Main stuff',
+                description:
+                    "Languages and tools I'm most familiar with and use on a daily basis.",
+            },
+            others: {
+                title: 'Other tools and technologies',
+                description:
+                    'Other tools and technologies I have a decent experience with',
+            },
         },
         contactSection: {
             title: 'Get in touch',
@@ -85,19 +95,29 @@ export const translations = {
         projects: 'Projekty',
         about1: 'Jestem',
         about2: 'Programistą Full Stack-owym',
-        about3: '. Używam technologii stworzonych dla frontendu i backendu, najcześciej wykorzystuje ',
+        about3: 'i samoukiem. Używam technologii stworzonych dla frontendu i backendu, najcześciej wykorzystuje ',
         about4: 'NodeJS',
         about5: ' i ',
         about6: 'TypeScript',
-        about7: '. Cały czas uczę się nowych technologi i powodu ich istnienia.',
-        about8: 'Chcecie się skontaktować?',
-        about9: 'Kontakt',
+        about7: '. Kiedy nie programuje, najprawdopodobniej próbuje nowych technologii.',
+        about8: 'Chcesz się skontaktować?',
+        about9: 'Porozmawiajmy',
         skillsSection: {
-            title: 'Główne narzędzia, którzych używam',
-            1: 'TypeScript to mój główny język, mam w nim dużo doswiadczenia.',
-            2: 'React/Preact lub NextJS dla aplikacji webowych.',
-            3: 'Używam NodeJS dla backendu i narzędzi CLI. Dla backendu nie używam bibliotek typu Express, raczej buduję swój własny serwer.',
-            others: 'Inne umiejętności:',
+            description:
+                'Jestem dobrze ozeznany z ekosystemamy Typescripta i Javascripta, jestem dobry w rozwiązywaniu problemów. Siedzę w tym od dawna i czuję się z nimi bardzo komfortowo.',
+            1: 'Typescript jest praktycznie moim głównym jezykiem programowania, używam go od ponad 2 lat i stworzyłem z nim dużo projektów i narzędzi.',
+            2: 'Aplikacje webowe tworze z React/Preact dla aplikacji frontendowych lub NextJS dla aplikacji SSR.',
+            3: 'NodeJS dla backendu i narzędzi CLI. Dla backendu rzadko używam bibliotek typu Express, staram się budować swój własny serwer.',
+            main: {
+                title: 'Główny tech',
+                description:
+                    'Jezyki i narzędzia, którymi jestem najbardziej zainteresowany i używam codziennie.',
+            },
+            others: {
+                title: 'Inne narzędzia i technologie',
+                description:
+                    'Inne narzędzia i technologie, z którymi mam dobre doswiadczenie.',
+            },
         },
         contactSection: {
             title: 'Skontaktujmy się',

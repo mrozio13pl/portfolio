@@ -167,14 +167,10 @@ export function Skills() {
 
     return (
         <>
-            <h2 className="font-primary font-extrabold text-3xl pt-12">
+            <h2 className="font-primary font-extrabold text-3xl pt-12 mb-2">
                 {t('skills' as any) || 'Skills'}
             </h2>
-            <p className="op-50">
-                I'm very familiar with the Typescript/Javascript ecosystems and
-                very good at problem solving. I've been in this space for a long
-                time and I feel very comfortable with it.
-            </p>
+            <p className="op-50">{t('skillsSection.description')}</p>
             <div className="flex flex-col gap-4 py-8">
                 <div className="flex gap-2 items-center px-4">
                     <SiTypescript
@@ -198,22 +194,17 @@ export function Skills() {
 
             <h3 className="font-primary font-extrabold text-2xl flex items-center gap-1">
                 <Terminal className="text-lime-3" />
-                Main stuff
+                {t('skillsSection.main.title')}
             </h3>
-            <p className="op-50">
-                Languages and tools I'm most familiar with and use on a daily
-                basis
-            </p>
+            <p className="op-50">{t('skillsSection.main.description')}</p>
             <div className="relative overflow-hidden w-full max-w-full">
                 <Carousel tools={mainTools} />
             </div>
             <h3 className="font-primary font-extrabold text-xl flex items-center gap-1 op-80">
                 <Shapes className="text-lime-3" />
-                Other tools and technologies
+                {t('skillsSection.others.title')}
             </h3>
-            <p className="op-50">
-                Other tools and technologies I have a decent experience with
-            </p>
+            <p className="op-50">{t('skillsSection.others.description')}</p>
             <div className="relative overflow-hidden w-full max-w-full">
                 <Carousel tools={toolsAndTechnologies} />
             </div>
