@@ -180,7 +180,7 @@ export function App() {
                                             )
                                         </span>
                                     </p>
-                                    <p className="text-white/50 flex gap-1 items-center">
+                                    <p className="text-#8a8a8a flex gap-1 items-center">
                                         <Cake />
                                         {getAge(BIRTH_DATE)} {t('age')}
                                     </p>
