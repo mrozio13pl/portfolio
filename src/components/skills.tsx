@@ -1,14 +1,12 @@
 import {
     SiDaisyui,
     SiDaisyuiHex,
-    SiEslint,
-    SiEslintHex,
+    SiExpo,
+    SiExpoHex,
     SiGit,
     SiGitHex,
     SiJavascript,
     SiJavascriptHex,
-    SiJest,
-    SiJestHex,
     SiLucia,
     SiLuciaHex,
     SiMongodb,
@@ -22,16 +20,14 @@ import {
     SiNpmHex,
     SiPhp,
     SiPhpHex,
-    SiPnpm,
-    SiPnpmHex,
     SiPreact,
     SiPreactHex,
-    SiPrettier,
-    SiPrettierHex,
     SiPuppeteer,
     SiPuppeteerHex,
     SiReact,
     SiReactHex,
+    SiReacthookform,
+    SiReacthookformHex,
     SiShadcnui,
     SiShadcnuiHex,
     SiSocketdotio,
@@ -97,20 +93,8 @@ const toolsAndTechnologies: Tool[] = [
         tool: 'Turborepo',
     },
     {
-        node: <SiEslint color={SiEslintHex} />,
-        tool: 'ESLint',
-    },
-    {
         node: <SiGit color={SiGitHex} />,
         tool: 'Git',
-    },
-    {
-        node: <SiPrettier color={SiPrettierHex} />,
-        tool: 'Prettier',
-    },
-    {
-        node: <img src="/icons/vscode.svg" alt="vscode" className="size-12" />,
-        tool: 'VSCode',
     },
     {
         node: <SiLucia color={SiLuciaHex} />,
@@ -133,10 +117,6 @@ const toolsAndTechnologies: Tool[] = [
         tool: 'Vitest',
     },
     {
-        node: <SiJest color={SiJestHex} />,
-        tool: 'Jest',
-    },
-    {
         node: <SiMysql color={SiMysqlHex} />,
         tool: 'MySQL',
     },
@@ -149,16 +129,39 @@ const toolsAndTechnologies: Tool[] = [
         tool: 'Java',
     },
     {
-        node: <SiPnpm color={SiPnpmHex} />,
-        tool: 'PNPM',
-    },
-    {
         node: <SiShadcnui color={SiShadcnuiHex} />,
         tool: 'Shadcn UI',
     },
     {
         node: <SiDaisyui color={SiDaisyuiHex} />,
         tool: 'Daisy UI',
+    },
+    {
+        node: <SiReacthookform color={SiReacthookformHex} />,
+        tool: 'React Hook Form',
+    },
+    {
+        node: (
+            <svg
+                width="60"
+                height="45"
+                viewBox="0 0 60 45"
+                fill="none"
+                className="size-5"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0 0H15V15H30V30H15V45H0V30V15V0ZM45 30V15H30V0H45H60V15V30V45H45H30V30H45Z"
+                    className="fill-white"
+                />
+            </svg>
+        ),
+        tool: 'BetterAuth',
+    },
+    {
+        node: <SiExpo color={SiExpoHex} />,
+        tool: 'Expo',
     },
 ];
 
