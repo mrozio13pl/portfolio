@@ -231,7 +231,7 @@ export function App() {
 
                         <section
                             id="about"
-                            ref={(el) => (sectionRefs.current.about = el)}>
+                            ref={(el) => { sectionRefs.current.about = el }}>
                             <h2 className="font-primary font-extrabold text-3xl pt-12 text-cyan-3">
                                 👋 {t('greeting')} ==
                             </h2>
@@ -265,25 +265,25 @@ export function App() {
 
                         <section
                             id="skills"
-                            ref={(el) => (sectionRefs.current.skills = el)}>
+                            ref={(el) => { sectionRefs.current.skills = el }}>
                             <Skills />
                         </section>
 
                         <section
                             id="experience"
-                            ref={(el) => (sectionRefs.current.experience = el)}>
+                            ref={(el) => { sectionRefs.current.experience = el }}>
                             <Experience />
                         </section>
 
                         <section
                             id="projects"
-                            ref={(el) => (sectionRefs.current.projects = el)}>
+                            ref={(el) => { sectionRefs.current.projects = el }}>
                             <Projects />
                         </section>
 
                         <section
                             id="contact"
-                            ref={(el) => (sectionRefs.current.contact = el)}>
+                            ref={(el) => { sectionRefs.current.contact = el }}>
                             <Contact />
                         </section>
 
