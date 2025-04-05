@@ -11,8 +11,8 @@ export function Layout({ children }: { children: ReactNode }) {
     return (
         <main className='relative antialiased'>
             {/* TODO: fix it for mobile */}
-            <div className="absolute w-full h-200vh h-screen z-2 pointer-events-none">
-                <div className="inline-flex flex-col h-200vh blur-xl -transform-rotate-90 opacity-20">
+            <div className="absolute w-full h-200vh z-2 pointer-events-none">
+                <div className="inline-flex w-full flex-col h-200vh blur-xl -rotate-90 opacity-20">
                     <div className="grow" style={{
                         background: 'conic-gradient(from 180deg at 99% 60% in lab, rgb(255, 255, 255) 18deg, rgb(66, 135, 245) 6deg, rgba(17, 17, 17, 0) 90deg, rgba(17, 17, 17, 0) 342deg, rgb(255, 255, 255) 360deg)'
                     }} />
