@@ -112,7 +112,7 @@ export function App() {
     return (
         <Layout>
             <TracingBeam>
-                <div className="flex justify-center">
+                <div className="flex justify-center z-5">
                     <div className="w-200 lt-mobile:w-[calc(100%-50px)]! px-10 relative antialiased">
                         <Navbar />
 
@@ -132,7 +132,7 @@ export function App() {
                                         : 'flex justify-between gap-8'
                                 )}>
                                 <div className="relative mt-12 mr-12 w-min">
-                                    <div className="bg-dot-white size-50 z-0 max-h-50" />
+                                    <div className="bg-dot-white size-50 max-h-50" />
                                     <img
                                         src={GITHUB + '.png'}
                                         alt="pfp"
