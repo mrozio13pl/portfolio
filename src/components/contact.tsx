@@ -7,31 +7,31 @@ import {
     TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { Copy } from 'lucide-react';
-import { useTranslation } from '@/i18n/use-translator';
+import { useTranslate } from '@/i18n';
 import { Button } from './ui/button';
 import copy from 'copy-text-to-clipboard';
 
 export function Contact() {
-    const t = useTranslation();
+    const t = useTranslate()('contactSection');
 
     return (
         <div className="relative py-20 mb-20 mt-12">
             <div className="z-10">
                 <h2 className="font-primary font-extrabold text-6xl lt-mobile:text-4xl mt-12 text-center">
-                    {t('contactSection.title')}
+                    {t('title')}
                     <span className="text-cyan-2">.</span>
                 </h2>
                 <div className="flex justify-center">
                     <div className="max-w-4/5 mt-12 space-y-4">
-                        <p>{t('contactSection.1')}</p>
+                        <p>{t('1')}</p>
                         <p>
-                            {t('contactSection.2')}{' '}
+                            {t('2')}{' '}
                             <Link
                                 href={'mailto:' + EMAIL}
                                 className="text-cyan-1">
                                 email
                             </Link>{' '}
-                            {t('contactSection.3')}{' '}
+                            {t('3')}{' '}
                             <TooltipProvider>
                                 <Tooltip>
                                     <TooltipTrigger>
@@ -59,7 +59,7 @@ export function Contact() {
                             .
                         </p>
                         <p>
-                            {t('contactSection.4')}{' '}
+                            {t('4')}{' '}
                             <Link
                                 href={LINKED_IN}
                                 target="_blank"

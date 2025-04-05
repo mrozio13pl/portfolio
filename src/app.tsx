@@ -1,5 +1,4 @@
 import { Layout } from '@/components/layout';
-import { Link } from '@/components/ui/link';
 import { Socials } from '@/components/socials';
 import { Quote } from '@/components/quote';
 import { Skills } from '@/components/skills';
@@ -11,7 +10,7 @@ import { Experience } from '@/components/experience';
 import { Footer } from '@/components/footer';
 import { Projects } from '@/components/projects';
 import { useScreenSize } from '@/hooks/screen';
-import { useLocale, useTranslation } from '@/i18n/use-translator';
+import { useTranslate } from '@/i18n';
 import { BIRTH_DATE, GITHUB, SECTIONS, TIMEZONE } from '@/constants';
 import { Cake, Clock2, Dot } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
@@ -56,8 +55,7 @@ function adjustTimeByHours(increment: number) {
 }
 
 export function App() {
-    const t = useTranslation();
-    const { locale } = useLocale();
+    const t = useTranslate();
 
     const [scrollY, setScrollY] = useState(0);
     const [collapsed, setCollapsed] = useState(false);
@@ -164,20 +162,7 @@ export function App() {
                                         {adjustTimeByHours(timeDifference)}
                                         <span className="text-white/40">
                                             {' '}
-                                            (
-                                            {timeDifference !== 0
-                                                ? (timeDifference > 0
-                                                      ? '+'
-                                                      : '') +
-                                                  timeDifference +
-                                                  ' ' +
-                                                  (locale === 'en'
-                                                      ? 'hour difference'
-                                                      : 'różnica godzin')
-                                                : locale === 'en'
-                                                ? 'Same time'
-                                                : 'Ta sama godzina'}
-                                            )
+                                            {t('hourDifference')(timeDifference)}
                                         </span>
                                     </p>
                                     <p className="text-#8a8a8a flex gap-1 items-center">
@@ -193,7 +178,7 @@ export function App() {
 
                         <div
                             className={clsx(
-                                'fixed w-220 lt-mobile:w-auto justify-end mt-16 flex pointer-events-none',
+                                'fixed w-230 lt-mobile:w-auto justify-end mt-16 flex pointer-events-none',
                                 collapsed
                                     ? 'duration-200 op-100'
                                     : 'op-0 cursor-none'
@@ -211,12 +196,17 @@ export function App() {
                                                 )}
                                             />
                                             <p className="hover:underline">
-                                                {t(section as any) || section}
+                                                {t('sections')(section)}
                                             </p>
                                         </div>
                                     </a>
                                 ))}
-                                <LanguagePicker />
+                                <div className="flex items-center">
+                                    <LanguagePicker />
+                                    <p className='text-gray-3 text-xs'>{t('sections.with')}{' '}
+                                        <a target="_blank" href="https://mrozio13pl.github.io/i18n/" className="underline">@mrozio/i18n</a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
@@ -236,30 +226,7 @@ export function App() {
                                 👋 {t('greeting')} ==
                             </h2>
                             <p className="mt-8 line-height-9">
-                                {t('about1')}{' '}
-                                <span className="bg-gray-9 p-1 rounded-lg">
-                                    {t('about2')}
-                                </span>{' '}
-                                {t('about3')}{' '}
-                                <span className="bg-gray-9 p-1 rounded-lg">
-                                    {t('about4')}
-                                </span>{' '}
-                                {t('about5')}{' '}
-                                <span className="bg-gray-9 p-1 rounded-lg">
-                                    {t('about6')}
-                                </span>
-                                {t('about7')}
-                                <br />
-                                <br />
-                                <span className="flex items-center">
-                                    {t('about8')}{' '}
-                                    <Link
-                                        href="#contact"
-                                        className="text-cyan-1 ml-1">
-                                        {t('about9')}
-                                    </Link>
-                                    !
-                                </span>
+                                {t('about')()}
                             </p>
                         </section>
 

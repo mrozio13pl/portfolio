@@ -1,4 +1,4 @@
-import { useLocale, useTranslation } from '@/i18n/use-translator';
+import { useLocale, useTranslate } from '@/i18n';
 
 interface Experience {
     title: string;
@@ -42,15 +42,15 @@ const EXPERIENCES_PL: Experience[] = [
 ];
 
 export function Experience() {
-    const t = useTranslation();
-    const { locale } = useLocale();
+    const t = useTranslate();
+    const locale = useLocale()[0];
 
     const EXPERIENCES = locale === 'en' ? EXPERIENCES_EN : EXPERIENCES_PL;
 
     return (
         <div className="">
             <h2 className="font-primary font-extrabold text-4xl py-12">
-                {t('experience' as any) || 'Experience'}
+                {t('sections.experience')}
             </h2>
 
             <div>

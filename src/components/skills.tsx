@@ -46,7 +46,7 @@ import {
 } from '@icons-pack/react-simple-icons';
 import { Shapes, Terminal } from 'lucide-react';
 import { Carousel, type Tool } from './carousel';
-import { useTranslation } from '@/i18n/use-translator';
+import { useTranslate } from '@/i18n';
 
 const mainTools: Tool[] = [
     {
@@ -166,48 +166,48 @@ const toolsAndTechnologies: Tool[] = [
 ];
 
 export function Skills() {
-    const t = useTranslation();
+    const t = useTranslate()('skillsSection');
 
     return (
         <>
             <h2 className="font-primary font-extrabold text-3xl pt-12 mb-2">
-                {t('skills' as any) || 'Skills'}
+                {t('title')}
             </h2>
-            <p className="op-50">{t('skillsSection.description')}</p>
+            <p className="op-50">{t('description')}</p>
             <div className="flex flex-col gap-4 py-8">
                 <div className="flex gap-2 items-center px-4">
                     <SiTypescript
                         color={SiTypescriptHex}
                         className="size-16 min-w-16"
                     />
-                    <p>{t('skillsSection.1')}</p>
+                    <p>{t('1')}</p>
                 </div>
                 <div className="flex gap-2 items-center px-4">
                     <SiReact color={SiReactHex} className="size-16 min-w-16" />
-                    <p>{t('skillsSection.2')}</p>
+                    <p>{t('2')}</p>
                 </div>
                 <div className="flex gap-2 items-center px-4">
                     <SiNodedotjs
                         color={SiNodedotjsHex}
                         className="size-16 min-w-16"
                     />
-                    <p>{t('skillsSection.3')}</p>
+                    <p>{t('3')}</p>
                 </div>
             </div>
 
             <h3 className="font-primary font-extrabold text-2xl flex items-center gap-1">
                 <Terminal className="text-lime-3" />
-                {t('skillsSection.main.title')}
+                {t('main.title')}
             </h3>
-            <p className="op-50">{t('skillsSection.main.description')}</p>
+            <p className="op-50">{t('main.description')}</p>
             <div className="relative overflow-hidden w-full max-w-full">
                 <Carousel tools={mainTools} />
             </div>
             <h3 className="font-primary font-extrabold text-xl flex items-center gap-1 op-80">
                 <Shapes className="text-lime-3" />
-                {t('skillsSection.others.title')}
+                {t('others.title')}
             </h3>
-            <p className="op-50">{t('skillsSection.others.description')}</p>
+            <p className="op-50">{t('others.description')}</p>
             <div className="relative overflow-hidden w-full max-w-full">
                 <Carousel tools={toolsAndTechnologies} />
             </div>

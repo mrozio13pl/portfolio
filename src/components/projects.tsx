@@ -1,17 +1,15 @@
-import { useTranslation } from '@/i18n/use-translator';
+import { useTranslate } from '@/i18n';
 import { Pickaxe } from 'lucide-react';
-import { Link } from './link';
-import { GITHUB } from '@/constants';
 
 export function Projects() {
-    const t = useTranslation();
+    const t = useTranslate()('projectsSection');
 
     return (
         <div>
             <div className="flex w-full justify-center items-center py-12 gap-2 px-4">
                 <div className="bg-gray-8 h-1 w-full" />
                 <h2 className="font-primary font-extrabold text-4xl">
-                    {t('projectsSection.title')}
+                    {t('title')}
                 </h2>
                 <div className="bg-gray-8 rounded-full h-1 w-full" />
             </div>
@@ -29,10 +27,10 @@ export function Projects() {
                         />
                         <div className="top-0 absolute size-full flex flex-col justify-end p-4 bg-black/30">
                             <div className="text-white font-primary font-extrabold text-xl">
-                                {t('projectsSection.3.name')}
+                                {t('3.name')}
                             </div>
                             <div className="text-white/90 text-sm">
-                                {t('projectsSection.3.description')}
+                                {t('3.description')}
                                 <br />
                             </div>
                         </div>
@@ -50,10 +48,10 @@ export function Projects() {
                         />
                         <div className="top-0 absolute size-full flex flex-col justify-end p-8 rounded-2xl">
                             <div className="text-white font-primary font-extrabold text-xl">
-                                {t('projectsSection.1.name')}
+                                {t('1.name')}
                             </div>
                             <div className="text-white/80 text-sm">
-                                {t('projectsSection.1.description')}
+                                {t('1.description')}
                                 <br />
                             </div>
                         </div>
@@ -71,10 +69,10 @@ export function Projects() {
                         />
                         <div className="top-0 absolute size-full flex flex-col justify-end p-4 bg-black/40">
                             <div className="text-white font-primary font-extrabold text-xl">
-                                {t('projectsSection.4.name')}
+                                {t('4.name')}
                             </div>
                             <div className="text-white/80 text-sm">
-                                {t('projectsSection.4.description')}
+                                {t('4.description')}
                                 <br />
                             </div>
                         </div>
@@ -92,10 +90,10 @@ export function Projects() {
                         />
                         <div className="top-0 absolute size-full flex flex-col justify-end p-4 bg-black/50">
                             <div className="text-white font-primary font-extrabold text-xl">
-                                {t('projectsSection.2.name')}
+                                {t('2.name')}
                             </div>
                             <div className="text-white/90 text-sm">
-                                {t('projectsSection.2.description')}
+                                {t('2.description')}
                                 <br />
                             </div>
                         </div>
@@ -105,19 +103,10 @@ export function Projects() {
 
             <div className="ml-4 mt-6 space-y-2">
                 <p className="text-gray-7">
-                    {t('projectsSection.note')}{' '}
+                    {t('note')}{' '}
                     <Pickaxe className="inline-flex" />
                 </p>
-                <p className="flex items-center">
-                    {t('projectsSection.forMore.1')}{' '}
-                    <Link
-                        className="mx-1"
-                        target="_blank"
-                        href={GITHUB + '?tab=repositories'}>
-                        {t('projectsSection.forMore.2')}
-                    </Link>{' '}
-                    {t('projectsSection.forMore.3')}
-                </p>
+                {t('forMore')()}
             </div>
         </div>
     );

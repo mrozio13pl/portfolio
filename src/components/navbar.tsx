@@ -1,7 +1,7 @@
 import { SECTIONS } from '@/constants';
 import { Button } from './ui/button';
 import { LanguagePicker } from './language-picker';
-import { useTranslation } from '@/i18n/use-translator';
+import { useTranslate } from '@/i18n';
 import {
     Brain,
     FolderOpenDot,
@@ -20,7 +20,7 @@ const sectionIcons: Record<(typeof SECTIONS)[number], LucideIcon> = {
 };
 
 export function Navbar() {
-    const t = useTranslation();
+    const t = useTranslate()('sections');
 
     return (
         <nav className="bg-gray-800/40 my-4 p-2 rounded-full flex justify-between items-center text-xl [&_p]:select-none md:static fixed top-0 backdrop-blur-xl z-6 mobile:w-full mobile:max-w-200">

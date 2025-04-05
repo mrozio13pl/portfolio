@@ -20,7 +20,7 @@ import {
     TooltipTrigger,
 } from '../ui/tooltip';
 import { CHATFOLIO_ID } from '@/constants';
-import { useTranslation } from '@/i18n/use-translator';
+import { useTranslate } from '@/i18n';
 
 interface TMessage {
     role: 'user' | 'assistant';
@@ -71,7 +71,7 @@ function Message({ message }: { message: TMessage }) {
 }
 
 export default function Chat() {
-    const t = useTranslation();
+    const t = useTranslate();
     const [isCollapsed, setIsCollapsed] = useState(true);
     const [messages, setMessages] = useState<TMessage[]>([]);
     const [input, setInput] = useState('');

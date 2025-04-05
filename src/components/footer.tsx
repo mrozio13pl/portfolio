@@ -1,8 +1,8 @@
-import { useTranslation } from '@/i18n/use-translator';
+import { useTranslate } from '@/i18n';
 import { CodeXml } from 'lucide-react';
 
 export function Footer() {
-    const t = useTranslation();
+    const t = useTranslate();
 
     return (
         <div className="w-full border-t-2 border-gray8/50 flex justify-between py-4 px-8">

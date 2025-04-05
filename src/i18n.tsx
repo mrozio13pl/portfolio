@@ -1,20 +1,57 @@
-export const translations = {
+import { createI18n } from "@mrozio/i18n";
+import { Link } from "./components/ui/link";
+import { GITHUB } from "./constants";
+
+const trans = {
     en: {
         languageName: 'English',
         greeting: 'Hey!',
         profession: 'Full Stack Developer',
+        hourDifference(difference: number) {
+            if (difference !== 0) {
+                if (difference > 0) {
+                    return `+${difference} hour difference`;
+                } else {
+                    return `${difference} hour difference`;
+                }
+            }
+
+            return 'Same time';
+        },
+        sections: {
+            country: 'Poland',
+            about: 'About me',
+            skills: 'Skills',
+            contact: 'Contact',
+            experience: 'Experience',
+            projects: 'Projects',
+            with: 'with',
+        },
         age: 'y/o',
         country: 'Poland',
-        about1: "I'm a self-taught",
-        about2: 'Full Stack Developer',
-        about3: '. I use technologies for both frontend and backend, mostly focused around',
-        about4: 'NodeJS',
-        about5: ' and ',
-        about6: 'TypeScript',
-        about7: ". When I'm not coding, I'm probably trying out new tech.",
-        about8: 'Wanna talk?',
-        about9: 'Contact me',
+        about() {
+            return (
+                <>
+                    I'm a self-taught <span className='bg-gray-9 p-1 rounded-lg'>Full Stack Developer</span>.
+                    I use technologies for both frontend and backend, mostly focused around{' '}
+                    <span className='bg-gray-9 p-1 rounded-lg'>NodeJS</span> and{' '}
+                    <span className='bg-gray-9 p-1 rounded-lg'>TypeScript</span>. When I'm not coding, I'm probably trying out new tech.
+                    <br />
+                    <br />
+                    <span className="flex items-center">
+                        Wanna talk?
+                        <Link
+                            href="#contact"
+                            className="text-cyan-1 ml-1">
+                            Contact me
+                        </Link>
+                        !
+                    </span>
+                </>
+            );
+        },
         skillsSection: {
+            title: 'Skills',
             description:
                 "I'm very familiar with the Typescript & Javascript ecosystems and very good at problem solving. I've been in this space for a long time and I feel very comfortable with it.",
             1: "Typescript is basically my main language, I've been using it for +2 years and built several projects and tools with it.",
@@ -61,11 +98,18 @@ export const translations = {
                     'My portfolio website. Made with TypeScript, React, UnoCSS and Vite.',
             },
             note: 'Currently working on some big projects',
-            forMore: {
-                1: 'For more projects check out',
-                2: 'repos',
-                3: 'on my GitHub.',
-            },
+            forMore: () => (
+                <p className="flex items-center">
+                    For more projects check out{' '}
+                    <Link
+                        className="mx-1"
+                        target="_blank"
+                        href={GITHUB + '?tab=repositories'}>
+                        repos
+                    </Link>{' '}
+                    on my GitHub.
+                </p>
+            )
         },
         footer: 'my portfolio is',
         chat: {
@@ -86,23 +130,50 @@ export const translations = {
         languageName: 'Polski',
         greeting: 'Witam!',
         profession: 'Full-stack Deweloper',
+        hourDifference(difference: number) {
+            if (difference !== 0) {
+                if (difference > 0) {
+                    return `+${difference} różnica godzin`;
+                } else {
+                    return `${difference} różnica godzin`;
+                }
+            }
+
+            return 'Ta sama godzina';
+        },
         age: 'lat',
-        country: 'Polska',
-        about: 'O mnie',
-        skills: 'Umiejętności',
-        contact: 'Kontakt',
-        experience: 'Doświadczenie',
-        projects: 'Projekty',
-        about1: 'Jestem',
-        about2: 'Programistą Full Stack-owym',
-        about3: 'i samoukiem. Używam technologii stworzonych dla frontendu i backendu, najcześciej wykorzystuje ',
-        about4: 'NodeJS',
-        about5: ' i ',
-        about6: 'TypeScript',
-        about7: '. Kiedy nie programuje, najprawdopodobniej próbuje nowych technologii.',
-        about8: 'Chcesz się skontaktować?',
-        about9: 'Porozmawiajmy',
+        sections: {
+            country: 'Polska',
+            about: 'O mnie',
+            skills: 'Umiejętności',
+            contact: 'Kontakt',
+            experience: 'Doświadczenie',
+            projects: 'Projekty',
+            with: 'przez',
+        },
+        about() {
+            return (
+                <>
+                    Jestem <span className='bg-gray-9 p-1 rounded-lg'>Programistą Full Stack-owym</span>
+                    i samoukiem. Używam technologii stworzonych dla frontendu i backendu, najcześciej wykorzystuje{' '}
+                    <span className='bg-gray-9 p-1 rounded-lg'>NodeJS</span> i{' '}
+                    <span className='bg-gray-9 p-1 rounded-lg'>TypeScript</span>. Kiedy nie programuje, najprawdopodobniej próbuje nowych technologii.
+                    <br />
+                    <br />
+                    <span className="flex items-center">
+                        Chcesz się skontaktować?
+                        <Link
+                            href="#contact"
+                            className="text-cyan-1 ml-1">
+                            Porozmawiajmy
+                        </Link>
+                        !
+                    </span>
+                </>
+            );
+        },
         skillsSection: {
+            title: 'Umiejętności',
             description:
                 'Jestem dobrze ozeznany z ekosystemamy Typescripta i Javascripta, jestem dobry w rozwiązywaniu problemów. Siedzę w tym od dawna i czuję się z nimi bardzo komfortowo.',
             1: 'Typescript jest praktycznie moim głównym jezykiem programowania, używam go od ponad 2 lat i stworzyłem z nim dużo projektów i narzędzi.',
@@ -148,11 +219,18 @@ export const translations = {
                     'Moja strona portfolio. Stworzna z użyciem TypeScript, React, UnoCSS and Vite.',
             },
             note: 'Pracuje nad dużymi projektami w tym momencie',
-            forMore: {
-                1: 'Więcej projektów znajdziesz w moich',
-                2: 'repozytoriach',
-                3: 'na GitHubie.',
-            },
+            forMore: () => (
+                <p className="flex items-center">
+                    Więcej projektów znajdziesz w moich{' '}
+                    <Link
+                        className="mx-1"
+                        target="_blank"
+                        href={GITHUB + '?tab=repositories'}>
+                        repozytoriach
+                    </Link>{' '}
+                    na GitHubie.
+                </p>
+            ),
         },
         footer: 'moje portfolio jest',
         chat: {
@@ -171,12 +249,15 @@ export const translations = {
     },
 } as const;
 
-type Nested<T> = T extends object
-    ? {
-          [K in keyof T]: `${Exclude<K, symbol>}${'' | `.${Nested<T[K]>}`}`;
-      }[keyof T]
-    : never;
+const navigatorLocale = navigator.language?.slice(0, 2)?.toLowerCase();
 
-export type TranslationKeys = Nested<
-    (typeof translations)[keyof typeof translations]
->;
+const defaultLocale =
+    localStorage.getItem('locale') ||
+    (trans[navigatorLocale as keyof typeof trans] ? navigatorLocale : 'en');
+
+export const { useTranslate, useLocale, locales, translations } = createI18n(trans, {
+    defaultLocale,
+    onLocaleChange(locale) {
+        localStorage.setItem('locale', locale);
+    },
+});
