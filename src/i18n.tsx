@@ -251,9 +251,7 @@ const trans = {
 
 const navigatorLocale = navigator.language?.slice(0, 2)?.toLowerCase();
 
-const defaultLocale =
-    localStorage.getItem('locale') ||
-    (trans[navigatorLocale as keyof typeof trans] ? navigatorLocale : 'en');
+const defaultLocale = localStorage.getItem('locale') || navigatorLocale;
 
 export const { useTranslate, useLocale, locales, translations } = createI18n(trans, {
     defaultLocale,
