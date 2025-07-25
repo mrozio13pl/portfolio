@@ -49,4 +49,15 @@ export default defineConfig({
             }),
         ],
     ],
+    variants: [
+        // custom variant for body[data-scroll-locked]
+        (matcher) => {
+        const prefix = 'body-locked:'
+            if (!matcher.startsWith(prefix)) return matcher
+            return {
+                matcher: matcher.slice(prefix.length),
+                selector: s => `body[data-scroll-locked] ${s}`,
+            }
+        },
+    ],
 });

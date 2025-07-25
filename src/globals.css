@@ -75,3 +75,9 @@ body {
 ::-webkit-scrollbar-track{
     background-color: #202020;
 }
+
+/* radix-ui/primitives#1496 */
+html body[data-scroll-locked] {
+    --removed-body-scroll-bar-size: 0 !important;
+    margin-right: 0 !important;
+} 
