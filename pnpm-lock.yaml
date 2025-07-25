@@ -108,6 +108,9 @@ importers:
       vite:
         specifier: npm:rolldown-vite@^7.0.11
         version: rolldown-vite@7.0.11(@types/node@24.1.0)(esbuild@0.25.2)(jiti@2.4.2)(tsx@4.19.1)
+      vite-plugin-simple-html:
+        specifier: ^1.0.1
+        version: 1.0.1(rolldown-vite@7.0.11(@types/node@24.1.0)(esbuild@0.25.2)(jiti@2.4.2)(tsx@4.19.1))
       vite-tsconfig-paths:
         specifier: ^5.1.4
         version: 5.1.4(rolldown-vite@7.0.11(@types/node@24.1.0)(esbuild@0.25.2)(jiti@2.4.2)(tsx@4.19.1))(typescript@5.8.3)
@@ -923,6 +926,73 @@ packages:
   '@rolldown/pluginutils@1.0.0-beta.29':
     resolution: {integrity: sha512-NIJgOsMjbxAXvoGq/X0gD7VPMQ8j9g0BiDaNjVNVjvl+iKXxL3Jre0v31RmBYeLEmkbj2s02v8vFTbUXi5XS2Q==}
 
+  '@swc/counter@0.1.3':
+    resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
+
+  '@swc/html-darwin-arm64@1.13.2':
+    resolution: {integrity: sha512-8wK+0zi5Q0xjdfD2oTnzX933a3P7etE7TFgHp0DSPuMhBI2OQkJAWIwzlev8LxM9pLizLTyuMqU2bxHTo5E/pQ==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@swc/html-darwin-x64@1.13.2':
+    resolution: {integrity: sha512-mBXKMINILwupRreMaR7RvWHPjZ7nNT0BjJHJLNyeeiUSsZMtMUHgbzfW0XGNmtmQio829B/kiWmiGMALtooQmA==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@swc/html-linux-arm-gnueabihf@1.13.2':
+    resolution: {integrity: sha512-Z1keZTSdaaZCy5H7kI6GQjSI2lnVZGMIzZizyCzvILuuBQ4Z/kyC7dNi7E/fJL7HcJXFmVhoOXZeNnoDHpu8Pw==}
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux]
+
+  '@swc/html-linux-arm64-gnu@1.13.2':
+    resolution: {integrity: sha512-2WOdwpPUnZWMStX/8b36GAEtVV2FH13Ze86ejqPDyoAJwkVMoyaMeAOzGoQJsprKkodMjBXLxjD6iJ5HL4I3+g==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@swc/html-linux-arm64-musl@1.13.2':
+    resolution: {integrity: sha512-9Za5QqeJfyJz7vmY78g6GWU+9Hob0loRIueM2abC9vYYFc878UWNGyavFr0uo8xae6R6tby/qqhqWBx78lxyqQ==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@swc/html-linux-x64-gnu@1.13.2':
+    resolution: {integrity: sha512-qU2d3axi7wvbvgNGGZrAfi4705McWsG3DgxNlwFdyO/Nszn3AQooDHenuHWqI6zp24pX+DrXepVL9KJuBf9aLA==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@swc/html-linux-x64-musl@1.13.2':
+    resolution: {integrity: sha512-TTbBjsTRY/JoVZxTwKe9X7fZIAHp+MlU6fThO+53VRQd+7jo5M8X4PVWOBFUeKrAgI+KclOa2Cqwqx8APNPiXQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@swc/html-win32-arm64-msvc@1.13.2':
+    resolution: {integrity: sha512-wvJjLWV9grxfBfEMOG/UNi48KKEvGgCvXQVxMojTvEYrnLvlZDI0RdQI9WYX8PRztDX4t7fXL30U51I4UezYlg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@swc/html-win32-ia32-msvc@1.13.2':
+    resolution: {integrity: sha512-cSEsCeGrMIyU/5Cox1EfxBfUdKAjtNly+GzueDPj5e7vGoogCEuU4Ggpzbk4a1qbgijgztJ5kjtF369d79/vuQ==}
+    engines: {node: '>=10'}
+    cpu: [ia32]
+    os: [win32]
+
+  '@swc/html-win32-x64-msvc@1.13.2':
+    resolution: {integrity: sha512-je+7g0d+oFwhobIsR/mUt1HCLJ9Us9qF/Kon+MYz6WYKFNNfqQS8uJbTDvHEAvifDQAbJKYmqcvvpIWTPE6m4Q==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@swc/html@1.13.2':
+    resolution: {integrity: sha512-CHi/y+ROPie2g8Dmfz6MA5bRzCMnrShs7+bC3M6eHQDEP8BO3v9TBvvqF/0UhTe1j5P9rTJzKrtMz91aHi3Trg==}
+    engines: {node: '>=14'}
+
   '@tsconfig/vite-react@7.0.0':
     resolution: {integrity: sha512-fiuTviENxttMlo8BHuVWgPe/DRwcuU722oVvQ/HLfI3pxXfX4uBjvj9tHm1fbj5+iYbcPmdGENXOUks6yKF2Ug==}
 
@@ -1720,6 +1790,11 @@ packages:
       '@types/react':
         optional: true
 
+  vite-plugin-simple-html@1.0.1:
+    resolution: {integrity: sha512-GlUlNu6qDcrZCkuWC5hpDVJGZxWEB4Sq7Vqfk9ZFpMKo2in5OZkaJhK1EdG0SRgVx4Frp5HLJJSzmNRaP6DOsw==}
+    peerDependencies:
+      vite: '>=2.3.0 <8.0.0'
+
   vite-tsconfig-paths@5.1.4:
     resolution: {integrity: sha512-cYj0LRuLV2c2sMqhqhGpaO3LretdtMn/BVX4cPLanIZuwwrkVl+lK84E/miEXkCHWXuq65rhNN4rXsBcOB3S4w==}
     peerDependencies:
@@ -2351,6 +2426,53 @@ snapshots:
   '@rolldown/pluginutils@1.0.0-beta.27': {}
 
   '@rolldown/pluginutils@1.0.0-beta.29': {}
+
+  '@swc/counter@0.1.3': {}
+
+  '@swc/html-darwin-arm64@1.13.2':
+    optional: true
+
+  '@swc/html-darwin-x64@1.13.2':
+    optional: true
+
+  '@swc/html-linux-arm-gnueabihf@1.13.2':
+    optional: true
+
+  '@swc/html-linux-arm64-gnu@1.13.2':
+    optional: true
+
+  '@swc/html-linux-arm64-musl@1.13.2':
+    optional: true
+
+  '@swc/html-linux-x64-gnu@1.13.2':
+    optional: true
+
+  '@swc/html-linux-x64-musl@1.13.2':
+    optional: true
+
+  '@swc/html-win32-arm64-msvc@1.13.2':
+    optional: true
+
+  '@swc/html-win32-ia32-msvc@1.13.2':
+    optional: true
+
+  '@swc/html-win32-x64-msvc@1.13.2':
+    optional: true
+
+  '@swc/html@1.13.2':
+    dependencies:
+      '@swc/counter': 0.1.3
+    optionalDependencies:
+      '@swc/html-darwin-arm64': 1.13.2
+      '@swc/html-darwin-x64': 1.13.2
+      '@swc/html-linux-arm-gnueabihf': 1.13.2
+      '@swc/html-linux-arm64-gnu': 1.13.2
+      '@swc/html-linux-arm64-musl': 1.13.2
+      '@swc/html-linux-x64-gnu': 1.13.2
+      '@swc/html-linux-x64-musl': 1.13.2
+      '@swc/html-win32-arm64-msvc': 1.13.2
+      '@swc/html-win32-ia32-msvc': 1.13.2
+      '@swc/html-win32-x64-msvc': 1.13.2
 
   '@tsconfig/vite-react@7.0.0': {}
 
@@ -3270,6 +3392,11 @@ snapshots:
       tslib: 2.8.0
     optionalDependencies:
       '@types/react': 19.1.8
+
+  vite-plugin-simple-html@1.0.1(rolldown-vite@7.0.11(@types/node@24.1.0)(esbuild@0.25.2)(jiti@2.4.2)(tsx@4.19.1)):
+    dependencies:
+      '@swc/html': 1.13.2
+      vite: rolldown-vite@7.0.11(@types/node@24.1.0)(esbuild@0.25.2)(jiti@2.4.2)(tsx@4.19.1)
 
   vite-tsconfig-paths@5.1.4(rolldown-vite@7.0.11(@types/node@24.1.0)(esbuild@0.25.2)(jiti@2.4.2)(tsx@4.19.1))(typescript@5.8.3):
     dependencies:
