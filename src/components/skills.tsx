@@ -3,8 +3,11 @@ import {
     SiDaisyuiHex,
     SiExpo,
     SiExpoHex,
+    SiExpress,
     SiGit,
     SiGitHex,
+    SiHono,
+    SiHonoHex,
     SiJavascript,
     SiJavascriptHex,
     SiLucia,
@@ -24,13 +27,22 @@ import {
     SiPreactHex,
     SiPuppeteer,
     SiPuppeteerHex,
+    SiRadixui,
     SiReact,
     SiReactHex,
     SiReacthookform,
     SiReacthookformHex,
+    SiReactquery,
+    SiReactqueryHex,
+    SiReactrouter,
+    SiReactrouterHex,
+    SiRollupdotjs,
+    SiRollupdotjsHex,
     SiShadcnui,
     SiShadcnuiHex,
     SiSocketdotio,
+    SiSqlite,
+    SiSqliteHex,
     SiStripe,
     SiStripeHex,
     SiTailwindcss,
@@ -41,6 +53,10 @@ import {
     SiTypescriptHex,
     SiUnocss,
     SiUnocssHex,
+    SiVite,
+    SiViteHex,
+    SiVitepress,
+    SiVitepressHex,
     SiVitest,
     SiVitestHex,
 } from '@icons-pack/react-simple-icons';
@@ -66,6 +82,14 @@ const mainTools: Tool[] = [
         tool: 'Preact',
     },
     {
+        node: <SiVite color={SiViteHex} />,
+        tool: 'Vite',
+    },
+    {
+        node: <SiHono color={SiHonoHex} />,
+        tool: 'Hono',
+    },
+    {
         node: <SiNextdotjs />,
         tool: 'Next.js',
     },
@@ -80,6 +104,10 @@ const mainTools: Tool[] = [
     {
         node: <SiUnocss color={SiUnocssHex} />,
         tool: 'UnoCSS',
+    },
+    {
+        node: <SiSqlite color={SiSqliteHex} />,
+        tool: 'SQLite',
     },
     {
         node: <SiMongodb color={SiMongodbHex} />,
@@ -137,8 +165,24 @@ const toolsAndTechnologies: Tool[] = [
         tool: 'Daisy UI',
     },
     {
+        node: <SiRadixui color='#bbb' />,
+        tool: 'Radix UI',
+    },
+    {
+        node: <SiReactrouter color={SiReactrouterHex} />,
+        tool: 'React Router',
+    },
+    {
         node: <SiReacthookform color={SiReacthookformHex} />,
         tool: 'React Hook Form',
+    },
+    {
+        node: <SiReactquery color={SiReactqueryHex} />,
+        tool: 'React Query',
+    },
+    {
+        node: <SiRollupdotjs color={SiRollupdotjsHex} />,
+        tool: 'Rollup',
     },
     {
         node: (
@@ -162,6 +206,14 @@ const toolsAndTechnologies: Tool[] = [
     {
         node: <SiExpo color={SiExpoHex} />,
         tool: 'Expo',
+    },
+    {
+        node: <SiExpress color='#fff' />,
+        tool: 'Express',
+    },
+    {
+        node: <SiVitepress color={SiVitepressHex} />,
+        tool: 'VitePress',
     },
 ];
 
