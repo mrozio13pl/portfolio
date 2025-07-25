@@ -197,28 +197,31 @@ export default function Chat() {
 
     return (
         <motion.div
-            className="fixed bottom-4 right-4 z-20 w-80 border border-gray-900/50 bg-gray-900/10 backdrop-blur-lg rounded-lg text-white flex flex-col"
+            className="fixed bottom-4 right-4 z-20 md:w-80 border border-gray-900/50 bg-gray-900/10 backdrop-blur-lg rounded-lg text-white flex flex-col lt-mobile:ml-4"
             animate={{ height: isCollapsed ? 'auto' : '55%' }}
             initial={false}
             transition={{ type: 'tween', duration: 0.3 }}>
             <div
                 className={clsx(
-                    'py-4 lt-mobile:py-2 px-8 flex justify-between items-center w-full cursor-pointer *:select-none z-20',
+                    'py-4 lt-mobile:py-2 md:px-8 px-4 flex justify-between items-center w-full cursor-pointer *:select-none z-20',
                     !isCollapsed && 'border-b border-b-gray-900/50'
                 )}
                 onClick={() => setIsCollapsed(!isCollapsed)}>
-                <div className="flex items-center gap-4">
-                    <div className="bg-lime-5 animate-pulse rounded-full size-2.5 -ml-2" />
-                    <div>
+                <div className={clsx("flex items-center gap-4", isCollapsed && 'lt-mobile:gap-2')}>
+                    <div className={clsx("bg-lime-5 animate-pulse rounded-full size-2.5 -ml-2", !isCollapsed && 'lt-mobile:!ml-0')} />
+                    <div className={clsx(isCollapsed && 'lt-mobile:hidden')}>
                         <p className="text-sm">{t('chat.header')}</p>
                         <h1 className="font-primary font-extrabold text-2xl -mt-1">
                             Mrozio
                         </h1>
                     </div>
+                    <div className={clsx('hidden', isCollapsed && 'lt-mobile:block')}>
+                        <p className="text-sm">{t('chat.mobile')}</p>
+                    </div>
                 </div>
                 <div>
                     {isCollapsed ? (
-                        <ChevronUp size={16} />
+                        <ChevronUp className='lt-mobile:(ml-1 -mr-2)' size={16} />
                     ) : (
                         <ChevronDown size={16} />
                     )}

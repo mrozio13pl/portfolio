@@ -114,6 +114,7 @@ const trans = {
         footer: 'my portfolio is',
         chat: {
             header: 'Chat with',
+            mobile: 'Chat',
             title: 'Welcome to my portfolio chat!',
             subtitle:
                 "Ask me anything relevant to me, I'll try my best to answer it.",
@@ -235,6 +236,7 @@ const trans = {
         footer: 'moje portfolio jest',
         chat: {
             header: 'Porozmawiaj z',
+            mobile: 'Chat',
             title: 'Witam na moim chatcie!',
             subtitle:
                 'Pytaj mnie czegoś dotyczące mnie, postaram się na to odpowiedzieć.',

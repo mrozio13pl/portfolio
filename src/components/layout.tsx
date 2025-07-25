@@ -29,7 +29,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 </div>
             </div>
 
-            <div className="bg-gradient-to-t from-#0f0f0f to-#141414 text-[#f0f0f0] relative overflow-hidden">
+            <div className="bg-gradient-to-t from-#0f0f0f to-#141414 text-[#f0f0f0] relative overflow-hidden lt-mobile:pb-6">
                 <div className="z-10">
                     {children}
                 </div>
