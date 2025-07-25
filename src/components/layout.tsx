@@ -10,15 +10,15 @@ const Chat = lazy(() => import('@/components/chat/chat'));
 export function Layout({ children }: { children: ReactNode }) {
     return (
         <main className='relative antialiased'>
-            {/* TODO: fix it for mobile */}
-            <div className="absolute w-full h-200vh z-2 pointer-events-none">
-                <div className="inline-flex w-full flex-col h-200vh blur-xl -rotate-90 opacity-20">
+            <div className="absolute size-full z-2 pointer-events-none top-0 overflow-hidden flex justify-center">
+                <div className="inline-flex max-w-800px size-full blur-xl opacity-20 -mt-4">
                     <div className="grow" style={{
-                        background: 'conic-gradient(from 180deg at 99% 60% in lab, rgb(255, 255, 255) 18deg, rgb(66, 135, 245) 6deg, rgba(17, 17, 17, 0) 90deg, rgba(17, 17, 17, 0) 342deg, rgb(255, 255, 255) 360deg)'
+                        background: 'conic-gradient(from 0.25turn at 10% 0%, rgb(255, 255, 255) 10deg, rgb(66, 135, 245) 30deg, rgba(17, 17, 17, 0) 90deg)'
                     }} />
 
                     <div className="grow" style={{
-                        background: "conic-gradient(from 0deg at 99% 40% in lab, rgb(255, 255, 255) 0deg, rgba(17, 17, 17, 0) 18deg, rgba(17, 17, 17, 0) 270deg, rgb(66, 135, 245) 344deg, rgb(255, 255, 255) 342deg)"
+                        background: 'conic-gradient(from 0.25turn at 10% 0%, rgb(255, 255, 255) 10deg, rgb(66, 135, 245) 30deg, rgba(17, 17, 17, 0) 90deg)',
+                        transform: 'scale(-1, 1)'
                     }} />
                 </div>
             </div>
