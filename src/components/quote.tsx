@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const QUOTE = "i'm way too addicted to programming";
+const QUOTE = "i'm way too addicted to computers";
 const TYPING_INTERVAL = 65;
 
 export function Quote() {

@@ -2,8 +2,6 @@ import { lazy, type ReactNode } from 'react';
 import { SparklesCore } from '@/components/ui/sparkles';
 import '../globals.css';
 import 'uno.css';
-import '@fontsource/poppins';
-import '@fontsource-variable/sora';
 
 const Chat = lazy(() => import('@/components/chat/chat'));
 

@@ -7,7 +7,6 @@ export const TIMEZONE = 'Europe/Warsaw';
 
 export const SECTIONS = [
     'about',
-    'skills',
     'experience',
     'projects',
     'contact',

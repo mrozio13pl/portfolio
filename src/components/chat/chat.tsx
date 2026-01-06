@@ -21,6 +21,7 @@ import {
 } from '../ui/tooltip';
 import { CHATFOLIO_ID } from '@/constants';
 import { useTranslate } from '@/i18n';
+import { TextShimmer } from '../ui/text-shimmer';
 
 interface TMessage {
     role: 'user' | 'assistant';
@@ -37,7 +38,7 @@ function Message({ message }: { message: TMessage }) {
         <div
             className={clsx(
                 'px-4 py-2 flex w-full',
-                message.role === 'user' ? 'justify-end' : 'gap-2'
+                message.role === 'user' ? 'justify-end' : 'justify-start gap-2'
             )}>
             <TooltipProvider>
                 <Tooltip>
@@ -46,7 +47,7 @@ function Message({ message }: { message: TMessage }) {
                             'break-words rounded-lg py-2 px-4',
                             message.isError && 'bg-red-500/20',
                             message.role === 'assistant'
-                                ? 'border border-gray-500/20 text-left'
+                                ? 'text-left'
                                 : 'max-w-[60%] bg-gray-500/20 py-3 text-right'
                         )}>
                         {message.isError && (
@@ -61,7 +62,7 @@ function Message({ message }: { message: TMessage }) {
                             }
                         />
                     </TooltipTrigger>
-                    <TooltipContent side="top" className="text-xs bg-gray-8/90">
+                    <TooltipContent side="bottom" className="text-xs bg-gray-8/90">
                         {timestamp}
                     </TooltipContent>
                 </Tooltip>
@@ -255,9 +256,7 @@ export default function Chat() {
                                         />
                                     ))}
                                 {isLoading && (
-                                    <div className="border border-gray-500/20 ml-4 mb-2 px-4 py-2 rounded-lg text-white w-min">
-                                        {t('chat.loading')}
-                                    </div>
+                                    <TextShimmer className='ml-4 mb-2 px-4 py-2 w-min'>{t('chat.loading')}</TextShimmer>
                                 )}
                             </>
                         ) : (

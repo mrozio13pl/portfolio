@@ -1,5 +1,5 @@
 import { EMAIL, LINKED_IN } from '@/constants';
-import { Link } from './ui/link';
+import { Link } from '@/components/ui/link';
 import {
     Tooltip,
     TooltipContent,
@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/tooltip';
 import { Copy } from 'lucide-react';
 import { useTranslate } from '@/i18n';
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 import copy from 'copy-text-to-clipboard';
 
 export function Contact() {

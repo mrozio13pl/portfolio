@@ -1,19 +1,20 @@
 import { Layout } from '@/components/layout';
 import { Socials } from '@/components/socials';
 import { Quote } from '@/components/quote';
-import { Skills } from '@/components/skills';
-import { Contact } from '@/components/contact';
+import { Contact } from '@/components/sections/contact';
 import { Navbar } from '@/components/navbar';
 import { TracingBeam } from '@/components/ui/tracing-beam';
 import { LanguagePicker } from '@/components/language-picker';
-import { Experience } from '@/components/experience';
+import { Experience } from '@/components/sections/experience';
 import { Footer } from '@/components/footer';
-import { Projects } from '@/components/projects';
+import { Projects } from '@/components/sections/projects';
+import { About } from '@/components/sections/about';
+import { useSection } from '@/hooks/section';
 import { useScreenSize } from '@/hooks/screen';
 import { useTranslate } from '@/i18n';
 import { BIRTH_DATE, GITHUB, SECTIONS, TIMEZONE } from '@/constants';
 import { Cake, Clock2, Dot } from 'lucide-react';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, ViewTransition, startTransition } from 'react';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
 
@@ -54,46 +55,60 @@ function adjustTimeByHours(increment: number) {
     return `${hours}:${minutes}`;
 }
 
+function Info() {
+    const t = useTranslate();
+    const timeDifference = getTimezoneDifference(TIMEZONE);
+
+    return (
+        <div className="w-full flex flex-col justify-center py-4">
+            <h1 className="font-primary font-extrabold text-4xl tracking-tight">
+                mrozio
+            </h1>
+            <p className="text-white/50">
+                {t('profession')}
+            </p>
+            <p className="text-white/50 mt-2">
+                📍 Rabka-Zdrój, {t('country')}{' '}
+                <img
+                    src="/poland.svg"
+                    className="inline-flex"
+                    height={20}
+                    width={20}
+                />
+            </p>
+            <p className="text-white/50 flex gap-1 items-center">
+                <Clock2 />
+                {adjustTimeByHours(timeDifference)}
+                <span className="text-white/40">
+                    {' '}
+                    {t('hourDifference')(timeDifference)}
+                </span>
+            </p>
+            <p className="text-#8a8a8a flex gap-1 items-center">
+                <Cake />
+                {getAge(BIRTH_DATE)} {t('age')}
+            </p>
+            <div className="flex gap-8 items-center">
+                <Socials />
+            </div>
+        </div>
+    );
+}
+
 export function App() {
     const t = useTranslate();
 
+    const { currentSection, setCurrentSection } = useSection();
     const [scrollY, setScrollY] = useState(0);
     const [collapsed, setCollapsed] = useState(false);
-    const [activeSection, setActiveSection] = useState('');
     const { width } = useScreenSize();
 
     const sectionRefs = useRef<{
         [key: string]: HTMLElement | null;
     }>({});
 
-    const timeDifference = getTimezoneDifference(TIMEZONE);
-
     const handleScroll = () => {
-        if (document.readyState !== 'complete') return;
-
-        setScrollY(window.scrollY);
-
-        requestAnimationFrame(() => {
-            let maxVisibleSection = '';
-            let maxTop = Number.POSITIVE_INFINITY;
-
-            Object.entries(sectionRefs.current).forEach(([key, ref]) => {
-                if (ref) {
-                    const rect = (
-                        ref as any as HTMLElement
-                    ).getBoundingClientRect();
-
-                    if (rect.y < 0) return;
-
-                    if (rect.y < maxTop) {
-                        maxTop = rect.y;
-                        maxVisibleSection = key;
-                    }
-                }
-            });
-
-            if (maxVisibleSection) setActiveSection(maxVisibleSection);
-        });
+        if (document.readyState === 'complete') setScrollY(window.scrollY);
     };
 
     useEffect(() => {
@@ -103,27 +118,43 @@ export function App() {
 
     useEffect(() => {
         handleScroll();
-    }, [activeSection]);
+    }, [currentSection]);
 
     useEffect(() => {
-        setCollapsed(scrollY > 0);
-    }, [scrollY]);
+        setCollapsed(scrollY > 50 && width > 1330);
+    }, [scrollY, width, currentSection]);
 
     return (
         <Layout>
             <TracingBeam>
-                <div className="flex justify-center z-5">
-                    <div className="w-200 lt-mobile:w-[calc(100%-50px)]! px-10 relative antialiased">
-                        <Navbar />
+                <div className="flex justify-center z-5 min-h-dvh">
+                    <div className="w-200 lt-mobile:w-[calc(100%-50px)]! px-10 relative antialiased flex flex-col">
+                        <div className={clsx(collapsed && 'md:h-48')} />
+
+                        <div className='absolute px-4 lt-md:hidden'>
+                            <div
+                                className="flex justify-between gap-8 pointer-events-none select-none w-full py-10">
+                                <div className="relative mt-12 mr-12 w-min">
+                                    <div className="bg-dot-white size-50 max-h-50 op-20" />
+                                    <div
+                                        className="size-50 absolute duration-100 rounded-md -right-8 -top-7.5 bg-gray-7"
+                                    />
+                                </div>
+                                <div className='op-20 mt-4'>
+                                    <Info />
+                                </div>
+                            </div>
+                        </div>
 
                         <motion.div
                             className={clsx(
-                                'px-4 md:mt-0 mt-12',
+                                'px-4 md:mt-0 mt-20',
                                 collapsed && 'mobile:fixed'
                             )}
                             animate={{
-                                x: collapsed && width > 660 ? -300 : 0,
-                            }}>
+                                x: collapsed ? -300 : 0,
+                            }}
+                        >
                             <div
                                 className={clsx(
                                     'md:flex lt-mobile:block w-full py-10',
@@ -136,61 +167,30 @@ export function App() {
                                     <img
                                         src={GITHUB + '.png'}
                                         alt="pfp"
-                                        className="md:min-w-50 absolute duration-100 rounded-md -right-8 -top-8 bg-gray-5"
+                                        className="md:min-w-50 absolute duration-100 rounded-md -right-8 -top-7.5 bg-gray-5"
                                         width={200}
                                         height={200}
                                     />
                                 </div>
-                                <div className="w-full flex flex-col justify-center py-4">
-                                    <h1 className="font-primary font-extrabold text-4xl">
-                                        mrozio
-                                    </h1>
-                                    <p className="text-white/50">
-                                        {t('profession')}
-                                    </p>
-                                    <p className="text-white/50 mt-2">
-                                        📍 Rabka-Zdrój, {t('country')}{' '}
-                                        <img
-                                            src="/poland.svg"
-                                            className="inline-flex"
-                                            height={20}
-                                            width={20}
-                                        />
-                                    </p>
-                                    <p className="text-white/50 flex gap-1 items-center">
-                                        <Clock2 />
-                                        {adjustTimeByHours(timeDifference)}
-                                        <span className="text-white/40">
-                                            {' '}
-                                            {t('hourDifference')(timeDifference)}
-                                        </span>
-                                    </p>
-                                    <p className="text-#8a8a8a flex gap-1 items-center">
-                                        <Cake />
-                                        {getAge(BIRTH_DATE)} {t('age')}
-                                    </p>
-                                    <div className="flex gap-8 items-center">
-                                        <Socials />
-                                    </div>
-                                </div>
+                                <Info />
                             </div>
                         </motion.div>
 
                         <div
                             className={clsx(
-                                'fixed w-230 lt-mobile:w-auto justify-end mt-16 flex pointer-events-none',
+                                'duration-200 fixed w-230 lt-mobile:w-auto justify-end mt-16 flex pointer-events-none',
                                 collapsed
-                                    ? 'duration-200 op-100'
+                                    ? 'op-100'
                                     : 'op-0 cursor-none'
                             )}>
                             <div className="md:flex flex-col gap-2 hidden pointer-events-auto">
                                 {SECTIONS.map((section, index) => (
-                                    <a href={'#' + section} key={index}>
+                                    <a href={'#' + section} key={index} onClick={() => startTransition(() => setCurrentSection(section))}>
                                         <div className="flex items-center gap-2 capitalize">
                                             <Dot
                                                 className={clsx(
                                                     'size-16 -m-6',
-                                                    activeSection === section
+                                                    currentSection === section
                                                         ? 'text-cyan-3'
                                                         : 'text-gray-7'
                                                 )}
@@ -210,53 +210,58 @@ export function App() {
                             </div>
                         </div>
 
-                        <div
-                            className={clsx(
-                                'my-4 flex gap-2',
-                                collapsed && 'mobile:mt-40'
-                            )}>
-                            {'>'}
-                            <Quote />
+                        <div className={clsx('duration-200 flex-1', collapsed && 'duration-300!')}>
+                            <div
+                                className={clsx(
+                                    'm-4 flex gap-2',
+                                    collapsed && 'mobile:mt-40'
+                                )}>
+                                <span className='text-lime-3'>$</span>
+                                <Quote />
+                            </div>
+
+                            <Navbar />
+
+                            <div className='mx-2'>
+                                {currentSection === 'about' && (
+                                    <ViewTransition name='about'>
+                                        <section ref={(el) => { sectionRefs.current.about = el }}>
+                                            <About />
+                                        </section>
+                                    </ViewTransition>
+                                )}
+
+                                {currentSection === 'experience' && (
+                                    <ViewTransition name='experience'>
+                                        <section ref={(el) => { sectionRefs.current.experience = el }}>
+                                            <Experience />
+                                        </section>
+                                    </ViewTransition>
+                                )}
+
+                                {currentSection === 'projects' && (
+                                    <ViewTransition name='projects'>
+                                        <section ref={(el) => { sectionRefs.current.projects = el }}>
+                                            <Projects />
+                                        </section>
+                                    </ViewTransition>
+                                )}
+
+                                {currentSection === 'contact' && (
+                                    <ViewTransition name='contact'>
+                                        <section ref={(el) => { sectionRefs.current.contact = el }}>
+                                            <Contact />
+                                        </section>
+                                    </ViewTransition>
+                                )}
+                            </div>
                         </div>
 
-                        <section
-                            id="about"
-                            ref={(el) => { sectionRefs.current.about = el }}>
-                            <h2 className="font-primary font-extrabold text-3xl pt-12 text-cyan-3">
-                                👋 {t('greeting')} ==
-                            </h2>
-                            <p className="mt-8 line-height-9">
-                                {t('about')()}
-                            </p>
-                        </section>
-
-                        <section
-                            id="skills"
-                            ref={(el) => { sectionRefs.current.skills = el }}>
-                            <Skills />
-                        </section>
-
-                        <section
-                            id="experience"
-                            ref={(el) => { sectionRefs.current.experience = el }}>
-                            <Experience />
-                        </section>
-
-                        <section
-                            id="projects"
-                            ref={(el) => { sectionRefs.current.projects = el }}>
-                            <Projects />
-                        </section>
-
-                        <section
-                            id="contact"
-                            ref={(el) => { sectionRefs.current.contact = el }}>
-                            <Contact />
-                        </section>
-
-                        <section id="footer">
-                            <Footer />
-                        </section>
+                        <ViewTransition name='footer'>
+                            <section id="footer" className={clsx(collapsed && 'md:mb-4')}>
+                                <Footer />
+                            </section>
+                        </ViewTransition>
                     </div>
                 </div>
             </TracingBeam>

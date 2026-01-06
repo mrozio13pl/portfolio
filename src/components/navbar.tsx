@@ -3,51 +3,50 @@ import { Button } from './ui/button';
 import { LanguagePicker } from './language-picker';
 import { useTranslate } from '@/i18n';
 import {
-    Brain,
     FolderOpenDot,
     GraduationCap,
     Handshake,
     PersonStanding,
     type LucideIcon,
 } from 'lucide-react';
+import { startTransition } from 'react';
+import { useSection } from '@/hooks/section';
+import clsx from 'clsx';
 
 const sectionIcons: Record<(typeof SECTIONS)[number], LucideIcon> = {
     about: PersonStanding,
     contact: Handshake,
     experience: GraduationCap,
     projects: FolderOpenDot,
-    skills: Brain,
 };
 
 export function Navbar() {
     const t = useTranslate()('sections');
+    const { currentSection, setCurrentSection } = useSection();
 
     return (
-        <nav className="bg-gray-800/40 my-4 p-2 rounded-full flex justify-between items-center text-xl [&_p]:select-none md:static fixed top-0 backdrop-blur-xl z-6 mobile:w-full mobile:max-w-200">
-            <div className="block lt-mobile:hidden">
-                <p className="font-primary font-extrabold px-4">
-                    <a href="/">mrozio</a>
-                </p>
-            </div>
-            <div className="flex mobile:gap-1 items-center">
-                {SECTIONS.map((section, index) => {
-                    const Icon = sectionIcons[section];
+        <span className='md:static fixed top-0 left-0 flex justify-center w-full z-6'>
+            <nav className="bg-gray-800/40 mt-12 p-2 rounded-full md:w-full flex justify-between items-center text-xl [&_p]:select-none backdrop-blur-xl">
+                <div className="flex mobile:gap-1 items-center mx-2">
+                    {SECTIONS.map((section, index) => {
+                        const Icon = sectionIcons[section];
 
-                    return (
-                        <Button variant="ghost" className="!p-2" key={index}>
-                            <a href={'#' + section} className="capitalize">
-                                <span className="md:block hidden">
-                                    {t(section as any) || section}
-                                </span>
-                                <span className="md:hidden">
-                                    <Icon />
-                                </span>
-                            </a>
-                        </Button>
-                    );
-                })}
+                        return (
+                            <Button variant="ghost" className={clsx("!p-2", section === currentSection && 'bg-white/20 pointer-events-none')} key={index}>
+                                <a href={'#' + section} className="capitalize" onClick={() => setCurrentSection(section)}>
+                                    <span className="mobile:block hidden">
+                                        {t(section)}
+                                    </span>
+                                    <span className="mobile:hidden">
+                                        <Icon />
+                                    </span>
+                                </a>
+                            </Button>
+                        );
+                    })}
+                </div>
                 <LanguagePicker />
-            </div>
-        </nav>
+            </nav>
+        </span>
     );
 }

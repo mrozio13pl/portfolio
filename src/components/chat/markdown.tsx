@@ -7,7 +7,7 @@ export function Markdown({ content }: { content: string }) {
 
     return (
         <span
-            className="markdown-body"
+            className="markdown-body leading-7!"
             dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(markdownHtml),
             }}
