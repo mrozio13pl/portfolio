@@ -81,3 +81,45 @@ html body[data-scroll-locked] {
     --removed-body-scroll-bar-size: 0 !important;
     margin-right: 0 !important;
 }
+
+/* inspired by shuding */
+@supports (view-transition-name: none) {
+    @media not (prefers-reduced-motion: reduce) {
+        ::view-transition-old(experience),
+        ::view-transition-old(about),
+        ::view-transition-old(contact),
+        ::view-transition-old(projects) {
+            animation: hide 0.4s cubic-bezier(0.6, 0, 0.8, 1) forwards;
+        }
+
+        ::view-transition-new(experience),
+        ::view-transition-new(about),
+        ::view-transition-new(contact),
+        ::view-transition-new(projects) {
+            opacity: 0;
+            animation: appear 0.4s ease 0.2s forwards;
+        }
+    }
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+        filter: blur(0);
+    }
+    100% {
+        opacity: 0;
+        filter: blur(4px);
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        filter: blur(4px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}

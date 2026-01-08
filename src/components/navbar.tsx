@@ -32,15 +32,20 @@ export function Navbar() {
                         const Icon = sectionIcons[section];
 
                         return (
-                            <Button variant="ghost" className={clsx("!p-2", section === currentSection && 'bg-white/20 pointer-events-none')} key={index}>
-                                <a href={'#' + section} className="capitalize" onClick={() => setCurrentSection(section)}>
-                                    <span className="mobile:block hidden">
-                                        {t(section)}
-                                    </span>
-                                    <span className="mobile:hidden">
-                                        <Icon />
-                                    </span>
-                                </a>
+                            <Button
+                                variant="ghost"
+                                as="a"
+                                href={'#' + section}
+                                className={clsx("!p-2 capitalize", section === currentSection && 'bg-white/20 pointer-events-none')}
+                                onClick={() => setCurrentSection(section)}
+                                key={index}
+                            >
+                                <span className="mobile:block hidden">
+                                    {t(section)}
+                                </span>
+                                <span className="mobile:hidden">
+                                    <Icon />
+                                </span>
                             </Button>
                         );
                     })}

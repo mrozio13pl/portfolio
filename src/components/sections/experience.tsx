@@ -83,11 +83,14 @@ export function Experience() {
             </h2>
 
             <div>
-                {EXPERIENCES.map((experience, index) => (
+                {EXPERIENCES.map((experience, index, arr) => (
                     <div className="flex gap-4" key={index}>
-                        <div className="flex items-center flex-col">
+                        <div className="flex items-center flex-col relative">
                             <div className="rounded-full min-h-6 min-w-6 border-2 border-gray8" />
                             <div className="bg-gray8 h-full w-0.25" />
+                            {index !== arr.length - 1 && (
+                                <div className="bg-gray8 w-0.25 absolute min-h-6 top- bottom-0" />
+                            )}
                         </div>
                         <div className="w-full space-y-2 pb-6">
                             <div className="w-full flex justify-between items-center">
