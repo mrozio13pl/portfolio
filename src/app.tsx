@@ -129,16 +129,12 @@ export function App() {
             <TracingBeam>
                 <div className="flex justify-center z-5 min-h-dvh">
                     <div className="w-200 lt-mobile:w-[calc(100%-50px)]! px-10 relative antialiased flex flex-col">
-                        <div className={clsx(collapsed && 'md:h-48')} />
-
                         <div className='absolute px-4 lt-md:hidden'>
                             <div
                                 className="flex justify-between gap-8 pointer-events-none select-none w-full py-10">
                                 <div className="relative mt-12 mr-12 w-min">
                                     <div className="bg-dot-white size-50 max-h-50 op-20" />
-                                    <div
-                                        className="size-50 absolute duration-100 rounded-md -right-8 -top-7.5 bg-gray-7"
-                                    />
+                                    <div className="size-50 absolute duration-100 rounded-md -right-8 -top-7.5 bg-gray-7" />
                                 </div>
                                 <div className='op-20 mt-4'>
                                     <Info />
@@ -146,116 +142,120 @@ export function App() {
                             </div>
                         </div>
 
-                        <motion.div
-                            className={clsx(
-                                'px-4 md:mt-0 mt-20',
-                                collapsed && 'mobile:fixed'
-                            )}
-                            animate={{
-                                x: collapsed ? -300 : 0,
-                            }}
-                        >
+                        <ViewTransition name='info'>
+                            <div className={clsx(collapsed && 'md:h-48')} />
+
+                            <motion.div
+                                className={clsx(
+                                    'px-4 md:mt-0 mt-20',
+                                    collapsed && 'mobile:fixed'
+                                )}
+                                animate={{
+                                    x: collapsed ? -300 : 0,
+                                }}
+                            >
+                                <div
+                                    className={clsx(
+                                        'md:flex lt-mobile:block w-full py-10',
+                                        collapsed
+                                            ? 'flex-col hidden'
+                                            : 'flex justify-between gap-8'
+                                    )}>
+                                    <div className="relative mt-12 mr-12 w-min">
+                                        <div className="bg-dot-white size-50 max-h-50" />
+                                        <img
+                                            src={GITHUB + '.png'}
+                                            alt="pfp"
+                                            className="md:min-w-50 absolute duration-100 rounded-md -right-8 -top-7.5 bg-gray-5"
+                                            width={200}
+                                            height={200}
+                                        />
+                                    </div>
+                                    <Info />
+                                </div>
+                            </motion.div>
+
                             <div
                                 className={clsx(
-                                    'md:flex lt-mobile:block w-full py-10',
+                                    'duration-200 fixed w-230 lt-mobile:w-auto justify-end mt-16 flex pointer-events-none',
                                     collapsed
-                                        ? 'flex-col hidden'
-                                        : 'flex justify-between gap-8'
+                                        ? 'op-100'
+                                        : 'op-0 cursor-none'
                                 )}>
-                                <div className="relative mt-12 mr-12 w-min">
-                                    <div className="bg-dot-white size-50 max-h-50" />
-                                    <img
-                                        src={GITHUB + '.png'}
-                                        alt="pfp"
-                                        className="md:min-w-50 absolute duration-100 rounded-md -right-8 -top-7.5 bg-gray-5"
-                                        width={200}
-                                        height={200}
-                                    />
-                                </div>
-                                <Info />
-                            </div>
-                        </motion.div>
-
-                        <div
-                            className={clsx(
-                                'duration-200 fixed w-230 lt-mobile:w-auto justify-end mt-16 flex pointer-events-none',
-                                collapsed
-                                    ? 'op-100'
-                                    : 'op-0 cursor-none'
-                            )}>
-                            <div className="md:flex flex-col gap-2 hidden pointer-events-auto">
-                                {SECTIONS.map((section, index) => (
-                                    <a href={'#' + section} key={index} onClick={() => startTransition(() => setCurrentSection(section))}>
-                                        <div className="flex items-center gap-2 capitalize">
-                                            <Dot
-                                                className={clsx(
-                                                    'size-16 -m-6',
-                                                    currentSection === section
-                                                        ? 'text-cyan-3'
-                                                        : 'text-gray-7'
-                                                )}
-                                            />
-                                            <p className="hover:underline">
-                                                {t('sections')(section)}
-                                            </p>
-                                        </div>
-                                    </a>
-                                ))}
-                                <div className="flex items-center">
-                                    <LanguagePicker />
-                                    <p className='text-gray-3 text-xs'>{t('sections.with')}{' '}
-                                        <a target="_blank" href="https://mrozio13pl.github.io/i18n/" className="underline">@mrozio/i18n</a>
-                                    </p>
+                                <div className="md:flex flex-col gap-2 hidden pointer-events-auto">
+                                    {SECTIONS.map((section, index) => (
+                                        <a href={'#' + section} key={index} onClick={() => startTransition(() => setCurrentSection(section))}>
+                                            <div className="flex items-center gap-2 capitalize">
+                                                <Dot
+                                                    className={clsx(
+                                                        'size-16 -m-6',
+                                                        currentSection === section
+                                                            ? 'text-cyan-3'
+                                                            : 'text-gray-7'
+                                                    )}
+                                                />
+                                                <p className="hover:underline">
+                                                    {t('sections')(section)}
+                                                </p>
+                                            </div>
+                                        </a>
+                                    ))}
+                                    <div className="flex items-center">
+                                        <LanguagePicker />
+                                        <p className='text-gray-3 text-xs'>{t('sections.with')}{' '}
+                                            <a target="_blank" href="https://mrozio13pl.github.io/i18n/" className="underline">@mrozio/i18n</a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className={clsx('duration-200 flex-1', collapsed && 'duration-300!')}>
-                            <div
-                                className={clsx(
-                                    'm-4 flex gap-2',
-                                    collapsed && 'mobile:mt-40'
-                                )}>
-                                <span className='text-lime-3'>$</span>
-                                <Quote />
+                            <div className={clsx('duration-200 flex-1', collapsed && 'duration-300!')}>
+                                <div
+                                    className={clsx(
+                                        'm-4 flex gap-2',
+                                        collapsed && 'mobile:mt-40'
+                                    )}>
+                                    <span className='text-lime-3'>$</span>
+                                    <Quote />
+                                </div>
+
+                                <Navbar />
+
+                                <div className='mx-2'>
+                                    {currentSection === 'about' && (
+                                        <ViewTransition name='about'>
+                                            <section ref={(el) => { sectionRefs.current.about = el }}>
+                                                <About />
+                                            </section>
+                                        </ViewTransition>
+                                    )}
+
+                                    {currentSection === 'experience' && (
+                                        <ViewTransition name='experience'>
+                                            <section ref={(el) => { sectionRefs.current.experience = el }}>
+                                                <Experience />
+                                            </section>
+                                        </ViewTransition>
+                                    )}
+
+                                    {currentSection === 'projects' && (
+                                        <ViewTransition name='projects'>
+                                            <section ref={(el) => { sectionRefs.current.projects = el }}>
+                                                <Projects />
+                                            </section>
+                                        </ViewTransition>
+                                    )}
+
+                                    {currentSection === 'contact' && (
+                                        <ViewTransition name='contact'>
+                                            <section ref={(el) => { sectionRefs.current.contact = el }}>
+                                                <Contact />
+                                            </section>
+                                        </ViewTransition>
+                                    )}
+                                </div>
                             </div>
-
-                            <Navbar />
-
-                            <div className='mx-2'>
-                                {currentSection === 'about' && (
-                                    <ViewTransition name='about'>
-                                        <section ref={(el) => { sectionRefs.current.about = el }}>
-                                            <About />
-                                        </section>
-                                    </ViewTransition>
-                                )}
-
-                                {currentSection === 'experience' && (
-                                    <ViewTransition name='experience'>
-                                        <section ref={(el) => { sectionRefs.current.experience = el }}>
-                                            <Experience />
-                                        </section>
-                                    </ViewTransition>
-                                )}
-
-                                {currentSection === 'projects' && (
-                                    <ViewTransition name='projects'>
-                                        <section ref={(el) => { sectionRefs.current.projects = el }}>
-                                            <Projects />
-                                        </section>
-                                    </ViewTransition>
-                                )}
-
-                                {currentSection === 'contact' && (
-                                    <ViewTransition name='contact'>
-                                        <section ref={(el) => { sectionRefs.current.contact = el }}>
-                                            <Contact />
-                                        </section>
-                                    </ViewTransition>
-                                )}
-                            </div>
-                        </div>
+                        </ViewTransition>
 
                         <ViewTransition name='footer'>
                             <section id="footer" className={clsx(collapsed && 'md:mb-4')}>

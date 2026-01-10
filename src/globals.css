@@ -96,7 +96,7 @@ html body[data-scroll-locked] {
         ::view-transition-new(experience),
         ::view-transition-new(about),
         ::view-transition-new(contact),
-        ::view-transition-new(projects) ,
+        ::view-transition-new(projects),
         ::view-transition-new(info) {
             opacity: 0;
             animation: appear 0.4s ease 0.2s forwards;
