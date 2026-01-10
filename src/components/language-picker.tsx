@@ -1,6 +1,7 @@
 import { Languages } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger } from './ui/select';
 import { useLocale, translations } from '@/i18n';
+import { startTransition } from 'react';
 
 export function LanguagePicker() {
     const [locale, setLocale] = useLocale();
@@ -8,7 +9,7 @@ export function LanguagePicker() {
     return (
         <Select
             value={locale}
-            onValueChange={(value) => setLocale(value)}>
+            onValueChange={(value) => startTransition(() => setLocale(value))}>
             <SelectTrigger className="w-min">
                 <Languages />
             </SelectTrigger>

@@ -88,14 +88,16 @@ html body[data-scroll-locked] {
         ::view-transition-old(experience),
         ::view-transition-old(about),
         ::view-transition-old(contact),
-        ::view-transition-old(projects) {
+        ::view-transition-old(projects),
+        ::view-transition-old(info) {
             animation: hide 0.4s cubic-bezier(0.6, 0, 0.8, 1) forwards;
         }
 
         ::view-transition-new(experience),
         ::view-transition-new(about),
         ::view-transition-new(contact),
-        ::view-transition-new(projects) {
+        ::view-transition-new(projects) ,
+        ::view-transition-new(info) {
             opacity: 0;
             animation: appear 0.4s ease 0.2s forwards;
         }
