@@ -3,8 +3,8 @@ import { StrictMode } from 'react';
 import { App } from '@/app';
 import { GITHUB } from '@/constants';
 import { SectionProvider } from '@/hooks/section';
-import '@fontsource-variable/sora';
-import '@fontsource/poppins';
+import '@fontsource-variable/sora/index.css';
+import '@fontsource/poppins/index.css';
 
 const container = document.getElementById('root');
 

@@ -17,6 +17,13 @@ import { Cake, Clock2, Dot } from 'lucide-react';
 import { useEffect, useState, useRef, ViewTransition, startTransition } from 'react';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
+import { LocationMap } from './components/map';
+
+const mapMask = `
+  linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%),
+  linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 25%),
+  linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 25%)
+`
 
 function getAge(birthDate: Date) {
     const today = new Date();
@@ -60,7 +67,7 @@ function Info() {
     const timeDifference = getTimezoneDifference(TIMEZONE);
 
     return (
-        <div className="w-full flex flex-col justify-center py-4">
+        <div className="w-full flex flex-col justify-center py-4 relative">
             <h1 className="font-primary font-extrabold text-4xl tracking-tight">
                 mrozio
             </h1>
@@ -132,12 +139,24 @@ export function App() {
                         <div className='absolute px-4 lt-md:hidden'>
                             <div
                                 className="flex justify-between gap-8 pointer-events-none select-none w-full py-10">
-                                <div className="relative mt-12 mr-12 w-min">
+                                <div className="relative mt-12 mr-12 w-min z-1">
                                     <div className="bg-dot-white size-50 max-h-50 op-20" />
                                     <div className="size-50 absolute duration-100 rounded-md -right-8 -top-7.5 bg-gray-7" />
                                 </div>
-                                <div className='op-20 mt-4'>
+                                <div className='op-20 mt-4 z-1'>
                                     <Info />
+                                </div>
+                                <div className="absolute top-0 -right-50 w-2/3 h-80 z-0">
+                                    <div
+                                        className="size-full bg-#141414"
+                                        style={{
+                                            maskImage: mapMask,
+                                            WebkitMaskImage: mapMask,
+                                            maskComposite: 'intersect',
+                                        }}
+                                    >
+                                        <LocationMap />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +166,7 @@ export function App() {
 
                             <motion.div
                                 className={clsx(
-                                    'px-4 md:mt-0 mt-20',
+                                    'px-4 md:mt-0 mt-20 z-2',
                                     collapsed && 'mobile:fixed'
                                 )}
                                 animate={{

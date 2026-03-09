@@ -11,6 +11,6 @@
         },
         "types": ["react/canary"]
     },
-    "include": ["src"],
+    "include": ["src", "declarations.d.ts"],
     "exclude": ["node_modules"]
 }

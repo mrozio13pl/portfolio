@@ -33,10 +33,12 @@
         "github-markdown-css": "^5.9.0",
         "ky": "^1.14.3",
         "lucide-react": "^0.577.0",
+        "maplibre-gl": "^5.19.0",
         "marked": "^17.0.4",
         "matter-js": "^0.20.0",
         "react": "19.3.0-canary-46103596-20260305",
         "react-dom": "19.3.0-canary-46103596-20260305",
+        "react-map-gl": "^8.1.0",
         "zustand": "^5.0.11"
     },
     "devDependencies": {
