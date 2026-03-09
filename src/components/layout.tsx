@@ -1,9 +1,9 @@
 import { lazy, type ReactNode } from 'react';
-import { SparklesCore } from '@/components/ui/sparkles';
 import '../globals.css';
 import 'uno.css';
 
 const Chat = lazy(() => import('@/components/chat/chat'));
+const Sparkles = lazy(() => import('@/components/ui/sparkles').then(m => ({ default: m.SparklesCore })));
 
 export function Layout({ children }: { children: ReactNode }) {
     return (
@@ -23,7 +23,7 @@ export function Layout({ children }: { children: ReactNode }) {
 
             <div className="absolute flex justify-center w-full z-3 pointer-events-none">
                 <div className="w-1/4 h-screen">
-                    <SparklesCore />
+                    <Sparkles />
                 </div>
             </div>
 

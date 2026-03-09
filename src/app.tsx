@@ -140,7 +140,7 @@ export function App() {
                         <div className='absolute px-4 lt-md:hidden'>
                             <div
                                 className="flex justify-between gap-8 pointer-events-none select-none w-full py-10">
-                                <div className="relative mt-12 mr-12 w-min z-1">
+                                <div className="relative mt-12 mr-12 w-min">
                                     <div className="bg-dot-white size-50 max-h-50 op-20" />
                                     <div className="size-50 absolute duration-100 rounded-md -right-8 -top-7.5 bg-gray-7" />
                                 </div>
@@ -241,7 +241,7 @@ export function App() {
                             <div className={clsx('duration-200 flex-1', collapsed && 'duration-300!')}>
                                 <div
                                     className={clsx(
-                                        'm-4 flex gap-2',
+                                        'm-4 flex gap-2 font-mono',
                                         collapsed && 'mobile:mt-40'
                                     )}>
                                     <span className='text-lime-3'>$</span>

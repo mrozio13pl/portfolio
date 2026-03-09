@@ -12,6 +12,10 @@ body {
     font-family: 'Sora Variable', sans-serif;
 }
 
+.font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
 .track {
     animation: slide 15s linear infinite;
 }

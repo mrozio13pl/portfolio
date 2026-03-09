@@ -1,6 +1,6 @@
 import { useTranslate } from "@/i18n";
 import { FallingIcons } from "../ui/falling-icons";
-import { SiArchlinux, SiBun, SiExpo, SiExpress, SiGit, SiHono, SiMongodb, SiNextdotjs, SiNodedotjs, SiPhp, SiReact, SiSqlite, SiTailwindcss, SiTmux, SiTypescript, SiVite } from "@icons-pack/react-simple-icons";
+import { SiArchlinux, SiBun, SiExpo, SiExpress, SiGit, SiHono, SiMongodb, SiNextdotjs, SiNodedotjs, SiPhp, SiReact, SiSqlite, SiTanstack, SiTailwindcss, SiTmux, SiTypescript, SiVite } from "@icons-pack/react-simple-icons";
 import { SiNodedotjsHex, SiReactHex, SiGitHex, SiArchlinuxHex, SiTypescriptHex, SiHonoHex, SiViteHex, SiSqliteHex, SiMongodbHex, SiTmuxHex, SiTailwindcssHex, SiExpoHex, SiPhpHex } from '@icons-pack/react-simple-icons';
 
 const icons = [
@@ -20,6 +20,7 @@ const icons = [
     { color: '#ccc', icon: SiExpress, size: 36 },
     { color: SiPhpHex, icon: SiPhp, size: 36 },
     { color: SiTailwindcssHex, icon: SiTailwindcss, size: 36 },
+    { color: '#a5ba10', icon: SiTanstack, size: 36 },
 ].map(({ icon: Icon, size, ...props }, i) => ({
     icon: <Icon key={i} size={size - 2} />,
     size,
