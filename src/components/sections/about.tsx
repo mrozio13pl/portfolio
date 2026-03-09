@@ -1,7 +1,39 @@
-import { useTranslate } from "@/i18n";
-import { FallingIcons } from "../ui/falling-icons";
-import { SiArchlinux, SiBun, SiExpo, SiExpress, SiGit, SiHono, SiMongodb, SiNextdotjs, SiNodedotjs, SiPhp, SiReact, SiSqlite, SiTanstack, SiTailwindcss, SiTmux, SiTypescript, SiVite } from "@icons-pack/react-simple-icons";
-import { SiNodedotjsHex, SiReactHex, SiGitHex, SiArchlinuxHex, SiTypescriptHex, SiHonoHex, SiViteHex, SiSqliteHex, SiMongodbHex, SiTmuxHex, SiTailwindcssHex, SiExpoHex, SiPhpHex } from '@icons-pack/react-simple-icons';
+import { useTranslate } from '@/i18n';
+import { FallingIcons } from '../ui/falling-icons';
+import {
+    SiArchlinux,
+    SiBun,
+    SiExpo,
+    SiExpress,
+    SiGit,
+    SiHono,
+    SiMongodb,
+    SiNextdotjs,
+    SiNodedotjs,
+    SiPhp,
+    SiReact,
+    SiSqlite,
+    SiTanstack,
+    SiTailwindcss,
+    SiTmux,
+    SiTypescript,
+    SiVite,
+} from '@icons-pack/react-simple-icons';
+import {
+    SiNodedotjsHex,
+    SiReactHex,
+    SiGitHex,
+    SiArchlinuxHex,
+    SiTypescriptHex,
+    SiHonoHex,
+    SiViteHex,
+    SiSqliteHex,
+    SiMongodbHex,
+    SiTmuxHex,
+    SiTailwindcssHex,
+    SiExpoHex,
+    SiPhpHex,
+} from '@icons-pack/react-simple-icons';
 
 const icons = [
     { color: '#fff', icon: SiNextdotjs, size: 62 },
@@ -24,7 +56,7 @@ const icons = [
 ].map(({ icon: Icon, size, ...props }, i) => ({
     icon: <Icon key={i} size={size - 2} />,
     size,
-    ...props
+    ...props,
 }));
 
 export function About() {
@@ -35,12 +67,10 @@ export function About() {
             <h2 className="font-primary font-extrabold text-3xl pt-12 text-cyan-3">
                 {t('greeting')}
             </h2>
-            <p className="mt-8 line-height-9">
-                {t('about')()}
-            </p>
+            <p className="mt-8 line-height-9">{t('about')()}</p>
             <div className="py-20 -z-1">
                 <FallingIcons icons={icons} />
             </div>
         </div>
-    )
+    );
 }

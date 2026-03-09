@@ -14,7 +14,15 @@ import { useScreenSize } from '@/hooks/screen';
 import { useTranslate } from '@/i18n';
 import { BIRTH_DATE, GITHUB, SECTIONS, TIMEZONE } from '@/constants';
 import { Cake, Clock2, Dot } from 'lucide-react';
-import { useEffect, useState, useRef, ViewTransition, startTransition, lazy, Suspense } from 'react';
+import {
+    useEffect,
+    useState,
+    useRef,
+    ViewTransition,
+    startTransition,
+    lazy,
+    Suspense,
+} from 'react';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
 
@@ -22,7 +30,7 @@ const mapMask = `
   linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%),
   linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 25%),
   linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 25%)
-`
+`;
 
 function getAge(birthDate: Date) {
     const today = new Date();
@@ -67,28 +75,16 @@ function Info() {
 
     return (
         <div className="w-full flex flex-col justify-center py-4 relative">
-            <h1 className="font-primary font-extrabold text-4xl tracking-tight">
-                mrozio
-            </h1>
-            <p className="text-white/50">
-                {t('profession')}
-            </p>
+            <h1 className="font-primary font-extrabold text-4xl tracking-tight">mrozio</h1>
+            <p className="text-white/50">{t('profession')}</p>
             <p className="text-white/50 mt-2">
                 📍 Rabka-Zdrój, {t('country')}{' '}
-                <img
-                    src="/poland.svg"
-                    className="inline-flex"
-                    height={20}
-                    width={20}
-                />
+                <img src="/poland.svg" className="inline-flex" height={20} width={20} />
             </p>
             <p className="text-white/50 flex gap-1 items-center">
                 <Clock2 />
                 {adjustTimeByHours(timeDifference)}
-                <span className="text-white/40">
-                    {' '}
-                    {t('hourDifference')(timeDifference)}
-                </span>
+                <span className="text-white/40"> {t('hourDifference')(timeDifference)}</span>
             </p>
             <p className="text-#8a8a8a flex gap-1 items-center">
                 <Cake />
@@ -101,7 +97,9 @@ function Info() {
     );
 }
 
-const LocationMap = lazy(() => import('@/components/map').then(m => ({ default: m.LocationMap })));
+const LocationMap = lazy(() =>
+    import('@/components/map').then((m) => ({ default: m.LocationMap })),
+);
 
 export function App() {
     const t = useTranslate();
@@ -137,14 +135,13 @@ export function App() {
             <TracingBeam>
                 <div className="flex justify-center z-5 min-h-dvh">
                     <div className="w-200 lt-mobile:w-[calc(100%-50px)]! px-10 relative antialiased flex flex-col">
-                        <div className='absolute px-4 lt-md:hidden'>
-                            <div
-                                className="flex justify-between gap-8 pointer-events-none select-none w-full py-10">
+                        <div className="absolute px-4 lt-md:hidden">
+                            <div className="flex justify-between gap-8 pointer-events-none select-none w-full py-10">
                                 <div className="relative mt-12 mr-12 w-min">
                                     <div className="bg-dot-white size-50 max-h-50 op-20" />
                                     <div className="size-50 absolute duration-100 rounded-md -right-8 -top-7.5 bg-gray-7" />
                                 </div>
-                                <div className='op-20 mt-4 z-1'>
+                                <div className="op-20 mt-4 z-1">
                                     <Info />
                                 </div>
                                 <div className="absolute top-0 -right-50 w-5/8 h-80 z-0">
@@ -171,13 +168,13 @@ export function App() {
                             </div>
                         </div>
 
-                        <ViewTransition name='info'>
+                        <ViewTransition name="info">
                             <div className={clsx(collapsed && 'md:h-48')} />
 
                             <motion.div
                                 className={clsx(
                                     'px-4 md:mt-0 mt-20 z-2',
-                                    collapsed && 'mobile:fixed'
+                                    collapsed && 'mobile:fixed',
                                 )}
                                 animate={{
                                     x: collapsed ? -300 : 0,
@@ -188,8 +185,9 @@ export function App() {
                                         'md:flex lt-mobile:block w-full py-10',
                                         collapsed
                                             ? 'flex-col hidden'
-                                            : 'flex justify-between gap-8'
-                                    )}>
+                                            : 'flex justify-between gap-8',
+                                    )}
+                                >
                                     <div className="relative mt-12 mr-12 w-min">
                                         <div className="bg-dot-white size-50 max-h-50" />
                                         <img
@@ -207,20 +205,25 @@ export function App() {
                             <div
                                 className={clsx(
                                     'duration-200 fixed w-230 lt-mobile:w-auto justify-end mt-16 flex pointer-events-none',
-                                    collapsed
-                                        ? 'op-100'
-                                        : 'op-0 cursor-none'
-                                )}>
+                                    collapsed ? 'op-100' : 'op-0 cursor-none',
+                                )}
+                            >
                                 <div className="md:flex flex-col gap-2 hidden pointer-events-auto">
                                     {SECTIONS.map((section, index) => (
-                                        <a href={'#' + section} key={index} onClick={() => startTransition(() => setCurrentSection(section))}>
+                                        <a
+                                            href={'#' + section}
+                                            key={index}
+                                            onClick={() =>
+                                                startTransition(() => setCurrentSection(section))
+                                            }
+                                        >
                                             <div className="flex items-center gap-2 capitalize">
                                                 <Dot
                                                     className={clsx(
                                                         'size-16 -m-6',
                                                         currentSection === section
                                                             ? 'text-cyan-3'
-                                                            : 'text-gray-7'
+                                                            : 'text-gray-7',
                                                     )}
                                                 />
                                                 <p className="hover:underline">
@@ -231,53 +234,82 @@ export function App() {
                                     ))}
                                     <div className="flex items-center">
                                         <LanguagePicker />
-                                        <p className='text-gray-3 text-xs'>{t('sections.with')}{' '}
-                                            <a target="_blank" href="https://mrozio13pl.github.io/i18n/" className="underline">@mrozio/i18n</a>
+                                        <p className="text-gray-3 text-xs">
+                                            {t('sections.with')}{' '}
+                                            <a
+                                                target="_blank"
+                                                href="https://mrozio13pl.github.io/i18n/"
+                                                className="underline"
+                                            >
+                                                @mrozio/i18n
+                                            </a>
                                         </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className={clsx('duration-200 flex-1', collapsed && 'duration-300!')}>
+                            <div
+                                className={clsx(
+                                    'duration-200 flex-1',
+                                    collapsed && 'duration-300!',
+                                )}
+                            >
                                 <div
                                     className={clsx(
                                         'm-4 flex gap-2 font-mono',
-                                        collapsed && 'mobile:mt-40'
-                                    )}>
-                                    <span className='text-lime-3'>$</span>
+                                        collapsed && 'mobile:mt-40',
+                                    )}
+                                >
+                                    <span className="text-lime-3">$</span>
                                     <Quote />
                                 </div>
 
                                 <Navbar />
 
-                                <div className='mx-2'>
+                                <div className="mx-2">
                                     {currentSection === 'about' && (
-                                        <ViewTransition name='about'>
-                                            <section ref={(el) => { sectionRefs.current.about = el }}>
+                                        <ViewTransition name="about">
+                                            <section
+                                                ref={(el) => {
+                                                    sectionRefs.current.about = el;
+                                                }}
+                                            >
                                                 <About />
                                             </section>
                                         </ViewTransition>
                                     )}
 
                                     {currentSection === 'experience' && (
-                                        <ViewTransition name='experience'>
-                                            <section ref={(el) => { sectionRefs.current.experience = el }}>
+                                        <ViewTransition name="experience">
+                                            <section
+                                                ref={(el) => {
+                                                    sectionRefs.current.experience = el;
+                                                }}
+                                            >
                                                 <Experience />
                                             </section>
                                         </ViewTransition>
                                     )}
 
                                     {currentSection === 'projects' && (
-                                        <ViewTransition name='projects'>
-                                            <section ref={(el) => { sectionRefs.current.projects = el }}>
+                                        <ViewTransition name="projects">
+                                            <section
+                                                ref={(el) => {
+                                                    sectionRefs.current.projects = el;
+                                                }}
+                                            >
                                                 <Projects />
                                             </section>
                                         </ViewTransition>
                                     )}
 
                                     {currentSection === 'contact' && (
-                                        <ViewTransition name='contact'>
-                                            <section ref={(el) => { sectionRefs.current.contact = el }}>
+                                        <ViewTransition name="contact">
+                                            <section
+                                                ref={(el) => {
+                                                    sectionRefs.current.contact = el;
+                                                }}
+                                            >
                                                 <Contact />
                                             </section>
                                         </ViewTransition>
@@ -286,7 +318,7 @@ export function App() {
                             </div>
                         </ViewTransition>
 
-                        <ViewTransition name='footer'>
+                        <ViewTransition name="footer">
                             <section id="footer" className={clsx(collapsed && 'md:mb-4')}>
                                 <Footer />
                             </section>

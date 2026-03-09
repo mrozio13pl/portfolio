@@ -25,7 +25,7 @@ export function Navbar() {
     const { currentSection, setCurrentSection } = useSection();
 
     return (
-        <span className='md:static fixed top-0 left-0 flex justify-center w-full z-6'>
+        <span className="md:static fixed top-0 left-0 flex justify-center w-full z-6">
             <nav className="bg-gray-800/40 mt-12 p-2 rounded-full md:w-full flex justify-between items-center text-xl [&_p]:select-none backdrop-blur-xl">
                 <div className="flex mobile:gap-1 items-center mx-2">
                     {SECTIONS.map((section, index) => {
@@ -36,13 +36,14 @@ export function Navbar() {
                                 variant="ghost"
                                 as="a"
                                 href={'#' + section}
-                                className={clsx("!p-2 capitalize", section === currentSection && 'bg-white/20 pointer-events-none')}
+                                className={clsx(
+                                    '!p-2 capitalize',
+                                    section === currentSection && 'bg-white/20 pointer-events-none',
+                                )}
                                 onClick={() => setCurrentSection(section)}
                                 key={index}
                             >
-                                <span className="mobile:block hidden">
-                                    {t(section)}
-                                </span>
+                                <span className="mobile:block hidden">{t(section)}</span>
                                 <span className="mobile:hidden">
                                     <Icon />
                                 </span>

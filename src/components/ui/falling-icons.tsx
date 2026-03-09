@@ -14,7 +14,11 @@ interface BodyState {
 
 const maxVelocity = 25;
 
-export function FallingIcons({ icons }: { icons: { icon: React.ReactNode; size: number; color: string; }[]; }) {
+export function FallingIcons({
+    icons,
+}: {
+    icons: { icon: React.ReactNode; size: number; color: string }[];
+}) {
     const containerRef = useRef<HTMLDivElement>(null);
     const engineRef = useRef(Matter.Engine.create());
     const [isGrabbing, setIsGrabbing] = useState(false);
@@ -30,7 +34,7 @@ export function FallingIcons({ icons }: { icons: { icon: React.ReactNode; size: 
         const height = containerRef.current.clientHeight;
 
         Matter.Events.on(engine, 'beforeUpdate', () => {
-            iconBodies.forEach(body => {
+            iconBodies.forEach((body) => {
                 const velocity = body.velocity;
                 const speed = Math.sqrt(velocity.x ** 2 + velocity.y ** 2);
 
@@ -38,7 +42,7 @@ export function FallingIcons({ icons }: { icons: { icon: React.ReactNode; size: 
                     const ratio = maxVelocity / speed;
                     Matter.Body.setVelocity(body, {
                         x: velocity.x * ratio,
-                        y: velocity.y * ratio
+                        y: velocity.y * ratio,
                     });
                 }
 
@@ -52,7 +56,7 @@ export function FallingIcons({ icons }: { icons: { icon: React.ReactNode; size: 
                 ) {
                     Matter.Body.setPosition(body, {
                         x: width / 2,
-                        y: 50
+                        y: 50,
                     });
                     Matter.Body.setVelocity(body, { x: 0, y: 0 });
                 }
@@ -62,40 +66,57 @@ export function FallingIcons({ icons }: { icons: { icon: React.ReactNode; size: 
         const runner = Matter.Runner.create();
         const iconBodies = icons.map(({ size }, i) => {
             return Matter.Bodies.rectangle(
-                Math.random() * (width - size) + (size / 2),
-                Math.min(window.innerHeight * (.5 + Math.random() * .5), window.innerHeight - size),
-                size, size,
+                Math.random() * (width - size) + size / 2,
+                Math.min(
+                    window.innerHeight * (0.5 + Math.random() * 0.5),
+                    window.innerHeight - size,
+                ),
+                size,
+                size,
                 {
                     restitution: 0.5,
                     friction: 0.1,
-                    label: `icon-${i}`
-                }
+                    label: `icon-${i}`,
+                },
             );
         });
 
-        const floor = Matter.Bodies.rectangle(width / 2, height + 25, width, 50, { isStatic: true });
+        const floor = Matter.Bodies.rectangle(width / 2, height + 25, width, 50, {
+            isStatic: true,
+        });
         const wallL = Matter.Bodies.rectangle(-25, height / 2, 50, height, { isStatic: true });
-        const wallR = Matter.Bodies.rectangle(width + 25, height / 2, 50, height, { isStatic: true });
+        const wallR = Matter.Bodies.rectangle(width + 25, height / 2, 50, height, {
+            isStatic: true,
+        });
         const ceiling = Matter.Bodies.rectangle(width / 2, -25, width, 50, { isStatic: true });
 
         const mouse = Matter.Mouse.create(containerRef.current);
         const mouseConstraint = Matter.MouseConstraint.create(engine, {
             mouse,
-            constraint: { stiffness: 0.2, render: { visible: false } }
+            constraint: { stiffness: 0.2, render: { visible: false } },
         });
 
-        Matter.Composite.add(engine.world, [...iconBodies, floor, ceiling, wallL, wallR, mouseConstraint]);
+        Matter.Composite.add(engine.world, [
+            ...iconBodies,
+            floor,
+            ceiling,
+            wallL,
+            wallR,
+            mouseConstraint,
+        ]);
         Matter.Runner.run(runner, engine);
 
         let frameId: number;
         const sync = () => {
-            setBodies(iconBodies.map(b => ({
-                id: b.id,
-                x: b.position.x,
-                y: b.position.y,
-                angle: b.angle,
-                speed: b.speed,
-            })));
+            setBodies(
+                iconBodies.map((b) => ({
+                    id: b.id,
+                    x: b.position.x,
+                    y: b.position.y,
+                    angle: b.angle,
+                    speed: b.speed,
+                })),
+            );
             frameId = requestAnimationFrame(sync);
         };
         sync();
@@ -119,19 +140,16 @@ export function FallingIcons({ icons }: { icons: { icon: React.ReactNode; size: 
             style={{ height }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: .5 }}
+            transition={{ duration: 0.5 }}
             className={clsx(
-                "absolute w-full left-0 bottom-0 mb-2",
-                isGrabbing ? 'pointer-events-auto' : 'pointer-events-none'
+                'absolute w-full left-0 bottom-0 mb-2',
+                isGrabbing ? 'pointer-events-auto' : 'pointer-events-none',
             )}
         >
-            <div
-                ref={containerRef}
-                className="relative size-full overflow-hidden"
-            >
+            <div ref={containerRef} className="relative size-full overflow-hidden">
                 {bodies.map((body, i) => {
                     const { size, color, icon } = icons[i];
-                     const intensity = colored ? Math.min(body.speed / (maxVelocity / 2), 1) : 0;
+                    const intensity = colored ? Math.min(body.speed / (maxVelocity / 2), 1) : 0;
 
                     return (
                         <div
@@ -145,18 +163,19 @@ export function FallingIcons({ icons }: { icons: { icon: React.ReactNode; size: 
                                 width: size,
                             }}
                         >
-                            <div className='relative'>
-                                <div className='text-gray7'>
-                                    {icon}
-                                </div>
-                                <div className='absolute top-0 group-active:opacity-100! duration-400' style={{ color, opacity: intensity }}>
+                            <div className="relative">
+                                <div className="text-gray7">{icon}</div>
+                                <div
+                                    className="absolute top-0 group-active:opacity-100! duration-400"
+                                    style={{ color, opacity: intensity }}
+                                >
                                     {icon}
                                 </div>
                             </div>
                         </div>
-                    )
+                    );
                 })}
             </div>
         </motion.div>
     );
-};
+}

@@ -13,12 +13,7 @@ import {
     RefreshCcw,
 } from 'lucide-react';
 import { Button } from '../ui/button';
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from '../ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 import { CHATFOLIO_ID } from '@/constants';
 import { useTranslate } from '@/i18n';
 import { TextShimmer } from '../ui/text-shimmer';
@@ -38,8 +33,9 @@ function Message({ message }: { message: TMessage }) {
         <div
             className={clsx(
                 'px-4 py-2 flex w-full',
-                message.role === 'user' ? 'justify-end' : 'justify-start gap-2'
-            )}>
+                message.role === 'user' ? 'justify-end' : 'justify-start gap-2',
+            )}
+        >
             <TooltipProvider>
                 <Tooltip>
                     <TooltipTrigger
@@ -48,19 +44,16 @@ function Message({ message }: { message: TMessage }) {
                             message.isError && 'bg-red-500/20',
                             message.role === 'assistant'
                                 ? 'text-left'
-                                : 'max-w-[60%] bg-gray-500/20 py-3 text-right'
-                        )}>
+                                : 'max-w-[60%] bg-gray-500/20 py-3 text-right',
+                        )}
+                    >
                         {message.isError && (
                             <span className="flex items-center gap-1">
                                 <MessageCircleWarning />
                                 <p className="font-medium text-lg">Woops!</p>
                             </span>
                         )}
-                        <Markdown
-                            content={
-                                message.isError ? errorMessage : message.content
-                            }
-                        />
+                        <Markdown content={message.isError ? errorMessage : message.content} />
                     </TooltipTrigger>
                     <TooltipContent side="bottom" className="text-xs bg-gray-8/90">
                         {timestamp}
@@ -82,8 +75,7 @@ export default function Chat() {
     const inputRef = useRef<HTMLInputElement>(null);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    const isDisabled =
-        isLoading || isBotTyping || !inputRef.current?.value.trim().length;
+    const isDisabled = isLoading || isBotTyping || !inputRef.current?.value.trim().length;
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -93,9 +85,7 @@ export default function Chat() {
         if (!containerRef.current) return false;
 
         return (
-            containerRef.current.scrollHeight -
-                containerRef.current.clientHeight -
-                200 <=
+            containerRef.current.scrollHeight - containerRef.current.clientHeight - 200 <=
             containerRef.current.scrollTop
         );
     };
@@ -143,17 +133,14 @@ export default function Chat() {
                 { role: 'assistant', content: '', timestamp: Date.now() },
             ]);
 
-            const { body } = await ky.post(
-                'https://my-chatfolio.vercel.app/api/v1/messages',
-                {
-                    json: {
-                        messages,
-                        message: input,
-                        clientId: CHATFOLIO_ID,
-                        stream: true,
-                    },
-                }
-            );
+            const { body } = await ky.post('https://my-chatfolio.vercel.app/api/v1/messages', {
+                json: {
+                    messages,
+                    message: input,
+                    clientId: CHATFOLIO_ID,
+                    stream: true,
+                },
+            });
 
             const reader = body!.getReader();
             const decoder = new TextDecoder('utf-8');
@@ -172,10 +159,8 @@ export default function Chat() {
 
                     setMessages((prev) => {
                         const updatedMessages = [...prev];
-                        updatedMessages[messages.length + 1].content =
-                            contentBuffer;
-                        updatedMessages[messages.length + 1].timestamp =
-                            Date.now();
+                        updatedMessages[messages.length + 1].content = contentBuffer;
+                        updatedMessages[messages.length + 1].timestamp = Date.now();
                         return updatedMessages;
                     });
                 }
@@ -201,20 +186,25 @@ export default function Chat() {
             className="fixed bottom-4 right-4 z-20 md:w-80 border border-gray-900/50 bg-gray-900/10 backdrop-blur-lg rounded-lg text-white flex flex-col lt-mobile:ml-4 body-locked:mr-4"
             animate={{ height: isCollapsed ? 'auto' : '55%' }}
             initial={false}
-            transition={{ type: 'tween', duration: 0.3 }}>
+            transition={{ type: 'tween', duration: 0.3 }}
+        >
             <div
                 className={clsx(
                     'py-4 lt-mobile:py-2 md:px-8 px-4 flex justify-between items-center w-full cursor-pointer *:select-none z-20',
-                    !isCollapsed && 'border-b border-b-gray-900/50'
+                    !isCollapsed && 'border-b border-b-gray-900/50',
                 )}
-                onClick={() => setIsCollapsed(!isCollapsed)}>
-                <div className={clsx("flex items-center gap-4", isCollapsed && 'lt-mobile:gap-2')}>
-                    <div className={clsx("bg-lime-5 animate-pulse rounded-full size-2.5 -ml-2", !isCollapsed && 'lt-mobile:!ml-0')} />
+                onClick={() => setIsCollapsed(!isCollapsed)}
+            >
+                <div className={clsx('flex items-center gap-4', isCollapsed && 'lt-mobile:gap-2')}>
+                    <div
+                        className={clsx(
+                            'bg-lime-5 animate-pulse rounded-full size-2.5 -ml-2',
+                            !isCollapsed && 'lt-mobile:!ml-0',
+                        )}
+                    />
                     <div className={clsx(isCollapsed && 'lt-mobile:hidden')}>
                         <p className="text-sm">{t('chat.header')}</p>
-                        <h1 className="font-primary font-extrabold text-2xl -mt-1">
-                            Mrozio
-                        </h1>
+                        <h1 className="font-primary font-extrabold text-2xl -mt-1">Mrozio</h1>
                     </div>
                     <div className={clsx('hidden', isCollapsed && 'lt-mobile:block')}>
                         <p className="text-sm">{t('chat.mobile')}</p>
@@ -222,7 +212,7 @@ export default function Chat() {
                 </div>
                 <div>
                     {isCollapsed ? (
-                        <ChevronUp className='lt-mobile:(ml-1 -mr-2)' size={16} />
+                        <ChevronUp className="lt-mobile:(ml-1 -mr-2)" size={16} />
                     ) : (
                         <ChevronDown size={16} />
                     )}
@@ -238,33 +228,29 @@ export default function Chat() {
                         collapsed: { height: 0, opacity: 0 },
                         expanded: { height: 'auto', opacity: 1 },
                     }}
-                    transition={{ type: 'tween', duration: 0.3 }}>
+                    transition={{ type: 'tween', duration: 0.3 }}
+                >
                     <div
                         className="flex flex-col w-full overflow-y-auto flex-grow"
-                        ref={containerRef}>
+                        ref={containerRef}
+                    >
                         {messages.length ? (
                             <>
                                 {messages
-                                    .filter(
-                                        (message) =>
-                                            message.content || message.isError
-                                    )
+                                    .filter((message) => message.content || message.isError)
                                     .map((message, index) => (
-                                        <Message
-                                            key={index}
-                                            message={message}
-                                        />
+                                        <Message key={index} message={message} />
                                     ))}
                                 {isLoading && (
-                                    <TextShimmer className='ml-4 mb-2 px-4 py-2 w-min'>{t('chat.loading')}</TextShimmer>
+                                    <TextShimmer className="ml-4 mb-2 px-4 py-2 w-min">
+                                        {t('chat.loading')}
+                                    </TextShimmer>
                                 )}
                             </>
                         ) : (
                             <div className="h-full flex flex-col justify-center items-center text-center overflow-y-auto overflow-x-hidden break-words">
                                 <Bot className="size-16" />
-                                <h2 className="font-semibold text-xl">
-                                    {t('chat.title')}
-                                </h2>
+                                <h2 className="font-semibold text-xl">{t('chat.title')}</h2>
                                 <p className="text-sm text-balance text-gray-4 mt-2">
                                     {t('chat.subtitle')}
                                 </p>
@@ -276,10 +262,7 @@ export default function Chat() {
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger>
-                                    <Button
-                                        className="!p-2"
-                                        disabled={isBotTyping}
-                                        onClick={reset}>
+                                    <Button className="!p-2" disabled={isBotTyping} onClick={reset}>
                                         <RefreshCcw />
                                     </Button>
                                 </TooltipTrigger>
@@ -309,7 +292,8 @@ export default function Chat() {
                                         type="button"
                                         className="!p-2 bg-lime-4 hover:bg-lime-5"
                                         onClick={() => submit()}
-                                        disabled={isDisabled}>
+                                        disabled={isDisabled}
+                                    >
                                         <ArrowUpRight />
                                     </Button>
                                 </TooltipTrigger>
@@ -326,7 +310,8 @@ export default function Chat() {
                                 href="https://my-chatfolio.vercel.app/"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="underline">
+                                className="underline"
+                            >
                                 Chatfolio
                             </a>{' '}
                             <Wink />

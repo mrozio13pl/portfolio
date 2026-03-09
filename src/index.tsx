@@ -15,7 +15,7 @@ if (container) {
             <SectionProvider>
                 <App />
             </SectionProvider>
-        </StrictMode>
+        </StrictMode>,
     );
 }
 

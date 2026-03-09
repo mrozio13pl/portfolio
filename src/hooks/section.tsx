@@ -12,7 +12,7 @@ const SectionContext = createContext<SectionContextType | undefined>(undefined);
 
 export const SectionProvider = ({ children }: { children: React.ReactNode }) => {
     const [currentSection, setCurrentSection] = useState<Section>(
-        (window.location.hash.slice(1) as Section) || 'about'
+        (window.location.hash.slice(1) as Section) || 'about',
     );
 
     const setSection = (section: Section) => {

@@ -12,14 +12,13 @@ export function Footer() {
                     href="https://github.com/mrozio13pl/portfolio"
                     rel="noreferrer"
                     target="_blank"
-                    className="underline inline-flex">
+                    className="underline inline-flex"
+                >
                     open source
                 </a>
                 <CodeXml />
             </p>
-            <p className="text-gray-7">
-                &copy; mrozio13pl ~ {new Date().getFullYear()}
-            </p>
+            <p className="text-gray-7">&copy; mrozio13pl ~ {new Date().getFullYear()}</p>
         </div>
     );
 }

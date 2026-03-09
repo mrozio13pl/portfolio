@@ -10,17 +10,17 @@ interface Experience {
 }
 
 const EXPERIENCES_EN: Experience[] = [
-
     {
         title: 'OLR Giewont',
         profession: 'Web Developer',
         date: '2024 - 2026',
         description: (
             <>
-                A classmate from my technical college got me into building websites for his family business,
-                which also happens to be the largest international racing pigeon loft in Europe.
-                I’ve since created and maintained sites like <Link href='https://mwggiewont.pl'>mwggiewont.pl</Link>
-                and <Link href='https://grandprixpoland.pl'>grandprixpoland.pl</Link>.
+                A classmate from my technical college got me into building websites for his family
+                business, which also happens to be the largest international racing pigeon loft in
+                Europe. I’ve since created and maintained sites like{' '}
+                <Link href="https://mwggiewont.pl">mwggiewont.pl</Link>
+                and <Link href="https://grandprixpoland.pl">grandprixpoland.pl</Link>.
             </>
         ),
     },
@@ -47,10 +47,10 @@ const EXPERIENCES_PL: Experience[] = [
         date: '2024 - 2026',
         description: (
             <>
-                Kolega z klasy technikum zaciągnął mnie do tworzenia stron internetowych dla ich firmy.
-                Jest to największy międzynarodowy gołębnik w Europie.
-                Stworzyłem i zajmuję się stronami takimi jak <Link href='https://mwggiewont.pl'>mwggiewont.pl</Link>
-                czy <Link href='https://grandprixpoland.pl'>grandprixpoland.pl</Link>.
+                Kolega z klasy technikum zaciągnął mnie do tworzenia stron internetowych dla ich
+                firmy. Jest to największy międzynarodowy gołębnik w Europie. Stworzyłem i zajmuję
+                się stronami takimi jak <Link href="https://mwggiewont.pl">mwggiewont.pl</Link>
+                czy <Link href="https://grandprixpoland.pl">grandprixpoland.pl</Link>.
             </>
         ),
     },
@@ -98,13 +98,8 @@ export function Experience() {
                                     <span className="font-extrabold text-lime-2 font-primary">
                                         {experience.title}
                                     </span>
-                                    <span className="text-gray7 font-extrabold">
-                                        {' '}
-                                        /{' '}
-                                    </span>
-                                    <span className="text-lg">
-                                        {experience.profession}
-                                    </span>
+                                    <span className="text-gray7 font-extrabold"> / </span>
+                                    <span className="text-lg">{experience.profession}</span>
                                 </h3>
                                 <p className="text-gray4">{experience.date}</p>
                             </div>

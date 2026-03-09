@@ -3,7 +3,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useRef } from 'react';
 import { LngLat } from 'maplibre-gl';
 
-const mapStyleURL = "https://tiles.openfreemap.org/styles/dark";
+const mapStyleURL = 'https://tiles.openfreemap.org/styles/dark';
 
 const target = new LngLat(19.9160931, 49.5730616);
 
@@ -12,12 +12,12 @@ export function LocationMap() {
 
     function animate() {
         mapRef.current?.flyTo({
-          center: target,
-          zoom: 12,
-          speed: 1,
-          curve: .82,
-          essential: true
-        })
+            center: target,
+            zoom: 12,
+            speed: 1,
+            curve: 0.82,
+            essential: true,
+        });
     }
 
     return (

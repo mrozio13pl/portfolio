@@ -11,7 +11,7 @@ const buttonVariants = cva(
                 ghost: 'duration-100 hover:bg-white/10',
             },
         },
-    }
+    },
 );
 type ButtonVariantProps = VariantProps<typeof buttonVariants>;
 
@@ -25,9 +25,7 @@ export function Button({
     variant?: ButtonVariantProps['variant'];
 } & React.HTMLProps<HTMLButtonElement>) {
     return (
-        <button
-            className={clsx(buttonVariants({ variant }), className)}
-            {...(props as any)}>
+        <button className={clsx(buttonVariants({ variant }), className)} {...(props as any)}>
             {children}
         </button>
     );

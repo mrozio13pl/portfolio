@@ -7,9 +7,7 @@ export function LanguagePicker() {
     const [locale, setLocale] = useLocale();
 
     return (
-        <Select
-            value={locale}
-            onValueChange={(value) => startTransition(() => setLocale(value))}>
+        <Select value={locale} onValueChange={(value) => startTransition(() => setLocale(value))}>
             <SelectTrigger className="w-min">
                 <Languages />
             </SelectTrigger>

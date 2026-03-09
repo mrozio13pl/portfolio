@@ -6,13 +6,7 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-    plugins: [
-        react(),
-        UnoCSS(),
-        ViteImageOptimizer(),
-        tsconfigPaths(),
-        html({ minify: true })
-    ],
+    plugins: [react(), UnoCSS(), ViteImageOptimizer(), tsconfigPaths(), html({ minify: true })],
     css: {
         transformer: 'lightningcss',
     },

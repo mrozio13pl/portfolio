@@ -1,6 +1,6 @@
-import { createI18n } from "@mrozio/i18n";
-import { Link } from "./components/ui/link";
-import { GITHUB } from "./constants";
+import { createI18n } from '@mrozio/i18n';
+import { Link } from './components/ui/link';
+import { GITHUB } from './constants';
 
 const trans = {
     en: {
@@ -32,16 +32,16 @@ const trans = {
         about() {
             return (
                 <>
-                    I'm a self-taught <span className='bg-gray-9 p-1 rounded-lg'>Full Stack Developer</span>.
-                    My interests focus on web development, useful automation, tech news, the dev space in general, video editing (including drone footage), gym and cycling.
+                    I'm a self-taught{' '}
+                    <span className="bg-gray-9 p-1 rounded-lg">Full Stack Developer</span>. My
+                    interests focus on web development, useful automation, tech news, the dev space
+                    in general, video editing (including drone footage), gym and cycling.
                     <br />
                     The only hobby I currently have is Arch Linux.
                     <br />
                     <br />
                     <span className="flex items-center">
-                        <Link
-                            href="#contact"
-                            className="text-cyan-1 ml-1">
+                        <Link href="#contact" className="text-cyan-1 ml-1">
                             Contact
                         </Link>
                     </span>
@@ -65,8 +65,7 @@ const trans = {
             header: 'Chat with',
             mobile: 'Chat',
             title: 'Welcome to my portfolio chat!',
-            subtitle:
-                "Ask me anything relevant to me, I'll try my best to answer it.",
+            subtitle: "Ask me anything relevant to me, I'll try my best to answer it.",
             placeholder: 'Ask me something...',
             send: 'Send',
             reset: 'Reset',
@@ -104,19 +103,18 @@ const trans = {
         about() {
             return (
                 <>
-                    Jestem <span className='bg-gray-9 p-1 rounded-lg'>Programistą Full Stack-owym</span>
-                    i samoukiem. Moje zainteresowania skupiają się na tworzeniu stron internetowych,
-                    przydatnej automatyzacji, nowinkach technologicznych, szeroko pojętym świecie programowania,
-                    montażu wideo (w tym ujęć z drona), siłowni oraz jeździe na rowerze.
+                    Jestem{' '}
+                    <span className="bg-gray-9 p-1 rounded-lg">Programistą Full Stack-owym</span>i
+                    samoukiem. Moje zainteresowania skupiają się na tworzeniu stron internetowych,
+                    przydatnej automatyzacji, nowinkach technologicznych, szeroko pojętym świecie
+                    programowania, montażu wideo (w tym ujęć z drona), siłowni oraz jeździe na
+                    rowerze.
                     <br />
                     Moim jedynym obecnie hobby jest Arch Linux.
                     <br />
                     <br />
                     <span className="flex items-center">
-                        <Link
-                            href="#contact"
-                            className="text-cyan-1 ml-1"
-                        >
+                        <Link href="#contact" className="text-cyan-1 ml-1">
                             Skontaktuj się
                         </Link>
                     </span>
@@ -140,8 +138,7 @@ const trans = {
             header: 'Porozmawiaj z',
             mobile: 'Chat',
             title: 'Witam na moim chatcie!',
-            subtitle:
-                'Pytaj mnie czegoś dotyczące mnie, postaram się na to odpowiedzieć.',
+            subtitle: 'Pytaj mnie czegoś dotyczące mnie, postaram się na to odpowiedzieć.',
             placeholder: 'Zapytaj mnie czegoś...',
             send: 'Wyślij',
             reset: 'Resetuj',

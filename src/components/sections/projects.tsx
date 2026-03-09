@@ -10,7 +10,9 @@ interface Project {
     category: 'big' | 'small' | 'library';
 }
 
-const Code = (props: React.ComponentProps<'code'>) => <code className='bg-gray-8/50 rounded-lg py-1 px-1.5' {...props} />;
+const Code = (props: React.ComponentProps<'code'>) => (
+    <code className="bg-gray-8/50 rounded-lg py-1 px-1.5" {...props} />
+);
 
 const projectsEn: Project[] = [
     {
@@ -30,7 +32,8 @@ const projectsEn: Project[] = [
         subtitle: 'Documentation',
         href: 'mrozio13pl.github.io/i18n',
         category: 'library',
-        description: 'A type-safe lightweight internalization library for React. Specifically made for the Giewont dashboard.',
+        description:
+            'A type-safe lightweight internalization library for React. Specifically made for the Giewont dashboard.',
     },
     {
         title: 'typle',
@@ -39,12 +42,29 @@ const projectsEn: Project[] = [
         category: 'library',
         description: (
             <p>
-                Just a simple CLI tool I made a long time ago that when run installs missing <Code>@types</Code> packages for typescript.
-                I now mainly use it for installing specific package like <Code>typle install react</Code>.
+                Just a simple CLI tool I made a long time ago that when run installs missing{' '}
+                <Code>@types</Code> packages for typescript. I now mainly use it for installing
+                specific package like <Code>typle install react</Code>.
                 <br />
-                Also used my own <a target="_blank" href="https://github.com/mrozio13pl/ofi" className='op-50 hover:underline'>CLI library</a> and <a target="_blank" href="https://github.com/mrozio13pl/clittle" className='op-50 hover:underline'>arguments parser</a> btw.
+                Also used my own{' '}
+                <a
+                    target="_blank"
+                    href="https://github.com/mrozio13pl/ofi"
+                    className="op-50 hover:underline"
+                >
+                    CLI library
+                </a>{' '}
+                and{' '}
+                <a
+                    target="_blank"
+                    href="https://github.com/mrozio13pl/clittle"
+                    className="op-50 hover:underline"
+                >
+                    arguments parser
+                </a>{' '}
+                btw.
             </p>
-        )
+        ),
     },
     {
         title: 'Sudoku in terminal',
@@ -53,11 +73,12 @@ const projectsEn: Project[] = [
         category: 'small',
         description: (
             <p>
-                Sudoku game in terminal with different levels of difficulty, settings, replays, themes made with React and Ink.
+                Sudoku game in terminal with different levels of difficulty, settings, replays,
+                themes made with React and Ink.
                 <br />
                 You can try it by typing <Code>npx sudoku-in-terminal</Code> in terminal.
             </p>
-        )
+        ),
     },
     {
         title: 'UNO (Multiplayer Online)',
@@ -65,7 +86,7 @@ const projectsEn: Project[] = [
         href: 'github.com/mrozio13pl/uno',
         category: 'small',
         description: dedent`This is a simple UNO implementation using NodeJS and WebSockets with logs, rooms, chat and basic player managent. The implementation of this is a little bit cursed as it was basically my first more advanced project.`,
-    }
+    },
 ];
 
 const projectsPl: Project[] = [
@@ -86,7 +107,8 @@ const projectsPl: Project[] = [
         subtitle: 'Dokumentacja',
         href: 'mrozio13pl.github.io/i18n',
         category: 'library',
-        description: 'Typowana, mała biblioteka do tworzenia tłumaczeń w React. Stworzona specjalnie na potrzeby panelu Giewont.',
+        description:
+            'Typowana, mała biblioteka do tworzenia tłumaczeń w React. Stworzona specjalnie na potrzeby panelu Giewont.',
     },
     {
         title: 'typle',
@@ -95,12 +117,29 @@ const projectsPl: Project[] = [
         category: 'library',
         description: (
             <p>
-                Proste narzędzie CLI, które stworzyłem dawno temu. Po uruchomieniu automatycznie instaluje brakujące biblioteki <Code>@types</Code> dla TypeScripta.
-                Obecnie używam go głównie do instalowania konkretnych paczek, np. <Code>typle install react</Code>.
+                Proste narzędzie CLI, które stworzyłem dawno temu. Po uruchomieniu automatycznie
+                instaluje brakujące biblioteki <Code>@types</Code> dla TypeScripta. Obecnie używam
+                go głównie do instalowania konkretnych paczek, np. <Code>typle install react</Code>.
                 <br />
-                Przy okazji, wykorzystałem tu własną <a target="_blank" href="https://github.com/mrozio13pl/ofi" className='op-50 hover:underline'>bibliotekę CLI</a> oraz <a target="_blank" href="https://github.com/mrozio13pl/clittle" className='op-50 hover:underline'>parser argumentów</a>.
+                Przy okazji, wykorzystałem tu własną{' '}
+                <a
+                    target="_blank"
+                    href="https://github.com/mrozio13pl/ofi"
+                    className="op-50 hover:underline"
+                >
+                    bibliotekę CLI
+                </a>{' '}
+                oraz{' '}
+                <a
+                    target="_blank"
+                    href="https://github.com/mrozio13pl/clittle"
+                    className="op-50 hover:underline"
+                >
+                    parser argumentów
+                </a>
+                .
             </p>
-        )
+        ),
     },
     {
         title: 'Sudoku w terminalu',
@@ -109,11 +148,13 @@ const projectsPl: Project[] = [
         category: 'small',
         description: (
             <p>
-                Gra Sudoku w terminalu z różnymi poziomami trudności, ustawieniami, powtórkami i motywami, zbudowana przy użyciu React i Ink.
+                Gra Sudoku w terminalu z różnymi poziomami trudności, ustawieniami, powtórkami i
+                motywami, zbudowana przy użyciu React i Ink.
                 <br />
-                Możesz ją wypróbować, wpisując <Code>npx sudoku-in-terminal</Code> w swoim terminalu.
+                Możesz ją wypróbować, wpisując <Code>npx sudoku-in-terminal</Code> w swoim
+                terminalu.
             </p>
-        )
+        ),
     },
     {
         title: 'UNO (Multiplayer Online)',
@@ -121,71 +162,103 @@ const projectsPl: Project[] = [
         href: 'github.com/mrozio13pl/uno',
         category: 'small',
         description: dedent`Prosta implementacja gry UNO przy użyciu Node.js i WebSockets, zawierająca logi, pokoje, czat i podstawowe zarządzanie graczami. Kod tego projektu jest nieco brzydki, ponieważ był to mój pierwszy bardziej zaawansowany projekt.`,
-    }
+    },
 ];
 
 export function Projects() {
     const t = useTranslate()('projectsSection');
     const [locale] = useLocale();
-    const Separator = () => <div className='h-1 w-full bg-white/5 my-8' />;
+    const Separator = () => <div className="h-1 w-full bg-white/5 my-8" />;
 
     const projects = locale === 'en' ? projectsEn : projectsPl;
 
     return (
-        <div className='mb-6'>
-            <h2 className="font-primary font-extrabold text-4xl text-cyan-3 py-12">
-                {t('title')}
-            </h2>
+        <div className="mb-6">
+            <h2 className="font-primary font-extrabold text-4xl text-cyan-3 py-12">{t('title')}</h2>
 
-            <div className='leading-8'>
+            <div className="leading-8">
                 <div>
-                    {projects.filter(p => p.category === 'big').map((project, index) => (
-                        <div key={index} className='flex flex-col gap-y-4'>
-                            <div>
-                                <h3 className='font-primary font-extrabold text-2xl'>{project.title}</h3>
-                                <a className='op-50 hover:underline' href={`https://${project.href}/`} target="_blank">{project.subtitle || project.href}</a>
+                    {projects
+                        .filter((p) => p.category === 'big')
+                        .map((project, index) => (
+                            <div key={index} className="flex flex-col gap-y-4">
+                                <div>
+                                    <h3 className="font-primary font-extrabold text-2xl">
+                                        {project.title}
+                                    </h3>
+                                    <a
+                                        className="op-50 hover:underline"
+                                        href={`https://${project.href}/`}
+                                        target="_blank"
+                                    >
+                                        {project.subtitle || project.href}
+                                    </a>
+                                </div>
+                                <p className="whitespace-pre-wrap text-#F7F7E3 text-balance">
+                                    {project.description}
+                                </p>
                             </div>
-                            <p className='whitespace-pre-wrap text-#F7F7E3 text-balance'>
-                                {project.description}
-                            </p>
-                        </div>
-                    ))}
+                        ))}
                 </div>
 
                 <Separator />
 
-                <div className='space-y-12'>
-                    <h4 className='font-primary font-extrabold text-2xl text-cyan-2'>{t('libraries')}</h4>
+                <div className="space-y-12">
+                    <h4 className="font-primary font-extrabold text-2xl text-cyan-2">
+                        {t('libraries')}
+                    </h4>
 
-                    {projects.filter(p => p.category === 'library').map((project, index) => (
-                        <div key={index} className='flex flex-col gap-y-4'>
-                            <div>
-                                <h3 className='font-primary font-bold text-xl'>{project.title}</h3>
-                                <a className='op-50 hover:underline' href={`https://${project.href}/`} target="_blank">{project.subtitle || project.href}</a>
+                    {projects
+                        .filter((p) => p.category === 'library')
+                        .map((project, index) => (
+                            <div key={index} className="flex flex-col gap-y-4">
+                                <div>
+                                    <h3 className="font-primary font-bold text-xl">
+                                        {project.title}
+                                    </h3>
+                                    <a
+                                        className="op-50 hover:underline"
+                                        href={`https://${project.href}/`}
+                                        target="_blank"
+                                    >
+                                        {project.subtitle || project.href}
+                                    </a>
+                                </div>
+                                <p className="whitespace-pre-wrap text-#F7F7E3">
+                                    {project.description}
+                                </p>
                             </div>
-                            <p className='whitespace-pre-wrap text-#F7F7E3'>
-                                {project.description}
-                            </p>
-                        </div>
-                    ))}
+                        ))}
                 </div>
 
                 <Separator />
 
-                <div className='space-y-12'>
-                    <h4 className='font-primary font-extrabold text-2xl text-cyan-2'>{t('small')}</h4>
+                <div className="space-y-12">
+                    <h4 className="font-primary font-extrabold text-2xl text-cyan-2">
+                        {t('small')}
+                    </h4>
 
-                    {projects.filter(p => p.category === 'small').map((project, index) => (
-                        <div key={index} className='flex flex-col gap-y-4'>
-                            <div>
-                                <h3 className='font-primary font-bold text-xl'>{project.title}</h3>
-                                <a className='op-50 hover:underline' href={`https://${project.href}/`} target="_blank">{project.subtitle || project.href}</a>
+                    {projects
+                        .filter((p) => p.category === 'small')
+                        .map((project, index) => (
+                            <div key={index} className="flex flex-col gap-y-4">
+                                <div>
+                                    <h3 className="font-primary font-bold text-xl">
+                                        {project.title}
+                                    </h3>
+                                    <a
+                                        className="op-50 hover:underline"
+                                        href={`https://${project.href}/`}
+                                        target="_blank"
+                                    >
+                                        {project.subtitle || project.href}
+                                    </a>
+                                </div>
+                                <p className="whitespace-pre-wrap text-#F7F7E3 text-balance op-90">
+                                    {project.description}
+                                </p>
                             </div>
-                            <p className='whitespace-pre-wrap text-#F7F7E3 text-balance op-90'>
-                                {project.description}
-                            </p>
-                        </div>
-                    ))}
+                        ))}
                 </div>
             </div>
         </div>

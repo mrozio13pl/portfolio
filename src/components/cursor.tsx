@@ -84,14 +84,15 @@ export function Cursor() {
     const transformScale = isClicked
         ? 2
         : velocityMagnitude < 10
-        ? 0.75
-        : Math.min(2, 0.5 + velocityMagnitude / 750);
+          ? 0.75
+          : Math.min(2, 0.5 + velocityMagnitude / 750);
 
     return (
         <motion.div
             animate={cursorControls}
             className="pointer-events-none fixed z-15 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-transparent lt-mobile:hidden"
-            style={{ left: `${cursor.x}px`, top: `${cursor.y}px` }}>
+            style={{ left: `${cursor.x}px`, top: `${cursor.y}px` }}
+        >
             <motion.div
                 animate={{
                     scale: transformScale,

@@ -1,24 +1,23 @@
 {
     "name": "mrozio13pl-portfolio",
     "version": "1.0.0",
-    "description": "mrozio's portfolio website",
-    "type": "module",
     "private": true,
+    "description": "mrozio's portfolio website",
+    "license": "Apache-2.0",
+    "author": "mrozio13pl",
+    "type": "module",
     "scripts": {
         "build": "vite build",
         "dev": "vite dev",
         "preview": "vite preview",
-        "lint": "oxlint ."
-    },
-    "author": "mrozio13pl",
-    "license": "Apache-2.0",
-    "engines": {
-        "node": ">=18"
+        "lint": "oxlint .",
+        "format": "nano-staged",
+        "prepare": "simple-git-hooks"
     },
     "dependencies": {
         "@fontsource-variable/sora": "^5.2.8",
         "@fontsource/poppins": "^5.2.7",
-        "@icons-pack/react-simple-icons": "^10.2.0",
+        "@icons-pack/react-simple-icons": "^13.12.0",
         "@mrozio/i18n": "^0.0.1",
         "@radix-ui/react-select": "^2.2.6",
         "@radix-ui/react-tooltip": "^1.2.8",
@@ -30,7 +29,7 @@
         "copy-text-to-clipboard": "^3.2.2",
         "dedent": "^1.7.2",
         "dompurify": "^3.3.2",
-        "framer-motion": "^12.35.1",
+        "framer-motion": "^12.35.2",
         "github-markdown-css": "^5.9.0",
         "ky": "^1.14.3",
         "lucide-react": "^0.577.0",
@@ -51,10 +50,13 @@
         "@types/react-dom": "^19.2.3",
         "@unocss/reset": "^66.6.6",
         "@vitejs/plugin-react": "^5.1.4",
-        "lightningcss": "^1.31.1",
+        "lightningcss": "^1.32.0",
         "mini-svg-data-uri": "^1.4.4",
+        "nano-staged": "^0.9.0",
+        "oxfmt": "^0.36.0",
         "oxlint": "^1.51.0",
         "sharp": "^0.34.5",
+        "simple-git-hooks": "^2.13.1",
         "svgo": "^4.0.1",
         "typescript": "^5.9.3",
         "unocss": "^66.6.6",
@@ -63,12 +65,23 @@
         "vite-plugin-simple-html": "^1.1.0",
         "vite-tsconfig-paths": "^6.1.1"
     },
+    "simple-git-hooks": {
+        "pre-commit": "pnpm format"
+    },
+    "nano-staged": {
+        "*.{js,ts,tsx}": "oxlint --fix",
+        "*": "oxfmt --no-error-on-unmatched-pattern"
+    },
+    "engines": {
+        "node": ">=18"
+    },
     "pnpm": {
         "onlyBuiltDependencies": [
             "@swc/core",
             "@tsparticles/engine",
             "esbuild",
-            "sharp"
+            "sharp",
+            "simple-git-hooks"
         ]
     }
 }

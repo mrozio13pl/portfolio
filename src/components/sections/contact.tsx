@@ -1,11 +1,6 @@
 import { EMAIL, LINKED_IN } from '@/constants';
 import { Link } from '@/components/ui/link';
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Copy } from 'lucide-react';
 import { useTranslate } from '@/i18n';
 import { Button } from '@/components/ui/button';
@@ -18,38 +13,36 @@ export function Contact() {
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
-      useEffect(() => {
+    useEffect(() => {
         let phi = 3.8;
 
         if (!canvasRef.current) return;
 
         const globe = createGlobe(canvasRef.current, {
-          devicePixelRatio: 2,
-          width: 600 * 2,
-          height: 600 * 2,
-          phi,
-          theta: 0,
-          dark: .95,
-          diffuse: 0.5,
-          mapSamples: 15000,
-          mapBrightness: 6,
-          baseColor: [0.3, 0.3, 0.3],
-          markerColor: [0.016, 0.765, 0.988],
+            devicePixelRatio: 2,
+            width: 600 * 2,
+            height: 600 * 2,
+            phi,
+            theta: 0,
+            dark: 0.95,
+            diffuse: 0.5,
+            mapSamples: 15000,
+            mapBrightness: 6,
+            baseColor: [0.3, 0.3, 0.3],
+            markerColor: [0.016, 0.765, 0.988],
             glowColor: [1, 1, 1],
-            opacity: .9,
-          markers: [
-            { location: [49.5730616, 19.9160931], size: .025, },
-          ],
-          onRender: (state) => {
-              state.phi = phi;
-            phi += 0.0005;
-          },
+            opacity: 0.9,
+            markers: [{ location: [49.5730616, 19.9160931], size: 0.025 }],
+            onRender: (state) => {
+                state.phi = phi;
+                phi += 0.0005;
+            },
         });
 
         return () => {
-          globe.destroy();
+            globe.destroy();
         };
-      }, []);
+    }, []);
 
     return (
         <div className="relative py-20 mb-20 mt-12">
@@ -63,9 +56,7 @@ export function Contact() {
                         <p>{t('1')}</p>
                         <p>
                             {t('2')}{' '}
-                            <Link
-                                href={'mailto:' + EMAIL}
-                                className="text-cyan-1">
+                            <Link href={'mailto:' + EMAIL} className="text-cyan-1">
                                 email
                             </Link>{' '}
                             {t('3')}{' '}
@@ -78,14 +69,10 @@ export function Contact() {
                                     </TooltipTrigger>
                                     <TooltipContent>
                                         <div className="flex gap-1 items-center">
-                                            <Button
-                                                className="!p-2"
-                                                variant="ghost">
+                                            <Button className="!p-2" variant="ghost">
                                                 <Copy
                                                     className="size-4"
-                                                    onClick={() =>
-                                                        copy('mrozio13pl')
-                                                    }
+                                                    onClick={() => copy('mrozio13pl')}
                                                 />
                                             </Button>
                                             <p>mrozio13pl</p>
@@ -97,10 +84,7 @@ export function Contact() {
                         </p>
                         <p>
                             {t('4')}{' '}
-                            <Link
-                                href={LINKED_IN}
-                                target="_blank"
-                                className="text-cyan-1">
+                            <Link href={LINKED_IN} target="_blank" className="text-cyan-1">
                                 LinkedIn
                             </Link>
                             .
@@ -128,7 +112,7 @@ export function Contact() {
                 <canvas
                     ref={canvasRef}
                     className="size-600px lt-mobile:w-200px"
-                    style={{ maxWidth: "100%", aspectRatio: 1 }}
+                    style={{ maxWidth: '100%', aspectRatio: 1 }}
                 />
             </div>
         </div>

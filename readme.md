@@ -4,7 +4,7 @@
 
 Just a personal website. Nothing to see here.
 
-Chatbot created with my own [Chatfolio](https://my-chatfolio.vercel.app/). 
+Chatbot created with my own [Chatfolio](https://my-chatfolio.vercel.app/).
 
 Made with TypeScript, React, UnoCSS and Vite.
 
