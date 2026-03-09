@@ -14,10 +14,9 @@ import { useScreenSize } from '@/hooks/screen';
 import { useTranslate } from '@/i18n';
 import { BIRTH_DATE, GITHUB, SECTIONS, TIMEZONE } from '@/constants';
 import { Cake, Clock2, Dot } from 'lucide-react';
-import { useEffect, useState, useRef, ViewTransition, startTransition } from 'react';
+import { useEffect, useState, useRef, ViewTransition, startTransition, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
-import { LocationMap } from './components/map';
 
 const mapMask = `
   linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%),
@@ -102,6 +101,8 @@ function Info() {
     );
 }
 
+const LocationMap = lazy(() => import('@/components/map').then(m => ({ default: m.LocationMap })));
+
 export function App() {
     const t = useTranslate();
 
@@ -146,7 +147,7 @@ export function App() {
                                 <div className='op-20 mt-4 z-1'>
                                     <Info />
                                 </div>
-                                <div className="absolute top-0 -right-50 w-2/3 h-80 z-0">
+                                <div className="absolute top-0 -right-50 w-5/8 h-80 z-0">
                                     <div
                                         className="size-full bg-#141414"
                                         style={{
@@ -155,7 +156,16 @@ export function App() {
                                             maskComposite: 'intersect',
                                         }}
                                     >
-                                        <LocationMap />
+                                        <Suspense fallback={null}>
+                                            <motion.div
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                transition={{ duration: 0.5 }}
+                                                className="size-full"
+                                            >
+                                                <LocationMap />
+                                            </motion.div>
+                                        </Suspense>
                                     </div>
                                 </div>
                             </div>
