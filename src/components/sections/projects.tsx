@@ -1,5 +1,4 @@
 import { useLocale, useTranslate } from '@/i18n';
-import { Pickaxe } from 'lucide-react';
 import dedent from 'dedent';
 import type { ReactNode } from 'react';
 

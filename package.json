@@ -26,6 +26,7 @@
         "@tsparticles/slim": "^3.9.1",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
+        "cobe": "^0.6.5",
         "copy-text-to-clipboard": "^3.2.2",
         "dedent": "^1.7.2",
         "dompurify": "^3.3.2",
