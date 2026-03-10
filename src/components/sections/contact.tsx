@@ -13,6 +13,8 @@ export function Contact() {
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
+    const size = Math.min(document.body.getBoundingClientRect().width - 160, 600);
+
     useEffect(() => {
         let phi = 3.8;
 
@@ -20,8 +22,8 @@ export function Contact() {
 
         const globe = createGlobe(canvasRef.current, {
             devicePixelRatio: 2,
-            width: 600 * 2,
-            height: 600 * 2,
+            width: size * 2,
+            height: size * 2,
             phi,
             theta: 0,
             dark: 0.95,
@@ -29,13 +31,13 @@ export function Contact() {
             mapSamples: 15000,
             mapBrightness: 6,
             baseColor: [0.3, 0.3, 0.3],
-            markerColor: [0.016, 0.765, 0.988],
+            markerColor: [0.5, 1, 1],
             glowColor: [1, 1, 1],
             opacity: 0.9,
-            markers: [{ location: [49.5730616, 19.9160931], size: 0.025 }],
+            markers: [{ location: [49.5730616, 19.9160931], size: 0.05 }],
             onRender: (state) => {
                 state.phi = phi;
-                phi += 0.0005;
+                phi += 0.00025;
             },
         });
 
@@ -45,7 +47,7 @@ export function Contact() {
     }, []);
 
     return (
-        <div className="relative py-20 mb-20 mt-12">
+        <div className="relative mobile:py-20 mb-20 mt-12">
             <div className="z-10">
                 <h2 className="font-primary font-extrabold text-6xl lt-mobile:text-4xl mt-12 text-center">
                     {t('title')}
@@ -108,11 +110,20 @@ export function Contact() {
                 }}
                 className="h-100 duration-100 mobile:w-[calc(100%-100px)] w-full absolute top-0 left-30 transform-origin-cc animate-first pointer-events-none"
             />
-            <div className="mt-18 -mb-160px min-h-200px max-h-[calc(100dvh-1200px+300px)] flex justify-center overflow-hidden op-30">
+            <div
+                className="mt-18 max-h-[calc(100dvh-1200px+300px)] lt-mobile:-mb-20 -mb-40 flex justify-center overflow-hidden op-30"
+                style={{
+                    minHeight: size / 3,
+                }}
+            >
                 <canvas
                     ref={canvasRef}
-                    className="size-600px lt-mobile:w-200px"
-                    style={{ maxWidth: '100%', aspectRatio: 1 }}
+                    style={{
+                        maxWidth: '100%',
+                        aspectRatio: 1,
+                        height: size + 'px',
+                        width: size + 'px',
+                    }}
                 />
             </div>
         </div>
