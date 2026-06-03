@@ -4,6 +4,7 @@ import { Quote } from '@/components/quote';
 import { Contact } from '@/components/sections/contact';
 import { Navbar } from '@/components/navbar';
 import { TracingBeam } from '@/components/ui/tracing-beam';
+import { MorphingText } from '@/components/ui/morphing-text';
 import { LanguagePicker } from '@/components/language-picker';
 import { Experience } from '@/components/sections/experience';
 import { Footer } from '@/components/footer';
@@ -69,13 +70,24 @@ function adjustTimeByHours(increment: number) {
     return `${hours}:${minutes}`;
 }
 
-function Info() {
+interface InfoProps {
+    isNameHovered?: boolean;
+    onNameHoverChange?: (isNameHovered: boolean) => void;
+}
+
+function Info({ isNameHovered, onNameHoverChange }: InfoProps) {
     const t = useTranslate();
     const timeDifference = getTimezoneDifference(TIMEZONE);
 
     return (
         <div className="w-full flex flex-col justify-center py-4 relative">
-            <h1 className="font-primary font-extrabold text-4xl tracking-tight">mrozio</h1>
+            <MorphingText
+                className="font-primary font-extrabold text-4xl h-12 tracking-tight -ml-2px"
+                text="Jakub Mrożek"
+                hoverText="mrozio"
+                isHovered={isNameHovered}
+                onHoverChange={onNameHoverChange}
+            />
             <p className="text-white/50">{t('profession')}</p>
             <p className="text-white/50 mt-2">
                 📍 Rabka-Zdrój, {t('country')}{' '}
@@ -107,6 +119,7 @@ export function App() {
     const { currentSection, setCurrentSection } = useSection();
     const [scrollY, setScrollY] = useState(0);
     const [collapsed, setCollapsed] = useState(false);
+    const [isNameHovered, setIsNameHovered] = useState(false);
     const { width } = useScreenSize();
 
     const sectionRefs = useRef<{
@@ -142,7 +155,10 @@ export function App() {
                                     <div className="size-50 absolute duration-100 rounded-md -right-8 -top-7.5 bg-gray-7" />
                                 </div>
                                 <div className="op-20 mt-4 z-1">
-                                    <Info />
+                                    <Info
+                                        isNameHovered={isNameHovered}
+                                        onNameHoverChange={setIsNameHovered}
+                                    />
                                 </div>
                                 <div className="absolute top-0 -right-50 w-5/8 h-80 z-0">
                                     <div
@@ -198,7 +214,10 @@ export function App() {
                                             height={200}
                                         />
                                     </div>
-                                    <Info />
+                                    <Info
+                                        isNameHovered={isNameHovered}
+                                        onNameHoverChange={setIsNameHovered}
+                                    />
                                 </div>
                             </motion.div>
 
