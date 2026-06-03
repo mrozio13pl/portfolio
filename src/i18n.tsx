@@ -1,6 +1,5 @@
 import { createI18n } from '@mrozio/i18n';
-import { Link } from './components/ui/link';
-import { GITHUB } from './constants';
+import { Link } from '@/components/ui/link';
 
 const trans = {
     en: {
@@ -159,4 +158,5 @@ export const { useTranslate, useLocale, locales, translations } = createI18n(tra
     onLocaleChange(locale) {
         localStorage.setItem('locale', locale);
     },
+    fallbackLocales: ['en', 'pl'],
 });

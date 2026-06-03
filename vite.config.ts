@@ -3,11 +3,13 @@ import react from '@vitejs/plugin-react';
 import UnoCSS from 'unocss/vite';
 import html from 'vite-plugin-simple-html';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
-import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-    plugins: [react(), UnoCSS(), ViteImageOptimizer(), tsconfigPaths(), html({ minify: true })],
+    plugins: [react(), UnoCSS(), ViteImageOptimizer(), html({ minify: true })],
     css: {
         transformer: 'lightningcss',
+    },
+    resolve: {
+        tsconfigPaths: true,
     },
 });

@@ -44,7 +44,7 @@ export function Contact() {
         return () => {
             globe.destroy();
         };
-    }, []);
+    }, [size]);
 
     return (
         <div className="relative mobile:py-20 mb-20 mt-12">

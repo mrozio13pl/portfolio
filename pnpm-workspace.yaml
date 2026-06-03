@@ -1,0 +1,7 @@
+packages:
+    - ./
+allowBuilds:
+    '@tsparticles/engine': true
+    esbuild: true
+    sharp: true
+    simple-git-hooks: true
