@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { SiGithub } from '@icons-pack/react-simple-icons';
-import { AtSign } from 'lucide-react';
+import { AtSign, FileUser } from 'lucide-react';
 import { clsx } from 'clsx';
 import { EMAIL, GITHUB, LINKED_IN } from '@/constants';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 
 // this is bcs i cant upgrade simple icons since they removed some mcroslop related icons like linkedin i believe
 // simple-icons/simple-icons#10019
@@ -25,6 +26,16 @@ export function Socials() {
 
     return (
         <div className="mt-4 flex gap-2">
+            <TooltipProvider>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                        <a href="/cv.pdf" rel="noreferrer" target="_blank" className={className}>
+                            <FileUser />
+                        </a>
+                    </TooltipTrigger>
+                    <TooltipContent>Resume</TooltipContent>
+                </Tooltip>
+            </TooltipProvider>
             <a href={GITHUB} rel="noreferrer" target="_blank" className={className}>
                 <SiGithub />
             </a>
