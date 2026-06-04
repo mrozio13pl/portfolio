@@ -2,7 +2,7 @@
 
 import { useCallback, useId, useMemo } from 'react';
 import Particles from '@tsparticles/react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation } from 'motion/react';
 import { clsx } from 'clsx';
 import type { Container, ISourceOptions, SingleOrMultiple } from '@tsparticles/engine';
 

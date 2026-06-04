@@ -24,7 +24,7 @@ import {
     lazy,
     Suspense,
 } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { clsx } from 'clsx';
 import { Button } from './components/ui/button';
 

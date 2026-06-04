@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation } from 'motion/react';
 
 export function Cursor() {
     const [cursor, setCursor] = useState({ x: 0, y: 0 });
