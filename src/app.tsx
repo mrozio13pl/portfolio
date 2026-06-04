@@ -26,6 +26,7 @@ import {
 } from 'react';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
+import { Button } from './components/ui/button';
 
 const mapMask = `
   linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%),
@@ -73,11 +74,11 @@ function adjustTimeByHours(increment: number) {
 interface InfoProps {
     isNameHovered?: boolean;
     onNameHoverChange?: (isNameHovered: boolean) => void;
+    isBackground?: boolean;
 }
 
-function Info({ isNameHovered, onNameHoverChange }: InfoProps) {
+function Info({ isNameHovered, onNameHoverChange, isBackground }: InfoProps) {
     const t = useTranslate();
-    const timeDifference = getTimezoneDifference(TIMEZONE);
 
     return (
         <div className="w-full flex flex-col justify-center py-4 relative">
@@ -88,15 +89,10 @@ function Info({ isNameHovered, onNameHoverChange }: InfoProps) {
                 isHovered={isNameHovered}
                 onHoverChange={onNameHoverChange}
             />
-            <p className="text-white/50">{t('profession')}</p>
+            <p className={clsx('text-white/50', isBackground && '-mt-2px')}>{t('profession')}</p>
             <p className="text-white/50 mt-2">
                 📍 Rabka-Zdrój, {t('country')}{' '}
                 <img src="/poland.svg" className="inline-flex" height={20} width={20} />
-            </p>
-            <p className="text-white/50 flex gap-1 items-center">
-                <Clock2 />
-                {adjustTimeByHours(timeDifference)}
-                <span className="text-white/40"> {t('hourDifference')(timeDifference)}</span>
             </p>
             <p className="text-#8a8a8a flex gap-1 items-center">
                 <Cake />
@@ -115,6 +111,7 @@ const LocationMap = lazy(() =>
 
 export function App() {
     const t = useTranslate();
+    const timeDifference = getTimezoneDifference(TIMEZONE);
 
     const { currentSection, setCurrentSection } = useSection();
     const [scrollY, setScrollY] = useState(0);
@@ -148,9 +145,18 @@ export function App() {
             <TracingBeam>
                 <div className="flex justify-center z-5 min-h-dvh">
                     <div className="w-200 lt-mobile:w-[calc(100%-50px)]! px-10 relative antialiased flex flex-col">
+                        <p className="clock-blink group text-white/40 hidden md:flex gap-1 items-center absolute font-mono right-16 top-2 z-20">
+                            <span className="group-hover:hidden">
+                                {adjustTimeByHours(timeDifference)}
+                            </span>
+                            <span className="hidden group-hover:block">
+                                {' '}
+                                {t('hourDifference')(timeDifference)}
+                            </span>
+                        </p>
                         <div className="absolute px-4 lt-md:hidden">
                             <div className="flex justify-between gap-8 pointer-events-none select-none w-full py-10">
-                                <div className="relative mt-12 mr-12 w-min">
+                                <div className="relative mt-8 mr-12 w-min">
                                     <div className="bg-dot-white size-50 max-h-50 op-20" />
                                     <div className="size-50 absolute duration-100 rounded-md -right-8 -top-7.5 bg-gray-7" />
                                 </div>
@@ -158,6 +164,7 @@ export function App() {
                                     <Info
                                         isNameHovered={isNameHovered}
                                         onNameHoverChange={setIsNameHovered}
+                                        isBackground
                                     />
                                 </div>
                                 <div className="absolute top-0 -right-50 w-5/8 h-80 z-0">
@@ -185,7 +192,7 @@ export function App() {
                         </div>
 
                         <ViewTransition name="info">
-                            <div className={clsx(collapsed && 'md:h-48')} />
+                            <div className={clsx(collapsed && 'md:h-78')} />
 
                             <motion.div
                                 className={clsx(
@@ -204,7 +211,7 @@ export function App() {
                                             : 'flex justify-between gap-8',
                                     )}
                                 >
-                                    <div className="relative mt-12 mr-12 w-min">
+                                    <div className="relative mt-8 mr-12 w-min">
                                         <div className="bg-dot-white size-50 max-h-50" />
                                         <img
                                             src={GITHUB + '.png'}
@@ -273,16 +280,6 @@ export function App() {
                                     collapsed && 'duration-300!',
                                 )}
                             >
-                                <div
-                                    className={clsx(
-                                        'm-4 flex gap-2 font-mono',
-                                        collapsed && 'mobile:mt-40',
-                                    )}
-                                >
-                                    <span className="text-lime-3">$</span>
-                                    <Quote />
-                                </div>
-
                                 <Navbar />
 
                                 <div className="mx-2">
@@ -293,6 +290,10 @@ export function App() {
                                                     sectionRefs.current.about = el;
                                                 }}
                                             >
+                                                <div className="m-4 flex gap-2 font-mono w-full mt-12">
+                                                    <span className="text-lime-3">$</span>
+                                                    <Quote />
+                                                </div>
                                                 <About />
                                             </section>
                                         </ViewTransition>

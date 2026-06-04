@@ -40,8 +40,13 @@ const trans = {
                     <br />
                     <br />
                     <span className="flex items-center">
-                        <Link href="#contact" className="text-cyan-1 ml-1">
-                            Contact
+                        <Link
+                            target="_blank"
+                            rel="noreferrer"
+                            href="/cv.pdf"
+                            className="text-cyan-1 ml-1"
+                        >
+                            Resume
                         </Link>
                     </span>
                 </>
@@ -113,8 +118,13 @@ const trans = {
                     <br />
                     <br />
                     <span className="flex items-center">
-                        <Link href="#contact" className="text-cyan-1 ml-1">
-                            Skontaktuj się
+                        <Link
+                            target="_blank"
+                            rel="noreferrer"
+                            href="/cv.pdf"
+                            className="text-cyan-1 ml-1"
+                        >
+                            Moje CV
                         </Link>
                     </span>
                 </>

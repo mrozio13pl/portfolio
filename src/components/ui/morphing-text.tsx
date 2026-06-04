@@ -149,7 +149,7 @@ const MorphingText: React.FC<MorphingTextProps> = ({
     return (
         <div
             className={clsx(
-                'relative block h-[1em] w-full font-bold leading-none [filter:url(#threshold)_blur(0.6px)]',
+                'relative block w-full font-bold leading-none [filter:url(#threshold)_blur(0.6px)]',
                 className,
             )}
             onMouseEnter={() => setIsHovered(true)}

@@ -26,6 +26,19 @@ body {
     animation-play-state: paused;
 }
 
+.clock-blink {
+    animation: clockBlink 3s steps(1, end) infinite;
+}
+
+@keyframes clockBlink {
+    0% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0.7;
+    }
+}
+
 @keyframes slide {
     0% {
         transform: translateX(0%);
