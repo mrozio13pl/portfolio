@@ -11,7 +11,7 @@ export function Cursor() {
         let prevTime = Date.now();
         let prevX = 0;
         let prevY = 0;
-        let resetScaleTimeout: NodeJS.Timeout;
+        let resetScaleTimeout: ReturnType<typeof setTimeout>;
 
         const moveCursor = (e: MouseEvent) => {
             const currentTime = Date.now();

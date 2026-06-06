@@ -1,4 +1,5 @@
 declare module '*.css' {}
+declare module '@wterm/react/css' {}
 
 declare module 'virtual:photo-manifest' {
     export type PhotoManifestItem = {

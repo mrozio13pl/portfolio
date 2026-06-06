@@ -7,3 +7,4 @@ export const TIMEZONE = 'Europe/Warsaw';
 export const SECTIONS = ['about', 'experience', 'projects', 'contact'] as const;
 
 export const CHATFOLIO_ID = 'uCiUG6T1id6n-nd7Ig3nj';
+export const CHATFOLIO_BASE_URL = 'https://my-chatfolio.vercel.app';
