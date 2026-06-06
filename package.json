@@ -19,6 +19,7 @@
         "@fontsource-variable/sora": "^5.2.8",
         "@fontsource/poppins": "^5.2.7",
         "@icons-pack/react-simple-icons": "^13.13.0",
+        "@immich/justified-layout-wasm": "^0.4.3",
         "@mrozio/i18n": "^0.1.1",
         "@radix-ui/react-select": "^2.2.6",
         "@radix-ui/react-tooltip": "^1.2.8",

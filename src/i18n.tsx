@@ -1,5 +1,6 @@
 import { createI18n } from '@mrozio/i18n';
 import { Link } from '@/components/ui/link';
+import { useSection } from './hooks/section';
 
 const trans = {
     en: {
@@ -29,12 +30,22 @@ const trans = {
         age: 'y/o',
         country: 'Poland',
         about() {
+            const { setCurrentSection } = useSection();
+
             return (
                 <>
                     I'm a self-taught{' '}
                     <span className="bg-gray-9 p-1 rounded-lg">Full Stack Developer</span>. My
                     interests focus on web development, useful automation, tech news, the dev space
-                    in general, video editing (including drone footage), gym and cycling.
+                    in general, video editing (including drone footage), gym, cycling and{' '}
+                    <a
+                        href="/#trips"
+                        className="text-cyan-1 hover:underline underline-offset-3"
+                        onClick={() => setCurrentSection('trips')}
+                    >
+                        travelling
+                    </a>
+                    .
                     <br />
                     The only hobby I currently have is Arch Linux.
                     <br />
@@ -63,6 +74,15 @@ const trans = {
             title: 'Projects',
             libraries: 'Libraries',
             small: 'Smaller projects',
+        },
+        tripsSection: {
+            title: 'My travels',
+            subtitle: 'Some of my trips and countries I have visited so far.',
+            showAll: 'show all trips',
+            day: '1 day',
+            days(days: number) {
+                return `${days} days`;
+            },
         },
         footer: 'my portfolio is',
         chat: {
@@ -105,14 +125,23 @@ const trans = {
             with: 'przez',
         },
         about() {
+            const { setCurrentSection } = useSection();
+
             return (
                 <>
                     Jestem{' '}
                     <span className="bg-gray-9 p-1 rounded-lg">Programistą Full Stack-owym</span>i
                     samoukiem. Moje zainteresowania skupiają się na tworzeniu stron internetowych,
                     przydatnej automatyzacji, nowinkach technologicznych, szeroko pojętym świecie
-                    programowania, montażu wideo (w tym ujęć z drona), siłowni oraz jeździe na
-                    rowerze.
+                    programowania, montażu wideo (w tym ujęć z drona), siłowni, jeździe na rowerze i{' '}
+                    <a
+                        href="/#trips"
+                        className="text-cyan-1 hover:underline underline-offset-3"
+                        onClick={() => setCurrentSection('trips')}
+                    >
+                        podróżowaniu
+                    </a>
+                    .
                     <br />
                     Moim jedynym obecnie hobby jest Arch Linux.
                     <br />
@@ -141,6 +170,15 @@ const trans = {
             title: 'Projekty',
             libraries: 'Biblioteki',
             small: 'Mniejsze projekty',
+        },
+        tripsSection: {
+            title: 'Moje podróże',
+            subtitle: 'Kilka moich podróży i krajów, które do tej pory zwiedziłem.',
+            showAll: 'pokaż wszystkie podróże',
+            day: '1 dzień',
+            days(days: number) {
+                return `${days} dni`;
+            },
         },
         footer: 'moje portfolio jest',
         chat: {

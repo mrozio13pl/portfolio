@@ -1,27 +1,32 @@
-import { useMemo, useState } from 'react';
+import { startTransition, useMemo, useState, ViewTransition } from 'react';
 import { MA, MT, RO } from 'country-flag-icons/react/3x2';
 import { Trip } from '../trips/trip';
 import { WorldMap } from '../trips/world-map';
 import { Flag } from '../flag';
 import { clsx } from 'clsx';
+import { MoveLeft } from 'lucide-react';
+import { Gallery } from '../gallery';
+import { useLocale, useTranslate } from '@/i18n';
 
-const dateFormatter = new Intl.DateTimeFormat('en-GB', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-});
-
-function formatDate(date: Date) {
-    return dateFormatter.format(date);
+function formatDate(date: Date, locale: string) {
+    return new Intl.DateTimeFormat(locale === 'pl' ? 'pl-PL' : 'en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    }).format(date);
 }
 
-function formatDuration(start: Date, end: Date) {
+function tripTransitionName(title: string) {
+    return `trip-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+}
+
+function formatDuration(start: Date, end: Date, t: ReturnType<ReturnType<typeof useTranslate>>) {
     const totalMinutes = Math.round((end.valueOf() - start.valueOf()) / 1000 / 60);
     const days = Math.floor(totalMinutes / 60 / 24);
 
-    return days === 1 ? '1 day' : `${days} days`;
+    return days === 1 ? t('day') : t('days', days);
 }
 
 const visitedCountries = [
@@ -44,7 +49,8 @@ const visitedCountries = [
 ];
 
 export function Trips() {
-    const [hoveredTrip, setHoveredTrip] = useState<Trip>();
+    const t = useTranslate()('tripsSection');
+    const locale = useLocale()[0];
     const [selectedTrip, setSelectedTrip] = useState<Trip>();
     const trips = useMemo(
         () => [
@@ -58,7 +64,7 @@ export function Trips() {
                         { label: 'Katowice Airport (KTW)', lat: 50.4743, lng: 19.08 },
                         { label: 'Malta', lat: 35.9375, lng: 14.3754 },
                     ],
-                    images: [],
+                    imagesDirectory: 'malta-2026',
                     start: new Date('2026-05-27 19:00'),
                     end: new Date('2026-06-02 22:00'),
                 },
@@ -81,7 +87,7 @@ export function Trips() {
                         { label: 'Milan Malpensa (MXP)', lat: 45.63, lng: 8.7231 },
                         { label: 'Kraków Airport (KRK)', lat: 50.0777, lng: 19.7848 },
                     ],
-                    images: [],
+                    imagesDirectory: 'morocco-2026',
                     start: new Date('2026-01-31 06:15'),
                     end: new Date('2026-02-08 08:45'),
                 },
@@ -98,7 +104,7 @@ export function Trips() {
                         { label: 'Bucharest', lat: 44.4268, lng: 26.1025 },
                         { label: 'Kraków Airport (KRK)', lat: 50.0777, lng: 19.7848 },
                     ],
-                    images: [],
+                    imagesDirectory: 'bucharest-2025',
                     start: new Date('2025-11-15 11:15'),
                     end: new Date('2025-11-16 17:30'),
                 },
@@ -117,7 +123,7 @@ export function Trips() {
                         { label: 'Warsaw Chopin Airport (WAW)', lat: 52.2297, lng: 21.0122 },
                         { label: 'Kraków', lat: 50.0647, lng: 19.945 },
                     ],
-                    images: [],
+                    imagesDirectory: 'madeira-2025',
                     start: new Date('2025-01-17 6:00'),
                     end: new Date('2025-01-22 23:00'),
                 },
@@ -127,37 +133,55 @@ export function Trips() {
         [],
     );
 
+    const sortedTrips = [...trips].sort((a, b) => b.start.valueOf() - a.start.valueOf());
+    const visibleTrips = selectedTrip ? [selectedTrip] : sortedTrips;
+
+    function selectTrip(trip: Trip) {
+        startTransition(() => setSelectedTrip(trip));
+    }
+
+    function showAllTrips() {
+        startTransition(() => setSelectedTrip(undefined));
+    }
+
     return (
         <div className="size-full flex flex-col items-center">
-            <h2 className="font-primary font-extrabold text-3xl pt-12 text-cyan-3">My trips</h2>
+            <h2 className="font-primary font-extrabold text-3xl pt-12 text-cyan-3">{t('title')}</h2>
 
-            <p className="text-#F7F7E3 my-4">
-                Some of my trips and countries I have visited so far.
-            </p>
+            <p className="text-#F7F7E3 my-4">{t('subtitle')}</p>
 
             <WorldMap
                 trips={trips}
-                activeTrip={hoveredTrip ?? selectedTrip}
-                onTripSelect={setSelectedTrip}
+                activeTrip={selectedTrip}
+                onTripSelect={selectTrip}
                 visitedCountries={visitedCountries}
             />
 
-            <ul className="w-full md:px-12 mb-8 divide-y divide-white/10">
-                {[...trips]
-                    .sort((a, b) => b.start.valueOf() - a.start.valueOf())
-                    .map((trip) => {
-                        const active = trip === hoveredTrip || trip === selectedTrip;
+            {selectedTrip && (
+                <button
+                    type="button"
+                    className="self-start flex items-center gap-x-1 ml-3 md:ml-12 my-4 text-sm text-cyan-2 hover:text-cyan-1"
+                    onClick={showAllTrips}
+                >
+                    <MoveLeft size={16} />
+                    {t('showAll')}
+                </button>
+            )}
 
-                        return (
+            <ul className="w-full md:px-12 mb-8 divide-y divide-white/10">
+                {visibleTrips.map((trip) => {
+                    const expanded = trip === selectedTrip;
+
+                    return (
+                        <ViewTransition key={trip.title} name={tripTransitionName(trip.title)}>
                             <li
-                                key={trip.title}
                                 className={clsx(
-                                    'cursor-pointer py-4 transition-colors',
-                                    active ? 'bg-yellow-4/8' : 'hover:bg-white/5',
+                                    'py-4 transition-colors',
+                                    !selectedTrip && 'cursor-pointer hover:bg-white/5',
                                 )}
-                                onMouseEnter={() => setHoveredTrip(trip)}
-                                onMouseLeave={() => setHoveredTrip(undefined)}
-                                onClick={() => setSelectedTrip(trip)}
+                                onClick={() => {
+                                    if (!selectedTrip) selectTrip(trip);
+                                }}
                             >
                                 <div className="flex items-start gap-3 px-3">
                                     <Flag className="mt-1.5 shrink-0">{trip.flag}</Flag>
@@ -168,22 +192,45 @@ export function Trips() {
                                                 {trip.title}
                                             </h3>
                                             <span className="text-sm text-cyan-2 whitespace-nowrap">
-                                                {formatDuration(trip.start, trip.end)}
+                                                {formatDuration(trip.start, trip.end, t)}
                                             </span>
                                         </div>
 
                                         <p className="text-sm text-white/55 mt-1">
-                                            {formatDate(trip.start)} - {formatDate(trip.end)}
+                                            {formatDate(trip.start, locale)} -{' '}
+                                            {formatDate(trip.end, locale)}
                                         </p>
 
-                                        <p className="whitespace-pre-line leading-7 mt-2 text-white/85">
-                                            {trip.description}
-                                        </p>
+                                        <div
+                                            className={clsx(
+                                                'transition-opacity duration-300',
+                                                expanded
+                                                    ? 'overflow-visible opacity-100'
+                                                    : 'max-h-7 overflow-hidden opacity-85',
+                                            )}
+                                        >
+                                            <p
+                                                className={clsx(
+                                                    'leading-7 mt-2 text-white/85',
+                                                    expanded ? 'whitespace-pre-line' : 'truncate',
+                                                )}
+                                            >
+                                                {trip.description}
+                                            </p>
+
+                                            {expanded && (
+                                                <Gallery
+                                                    tripId={trip.title}
+                                                    className="mt-4 lt-mobile:(-ml-16 -mr-6)"
+                                                />
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </li>
-                        );
-                    })}
+                        </ViewTransition>
+                    );
+                })}
             </ul>
         </div>
     );

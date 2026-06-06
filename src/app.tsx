@@ -10,7 +10,6 @@ import { Experience } from '@/components/sections/experience';
 import { Footer } from '@/components/footer';
 import { Projects } from '@/components/sections/projects';
 import { About } from '@/components/sections/about';
-import { Trips } from '@/components/sections/trips';
 import { useSection } from '@/hooks/section';
 import { useScreenSize } from '@/hooks/screen';
 import { useTranslate } from '@/i18n';
@@ -108,6 +107,8 @@ function Info({ isNameHovered, onNameHoverChange, isBackground }: InfoProps) {
 const LocationMap = lazy(() =>
     import('@/components/map').then((m) => ({ default: m.LocationMap })),
 );
+
+const Trips = lazy(() => import('@/components/sections/trips').then((m) => ({ default: m.Trips })));
 
 export function App() {
     const t = useTranslate();
@@ -342,7 +343,9 @@ export function App() {
                                                     sectionRefs.current.trips = el;
                                                 }}
                                             >
-                                                <Trips />
+                                                <Suspense fallback={null}>
+                                                    <Trips />
+                                                </Suspense>
                                             </section>
                                         </ViewTransition>
                                     )}

@@ -13,7 +13,7 @@ export type TripType = {
     end: Date;
     title: string;
     description: string;
-    images: string[];
+    imagesDirectory: string;
     location?: TripPoint;
     route?: TripPoint[];
     flag: ReactNode;
@@ -21,7 +21,7 @@ export type TripType = {
 
 type TripOptions = Pick<
     TripType,
-    'countryCode' | 'start' | 'end' | 'images' | 'location' | 'route'
+    'countryCode' | 'start' | 'end' | 'imagesDirectory' | 'location' | 'route'
 >;
 
 export class Trip implements TripType {
@@ -29,7 +29,7 @@ export class Trip implements TripType {
     start: Date;
     end: Date;
     description: string;
-    images: string[];
+    imagesDirectory: string;
     location?: TripPoint;
     route?: TripPoint[];
 
@@ -43,7 +43,7 @@ export class Trip implements TripType {
         this.countryCode = options.countryCode;
         this.start = options.start;
         this.end = options.end;
-        this.images = options.images;
+        this.imagesDirectory = options.imagesDirectory;
         this.location = options.location;
         this.route = options.route;
     }

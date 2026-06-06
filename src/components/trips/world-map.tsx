@@ -337,7 +337,7 @@ export function WorldMap({
             .attr('fill', (d: any) => {
                 const code = countryISOMapping[d.id as keyof typeof countryISOMapping];
                 const val = countries.includes(code);
-                return val ? '#66e6f933' : '#222';
+                return val ? '#66e6f955' : '#222';
             })
             .on('mouseover', function (event, d: any) {
                 d3.select(this).attr('opacity', 0.7);
