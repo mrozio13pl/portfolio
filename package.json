@@ -28,6 +28,8 @@
         "clsx": "^2.1.1",
         "cobe": "^0.6.5",
         "copy-text-to-clipboard": "^3.2.2",
+        "country-flag-icons": "^1.6.17",
+        "d3": "^7.9.0",
         "dedent": "^1.7.2",
         "dompurify": "^3.4.7",
         "github-markdown-css": "^5.9.0",
@@ -45,6 +47,7 @@
     "devDependencies": {
         "@tsconfig/vite-react": "^8.0.6",
         "@tsparticles/engine": "^4.1.2",
+        "@types/d3": "^7.4.3",
         "@types/matter-js": "^0.20.2",
         "@types/node": "^25.9.1",
         "@types/react": "^19.2.16",

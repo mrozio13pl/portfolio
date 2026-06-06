@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, startTransition } from 'react';
 import type { SECTIONS } from '@/constants';
 
-export type Section = (typeof SECTIONS)[number];
+export type Section = (typeof SECTIONS)[number] | 'trips';
 
 interface SectionContextType {
     currentSection: Section;

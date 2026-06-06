@@ -10,11 +10,12 @@ import { Experience } from '@/components/sections/experience';
 import { Footer } from '@/components/footer';
 import { Projects } from '@/components/sections/projects';
 import { About } from '@/components/sections/about';
+import { Trips } from '@/components/sections/trips';
 import { useSection } from '@/hooks/section';
 import { useScreenSize } from '@/hooks/screen';
 import { useTranslate } from '@/i18n';
 import { BIRTH_DATE, GITHUB, SECTIONS, TIMEZONE } from '@/constants';
-import { Cake, Clock2, Dot } from 'lucide-react';
+import { Cake, Dot } from 'lucide-react';
 import {
     useEffect,
     useState,
@@ -26,7 +27,6 @@ import {
 } from 'react';
 import { motion } from 'motion/react';
 import { clsx } from 'clsx';
-import { Button } from './components/ui/button';
 
 const mapMask = `
   linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%),
@@ -331,6 +331,18 @@ export function App() {
                                                 }}
                                             >
                                                 <Contact />
+                                            </section>
+                                        </ViewTransition>
+                                    )}
+
+                                    {currentSection === 'trips' && (
+                                        <ViewTransition name="trips">
+                                            <section
+                                                ref={(el) => {
+                                                    sectionRefs.current.trips = el;
+                                                }}
+                                            >
+                                                <Trips />
                                             </section>
                                         </ViewTransition>
                                     )}

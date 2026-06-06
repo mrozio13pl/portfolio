@@ -5,6 +5,7 @@
         "incremental": true,
         "allowJs": true,
         "noEmit": true,
+        "erasableSyntaxOnly": false,
         "jsx": "react-jsx",
         "paths": {
             "@/*": ["./src/*"]
