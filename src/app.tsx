@@ -109,6 +109,19 @@ const LocationMap = lazy(() =>
 );
 
 const Trips = lazy(() => import('@/components/sections/trips').then((m) => ({ default: m.Trips })));
+const AppTerminal = lazy(() => import('@/components/terminal/terminal'));
+
+function AgentTerminalButton({ isLoading = false }: { isLoading?: boolean }) {
+    return (
+        <button
+            type="button"
+            className="fixed bottom-4 right-4 z-50 px-4 py-2 font-mono text-sm text-lime-3 shadow-2xl backdrop-blur-lg hover:underline"
+            disabled={isLoading}
+        >
+            {isLoading ? 'loading ~/agent' : '~/agent'}
+        </button>
+    );
+}
 
 export function App() {
     const t = useTranslate();
@@ -118,6 +131,7 @@ export function App() {
     const [scrollY, setScrollY] = useState(0);
     const [collapsed, setCollapsed] = useState(false);
     const [isNameHovered, setIsNameHovered] = useState(false);
+    const [isTerminalRequested, setIsTerminalRequested] = useState(false);
     const { width } = useScreenSize();
 
     const sectionRefs = useRef<{
@@ -361,6 +375,20 @@ export function App() {
                     </div>
                 </div>
             </TracingBeam>
+
+            {isTerminalRequested ? (
+                <Suspense fallback={<AgentTerminalButton isLoading />}>
+                    <AppTerminal />
+                </Suspense>
+            ) : (
+                <button
+                    type="button"
+                    className="fixed bottom-4 right-4 z-50 px-4 py-2 font-mono text-sm text-lime-3 shadow-2xl backdrop-blur-lg hover:underline"
+                    onClick={() => setIsTerminalRequested(true)}
+                >
+                    ~/agent
+                </button>
+            )}
         </Layout>
     );
 }

@@ -45,7 +45,7 @@ function clampTerminalPosition(position: Position, element: HTMLElement | null):
 
 export default function AppTerminal() {
     const { ref, write: terminalWrite, focus } = useTerminal();
-    const [isMinimized, setIsMinimized] = useState(true);
+    const [isMinimized, setIsMinimized] = useState(false);
     const [position, setPosition] = useState<Position>({ x: 16, y: 16 });
     const inputRef = useRef('');
     const commandHistoryRef = useRef<string[]>([]);

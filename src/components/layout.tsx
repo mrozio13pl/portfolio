@@ -2,7 +2,6 @@ import { lazy, type ReactNode } from 'react';
 import '../globals.css';
 import 'uno.css';
 
-const AppTerminal = lazy(() => import('@/components/terminal/terminal'));
 const Sparkles = lazy(() =>
     import('@/components/ui/sparkles').then((m) => ({ default: m.SparklesCore })),
 );
@@ -40,7 +39,6 @@ export function Layout({ children }: { children: ReactNode }) {
             <div className="bg-gradient-to-t from-#0f0f0f to-#141414 text-[#f0f0f0] relative overflow-hidden lt-mobile:pb-6 body-locked:pr-4">
                 <div className="z-10">{children}</div>
             </div>
-            <AppTerminal />
             {/* <Cursor /> - following cursor, disabled cuz i found it to be annoying */}
         </main>
     );

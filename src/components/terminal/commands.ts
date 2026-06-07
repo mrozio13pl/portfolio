@@ -1,4 +1,4 @@
-import { CHATFOLIO_BASE_URL, EMAIL, GITHUB, LINKED_IN } from '@/constants';
+import { BIRTH_DATE, CHATFOLIO_BASE_URL, EMAIL, GITHUB, LINKED_IN } from '@/constants';
 import { createTerminalSpinner } from './spinner';
 import ansis from 'ansis';
 import ky from 'ky';
@@ -24,6 +24,24 @@ type WttrResponse = {
         windspeedKmph?: string;
     }>;
 };
+
+function getAge(birthDate: Date) {
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    const dayDiff = today.getDate() - birthDate.getDate();
+
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        age--;
+    }
+
+    return age;
+}
+
+function getRuntime() {
+    return navigator.userAgent.match(/(Firefox|Chrome|Safari|Edge)\//)?.[1] ?? 'browser';
+}
 
 export type CommandContext = {
     args: string[];
@@ -199,6 +217,51 @@ export const COMMANDS = [
         run({ clearAgentHistory, write, writePrompt }) {
             clearAgentHistory();
             write(`${ansis.green('history cleared')}\r\n`);
+            writePrompt();
+        },
+    }),
+    defineCommand({
+        name: 'fetch',
+        description: 'show portfolio system info',
+        run({ write, writePrompt }) {
+            const artLength = 20;
+            const label = (text: string) => `${ansis.cyanBright(`${text}:`)} `;
+            const ascii = [
+                ansis.cyan('█▀▄▀█ █▀█ ▄▀█ ▀█ ▄▀█'),
+                ansis.cyan('█ ▀ █ █▀▄ █▀█ █▄ █▀█'),
+                ' '.repeat(artLength),
+                ' '.repeat(artLength),
+                ' '.repeat(artLength),
+                `         . .        `,
+                `       .. . *.      `,
+                `- -_ _-__-${ansis.bold.yellow('0oOo')}      `,
+                ` _-_ -__ -${ansis.bold.yellow('||||)')}     `,
+                `    ______${ansis.bold.yellow('||||')}______`,
+                `~~~~~~~~~~${ansis.bold.yellow('`""\'')}      `,
+            ];
+            const info = [
+                `${ansis.cyanBright('mrozio')}@${ansis.cyanBright('portfolio')} ${ansis.bgWhiteBright('       ')}`,
+                '---------------- ' + ansis.bgRedBright('       '),
+                `${label('OS')}Arch btw`,
+                `${label('Host')}Jakub Mrożek (mrozio)`,
+                `${label('Role')}Full Stack Developer`,
+                `${label('Age')}${getAge(BIRTH_DATE)}`,
+                `${label('Location')}Rabka-Zdrój, Poland`,
+                `${label('Focus')}Node.js, TypeScript, React`,
+                `${label('Shell')}wterm inside browser`,
+                `${label('Runtime')}${getRuntime()}`,
+                `${label('GitHub')}github.com/mrozio13pl`,
+                `${label('Email')}${EMAIL}`,
+                `${label('CV')}open cv`,
+                '',
+                `${ansis.bgRed('   ')}${ansis.bgGreen('   ')}${ansis.bgYellow('   ')}${ansis.bgBlue('   ')}${ansis.bgMagenta('   ')}${ansis.bgCyan('   ')}${ansis.bgWhite('   ')}`,
+            ];
+            const rows = Math.max(ascii.length, info.length);
+
+            for (let i = 0; i < rows; i++) {
+                write(`${ascii[i] ?? ' '.repeat(artLength)}  ${info[i] ?? ''}\r\n`);
+            }
+
             writePrompt();
         },
     }),
